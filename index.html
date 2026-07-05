@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yue Qin — Designer & Creative Coder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #F1F4F7;
+      --border: rgba(10,19,23,0.1);
+      --text: #0A1317;
+      --secondary: #5D6C7B;
+      --muted: #8A96A3;
+      --accent: #0457CB;
+      --accent-hover: #0369E0;
+      --radius-sm: 12px;
+      --radius-md: 24px;
+      --radius-lg: 100px;
+      --font: 'Inter', -apple-system, sans-serif;
+      --transition: 0.2s ease-out;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0A1317;
+        --surface: #141E25;
+        --border: rgba(255,255,255,0.08);
+        --text: #F0F4F7;
+        --secondary: #8A96A3;
+        --muted: #5D6C7B;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      nav { background: rgba(10,19,23,0.85); }
+    }
+
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--secondary);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--text); }
+    .nav-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+    /* DROPDOWN */
+    .nav-has-dropdown {
+      position: relative;
+    }
+
+    .nav-has-dropdown > button {
+      all: unset;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--secondary);
+      cursor: pointer;
+      font-family: var(--font);
+      transition: color var(--transition);
+    }
+
+    .nav-has-dropdown > button:hover,
+    .nav-has-dropdown.open > button { color: var(--text); }
+
+    /* hide the chevron completely — no visual indicator when closed */
+    .nav-has-dropdown > button svg { display: none; }
+
+    /* Backdrop behind the side panel */
+    .nav-dropdown-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,19,23,0.35);
+      z-index: 98;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease-out;
+    }
+    .nav-dropdown-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Work panel — slides in from the right */
+    .nav-dropdown {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 380px;
+      max-width: 86vw;
+      background: var(--bg);
+      z-index: 99;
+      padding: 96px 44px 44px;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.32s cubic-bezier(0.25,0.46,0.45,0.94);
+      box-shadow: -8px 0 40px rgba(10,19,23,0.14);
+    }
+
+    .nav-dropdown.open { transform: translateX(0); }
+
+    .dd-group-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .dd-list { list-style: none; display: flex; flex-direction: column; }
+
+    .dd-list li { border-top: 1px solid var(--border); }
+    .dd-list li:last-child { border-bottom: 1px solid var(--border); }
+
+    .dd-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 18px 0;
+      text-decoration: none;
+      transition: opacity var(--transition);
+    }
+    .dd-item:hover { opacity: 0.6; }
+
+    .dd-item .dd-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .dd-item .dd-type {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .nav-dropdown { box-shadow: -8px 0 40px rgba(0,0,0,0.4); }
+    }
+
+    /* HERO */
+    .hero {
+      padding: 20px 48px 80px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      /* always visible — no scroll animation */
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+
+    .hero-bio {
+      font-size: clamp(18px, 2vw, 24px);
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      max-width: 1000px;
+      margin-bottom: 40px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      justify-content: center;
+    }
+
+    /* Hero bio + tags reveal (IntersectionObserver — same fade-up as other sections) */
+    .hero-reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .hero-reveal.in { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    .tag {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .tag + .tag::before {
+      content: "•";
+      margin: 0 8px;
+      color: var(--muted);
+    }
+
+    /* SECTION */
+    section { padding: 80px 48px; }
+    section + section { border-top: 1px solid var(--border); }
+    #about { border-top: 1px solid var(--border); }
+
+    .section-label {
+      font-size: 36px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 48px;
+    }
+
+    /* WORK LIST */
+    .work-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .work-row {
+      display: block;
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: opacity var(--transition);
+    }
+
+    .work-row:first-child { border-top: none; }
+
+    .work-body {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .work-left {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .work-desc {
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .work-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+
+    .work-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .work-tag + .work-tag::before {
+      content: " • ";
+      margin: 0 6px;
+      color: var(--muted);
+    }
+
+    .work-right img,
+    .work-right video {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 4/3;
+    }
+
+    .work-right img.work-img-contain {
+      object-fit: contain;
+    }
+
+    /* Full-width uncropped video row (Synthetic Ocean) */
+    .work-video-full video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Work row header — View → on the right */
+    .work-row-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: flex-end;
+      margin-bottom: 28px;
+    }
+
+    /* Project title — sits above the description, larger + dark gray */
+    .work-row-title {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .work-row-view {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--secondary);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+      transition: color var(--transition), border-color var(--transition);
+    }
+
+    .work-row-view { position: relative; z-index: 2; }
+    .work-row-view:hover { color: var(--text); border-color: var(--text); }
+
+    /* Bio material strip in work-right */
+    .work-image-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+
+    .work-image-strip img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 800px) {
+      .work-body { grid-template-columns: 1fr; gap: 24px; }
+    }
+
+    /* Bio Material — full-width gallery block */
+    .bio-block {
+      margin-top: 56px;
+      padding-top: 56px;
+      border-top: 1px solid var(--border);
+    }
+
+    .bio-block-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+
+    .bio-block-title {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .bio-block-view {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--secondary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+      transition: color var(--transition), border-color var(--transition);
+    }
+
+    .bio-block-view:hover { color: var(--text); border-color: var(--text); }
+
+    .bio-marquee {
+      display: block;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+      mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    }
+
+    .bio-marquee-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: bio-scroll 40s linear infinite;
+    }
+
+    .bio-marquee:hover .bio-marquee-track { animation-play-state: paused; }
+
+    .bio-marquee-track img {
+      height: 300px;
+      width: auto;
+      object-fit: cover;
+      display: block;
+      flex: none;
+    }
+
+    @keyframes bio-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bio-marquee-track { animation: none; }
+    }
+
+    @media (max-width: 800px) {
+      .bio-marquee-track img { height: 220px; }
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    @media (max-width: 800px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    .about-name {
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .about-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 36px;
+    }
+
+    .about-text {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--secondary);
+      margin-bottom: 16px;
+    }
+
+    .about-text a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .about-text a:hover { text-decoration: underline; }
+
+    /* About photo */
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: var(--radius-sm);
+      display: block;
+      margin-bottom: 28px;
+    }
+
+    /* Education — clean timeline */
+    .edu-list { list-style: none; display: flex; flex-direction: column; }
+
+    .edu-item {
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .edu-item:last-child { border-bottom: 1px solid var(--border); }
+
+    .edu-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .edu-school {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .edu-loc {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .edu-degree {
+      font-size: 14px;
+      color: var(--secondary);
+      margin-bottom: 4px;
+    }
+
+    .edu-detail {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .edu-modules {
+      font-size: 12px;
+      color: var(--secondary);
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+    .edu-modules b {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .skill-group h4 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .skill-group p {
+      font-size: 13px;
+      color: var(--secondary);
+      line-height: 1.6;
+    }
+
+    /* CONTACT */
+    .contact-wrap {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-heading {
+      font-size: 36px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .contact-sub {
+      font-size: 16px;
+      color: var(--secondary);
+      margin-bottom: 36px;
+      line-height: 1.65;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      justify-content: center;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .contact-link:hover { color: var(--accent); }
+    .contact-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+    .contact-link.primary { color: var(--accent); }
+    .contact-link.primary:hover { color: var(--accent-hover); }
+
+    /* FOOTER */
+    footer {
+      padding: 32px 48px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* COVER VIDEO */
+    .cover-video-wrap {
+      position: relative;
+      width: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .cover-video-wrap video {
+      width: 100%;
+      display: block;
+      max-height: 90vh;
+      object-fit: cover;
+    }
+
+    /* Eyebrow pinned to bottom-left of video, always visible */
+    .video-eyebrow {
+      position: absolute;
+      bottom: 28px;
+      left: 5%;
+      z-index: 3;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Hero headline overlaid on video — left */
+    .video-hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 38%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 0 60px 48px;
+      z-index: 2;
+    }
+
+    .video-hero-overlay h1 {
+      font-size: clamp(32px, 4vw, 58px);
+      font-weight: 600;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 0;
+    }
+
+    /* View Work button — right side of video */
+    .video-hero-cta {
+      position: absolute;
+      right: 6%;
+      bottom: 48px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: #0A1317;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: var(--radius-lg);
+      text-decoration: none;
+      z-index: 3;
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .video-hero-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    @media (max-width: 800px) {
+      .video-hero-overlay { width: 70%; padding-left: 24px; }
+      .video-hero-overlay h1 { font-size: 28px; }
+      .video-hero-cta { right: 24px; }
+      .video-eyebrow { left: 24px; }
+    }
+
+    /* NAV OVERLAY MODE — over the cover video */
+    nav.over-video {
+      background: transparent;
+      border-bottom: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    nav.over-video .nav-logo,
+    nav.over-video .nav-links a,
+    nav.over-video .nav-has-dropdown > button { color: #fff; }
+
+    nav.over-video .nav-logo:hover,
+    nav.over-video .nav-links a:hover,
+    nav.over-video .nav-links a:focus-visible,
+    nav.over-video .nav-has-dropdown > button:hover,
+    nav.over-video .nav-has-dropdown.open > button { color: rgba(255,255,255,0.7); }
+
+    .cover-video-hint {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.6;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    .cover-video-hint span {
+      font-size: 11px;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cover-video-hint svg { color: #fff; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cover-video-hint { animation: none; }
+    }
+
+    @media (max-width: 600px) {
+      nav, .hero, section, footer { padding-left: 24px; padding-right: 24px; }
+      .hero { padding-top: 60px; }
+      .nav-links { gap: 20px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Main navigation" id="main-nav" class="over-video">
+    <a href="#" class="nav-logo">Yue Qin</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- COVER VIDEO -->
+  <div class="cover-video-wrap" id="cover-wrap">
+    <video autoplay muted loop playsinline>
+      <source src="assets/cover.mov" type="video/quicktime" />
+      <source src="assets/cover.mov" type="video/mp4" />
+    </video>
+    <!-- Hero headline overlaid on video, left side -->
+    <div class="video-hero-overlay">
+      <h1>Design that<br>lives between<br>bodies and systems</h1>
+    </div>
+    <a href="#work" class="video-hero-cta">View Work</a>
+    <div class="cover-video-hint">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M10 4v12M5 11l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Scroll</span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <p class="hero-eyebrow">Portfolio · 2025–2026</p>
+    <p class="hero-bio hero-reveal">
+      I'm Yue Qin,<br>
+      a designer and researcher exploring fashion, interaction, and emerging technologies.<br>
+      I build wearables and embodied interfaces that connect people, technology, and the physical world.
+    </p>
+    <div class="hero-tags hero-reveal" style="transition-delay: 0.1s;">
+      <span class="tag">UX Research</span>
+      <span class="tag">Wearable Tech</span>
+      <span class="tag">Fashion Design</span>
+      <span class="tag">Creative Coding</span>
+      <span class="tag">Physical Computing</span>
+      <span class="tag">Speculative Design</span>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label" data-aos="fade-up" data-aos-duration="600">About</p>
+    <h2 class="about-name" data-aos="fade-up" data-aos-duration="800">Yue Qin</h2>
+    <p class="about-title" data-aos="fade-up" data-aos-duration="800" data-aos-delay="80">Fashion &amp; Accessories Designer · Creative Coder</p>
+    <div class="about-grid">
+
+      <!-- LEFT: photo -->
+      <div>
+        <img class="about-photo" src="assets/Photo.JPG" alt="Yue Qin" data-aos="fade-up" data-aos-duration="800" data-aos-delay="120" />
+      </div>
+
+      <!-- RIGHT: education + skills -->
+      <div>
+        <div data-aos="fade-up" data-aos-duration="800">
+          <ul class="edu-list">
+            <li class="edu-item">
+              <div class="edu-head">
+                <p class="edu-school">New York University</p>
+                <p class="edu-loc">New York, United States</p>
+              </div>
+              <p class="edu-degree">Master of Science in Integrated Design and Media · 09/2025 – 05/2027 (Expected)</p>
+              <p class="edu-detail">GPA 3.95/4.0</p>
+              <p class="edu-modules"><b>Core Modules</b>Ideation &amp; Prototyping · Sensory Ecology · Creative Coding · Histories, Theories and Practices of Haptics · Wearable Technology · Interactive New Media with TouchDesigner</p>
+            </li>
+            <li class="edu-item">
+              <div class="edu-head">
+                <p class="edu-school">Coventry University</p>
+                <p class="edu-loc">Coventry, United Kingdom</p>
+              </div>
+              <p class="edu-degree">Bachelor of Arts in Fashion and Accessories Design (Joint Program) · 09/2021 – 06/2025</p>
+              <p class="edu-detail">GPA 3.83/4.0 · First-Class Honours</p>
+              <p class="edu-modules"><b>Core Modules</b>Fashion Design · Integrated Design · Visual Communications · Introduction to Advertising</p>
+            </li>
+            <li class="edu-item">
+              <div class="edu-head">
+                <p class="edu-school">Communication University of Zhejiang</p>
+                <p class="edu-loc">Hangzhou, China</p>
+              </div>
+              <p class="edu-degree">Bachelor of Arts in Fashion and Accessories Design (Joint Program) · 09/2021 – 06/2025</p>
+              <p class="edu-detail">GPA 3.83/4.0 · Outstanding Graduate · Zhejiang Provincial Government Scholarship</p>
+              <p class="edu-modules"><b>Core Modules</b>Techniques of Fashion Illustration · Apparel Technology · Multimedia Technology and Application · Fashion Photography · Display Design</p>
+            </li>
+          </ul>
+        </div>
+        <div class="skills-grid" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+          <div class="skill-group">
+            <h4>Research</h4>
+            <p>User Interviews · Contextual Inquiry · Journey Mapping · Usability Testing</p>
+          </div>
+          <div class="skill-group">
+            <h4>Code</h4>
+            <p>P5.js · JavaScript · Arduino · TouchDesigner</p>
+          </div>
+          <div class="skill-group">
+            <h4>Fabrication</h4>
+            <p>Apparel Technology · 3D Printing · Laser Cutting · Soldering · Knitting</p>
+          </div>
+          <div class="skill-group">
+            <h4>Design Tools</h4>
+            <p>Figma · Adobe Suite · Blender · Arduino IDE</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <p class="section-label" data-aos="fade-up" data-aos-duration="600">Selected Work</p>
+    <div class="work-list">
+
+      <!-- userOS -->
+      <a class="work-row" href="userOS.html" data-aos="fade-up" data-aos-duration="800">
+        <div class="work-row-header">
+          <span class="work-row-view">View <span aria-hidden="true">→</span></span>
+        </div>
+        <div class="work-body">
+          <div class="work-left">
+            <h3 class="work-row-title">userOS</h3>
+            <p class="work-desc">A user-perspective simulator that turns a product description into AI-generated user reactions and behavioral insights — pressure-testing ideas before real users speak.</p>
+            <div class="work-tags">
+              <span class="work-tag">UX Research</span>
+              <span class="work-tag">AI Product</span>
+              <span class="work-tag">Interaction Design</span>
+            </div>
+          </div>
+          <div class="work-right">
+            <img src="assets/cover - user OS.png" alt="userOS" loading="lazy" />
+          </div>
+        </div>
+      </a>
+
+      <!-- Soothe Sleeve -->
+      <a class="work-row" href="wearable.html" data-aos="fade-up" data-aos-duration="800">
+        <div class="work-row-header">
+          <span class="work-row-view">View <span aria-hidden="true">→</span></span>
+        </div>
+        <div class="work-body">
+          <div class="work-left">
+            <h3 class="work-row-title">Soothe Sleeve</h3>
+            <p class="work-desc">A modular haptic garment that transforms repetitive touch into a calming ritual — wearable technology as emotional care, not efficiency.</p>
+            <div class="work-tags">
+              <span class="work-tag">Wearable</span>
+              <span class="work-tag">Physical Computing</span>
+              <span class="work-tag">Arduino</span>
+            </div>
+          </div>
+          <div class="work-right">
+            <img src="assets/cover-wearable.jpg" alt="Soothe Sleeve" loading="lazy" />
+          </div>
+        </div>
+      </a>
+
+      <!-- Inner Weather -->
+      <a class="work-row" href="sensory.html" data-aos="fade-up" data-aos-duration="800">
+        <div class="work-row-header">
+          <span class="work-row-view">View <span aria-hidden="true">→</span></span>
+        </div>
+        <div class="work-body">
+          <div class="work-left">
+            <h3 class="work-row-title">Inner Weather</h3>
+            <p class="work-desc">An installation that turns live weather data, ambient sound, and movement into a visual portrait of an emotional moment — then mails it to you.</p>
+            <div class="work-tags">
+              <span class="work-tag">Interactive Installation</span>
+              <span class="work-tag">Creative Coding</span>
+              <span class="work-tag">P5.js</span>
+            </div>
+          </div>
+          <div class="work-right">
+            <img src="assets/cover-sensory.png" alt="Inner Weather" loading="lazy" />
+          </div>
+        </div>
+      </a>
+
+      <!-- Slow Fashion -->
+      <a class="work-row" href="ideation.html" data-aos="fade-up" data-aos-duration="800">
+        <div class="work-row-header">
+          <span class="work-row-view">View <span aria-hidden="true">→</span></span>
+        </div>
+        <div class="work-body">
+          <div class="work-left">
+            <h3 class="work-row-title">Slow Fashion: Rethinking the System</h3>
+            <p class="work-desc">Mapping the structural logic that makes fast fashion inevitable — supply chains, carbon cycles, and the limits of consumer choice.</p>
+            <div class="work-tags">
+              <span class="work-tag">Research</span>
+              <span class="work-tag">Systems Thinking</span>
+              <span class="work-tag">Data Visualization</span>
+            </div>
+          </div>
+          <div class="work-right">
+            <img class="work-img-contain" src="assets/cover-ideation.jpg" alt="Slow Fashion: Rethinking the System" loading="lazy" />
+          </div>
+        </div>
+      </a>
+
+      <!-- Silent Sanctuary -->
+      <a class="work-row" href="undergraduate.html" data-aos="fade-up" data-aos-duration="800">
+        <div class="work-row-header">
+          <span class="work-row-view">View <span aria-hidden="true">→</span></span>
+        </div>
+        <div class="work-body">
+          <div class="work-left">
+            <h3 class="work-row-title">Silent Sanctuary</h3>
+            <p class="work-desc">A three-look womenswear collection that treats the garment as architecture — a mobile territory the wearer carries with them.</p>
+            <div class="work-tags">
+              <span class="work-tag">Fashion Design</span>
+              <span class="work-tag">Pattern Construction</span>
+              <span class="work-tag">3D Rendering</span>
+            </div>
+          </div>
+          <div class="work-right">
+            <img src="assets/Silent Sanctuary /ug_group.jpg" alt="Silent Sanctuary" loading="lazy" />
+          </div>
+        </div>
+      </a>
+
+      <!-- Synthetic Ocean -->
+      <a class="work-row" href="synthetic.html" data-aos="fade-up" data-aos-duration="800">
+        <div class="work-row-header">
+          <span class="work-row-view">View <span aria-hidden="true">→</span></span>
+        </div>
+        <h3 class="work-row-title" style="margin-bottom:24px;">Synthetic Ocean</h3>
+        <div class="work-video-full">
+          <video autoplay muted loop playsinline>
+            <source src="assets/TD/td-final.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Bio Material — full-width gallery block -->
+    <div class="bio-block" data-aos="fade-up" data-aos-duration="800">
+      <div class="bio-block-header">
+        <h3 class="bio-block-title">Bio Material</h3>
+        <a href="biomaterial.html" class="bio-block-view">View <span aria-hidden="true">→</span></a>
+      </div>
+      <a href="biomaterial.html" class="bio-marquee" aria-label="Bio Material gallery">
+        <div class="bio-marquee-track">
+          <img src="assets/BIo material/1.jpg" alt="Bio Material sample" loading="lazy" />
+          <img src="assets/BIo material/DSC02540.JPG" alt="Bio Material sample" loading="lazy" />
+          <img src="assets/BIo material/DSC02557.JPG" alt="Bio Material sample" loading="lazy" />
+          <img src="assets/BIo material/DSC02632.JPG" alt="Bio Material sample" loading="lazy" />
+          <img src="assets/BIo material/DSC02677.JPG" alt="Bio Material sample" loading="lazy" />
+          <img src="assets/BIo material/IMG_5974.jpg" alt="Bio Material sample" loading="lazy" />
+          <img src="assets/BIo material/1.0 材料.jpg" alt="Bio Material sample" loading="lazy" />
+          <!-- duplicate set for seamless loop -->
+          <img src="assets/BIo material/1.jpg" alt="" aria-hidden="true" loading="lazy" />
+          <img src="assets/BIo material/DSC02540.JPG" alt="" aria-hidden="true" loading="lazy" />
+          <img src="assets/BIo material/DSC02557.JPG" alt="" aria-hidden="true" loading="lazy" />
+          <img src="assets/BIo material/DSC02632.JPG" alt="" aria-hidden="true" loading="lazy" />
+          <img src="assets/BIo material/DSC02677.JPG" alt="" aria-hidden="true" loading="lazy" />
+          <img src="assets/BIo material/IMG_5974.jpg" alt="" aria-hidden="true" loading="lazy" />
+          <img src="assets/BIo material/1.0 材料.jpg" alt="" aria-hidden="true" loading="lazy" />
+        </div>
+      </a>
+    </div>
+
+    <!-- Painting — full-width gallery block (no sub-page) -->
+    <div class="bio-block" id="painting" data-aos="fade-up" data-aos-duration="800">
+      <div class="bio-block-header">
+        <h3 class="bio-block-title">Painting</h3>
+      </div>
+      <div class="bio-marquee" aria-label="Painting gallery">
+        <div class="bio-marquee-track">
+          <img src="assets/Creative/3b4006cb6772089cda3809320e0274c6.JPG" alt="Painting" loading="lazy" />
+          <img src="assets/Creative/6b2eea77b30863907d95d3e15f3c7a74.jpg" alt="Painting" loading="lazy" />
+          <img src="assets/Creative/e00ca828d9ddd1413e20524735b1e2e6.JPG" alt="Painting" loading="lazy" />
+          <img src="assets/Creative/f7db93c10f5c7ebb30853acf36be6a46.JPG" alt="Painting" loading="lazy" />
+          <img src="assets/Creative/2bf01ce235d0b9194d9bb78ea3eb439f.jpg" alt="Painting" loading="lazy" />
+          <!-- duplicate set for seamless loop -->
+          <img src="assets/Creative/3b4006cb6772089cda3809320e0274c6.JPG" alt="" aria-hidden="true" loading="lazy" />
+          <img src="assets/Creative/6b2eea77b30863907d95d3e15f3c7a74.jpg" alt="" aria-hidden="true" loading="lazy" />
+          <img src="assets/Creative/e00ca828d9ddd1413e20524735b1e2e6.JPG" alt="" aria-hidden="true" loading="lazy" />
+          <img src="assets/Creative/f7db93c10f5c7ebb30853acf36be6a46.JPG" alt="" aria-hidden="true" loading="lazy" />
+          <img src="assets/Creative/2bf01ce235d0b9194d9bb78ea3eb439f.jpg" alt="" aria-hidden="true" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-wrap">
+      <h2 class="contact-heading" data-aos="fade-up" data-aos-duration="1000">Let's work together</h2>
+      <p class="contact-sub" data-aos="fade-up" data-aos-duration="800" data-aos-delay="150">
+        I'm open to internships, collaborations, and research opportunities in interaction design, wearable technology, and speculative fashion. Based in New York.
+      </p>
+      <div class="contact-links" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+        <a href="mailto:yq2664@nyu.edu" class="contact-link primary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4zm2-.5L8 8.5l5-5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M1 4.5l7 4.5 7-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          yq2664@nyu.edu
+        </a>
+        <a href="tel:+13473974146" class="contact-link">+1 347 397 4146</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Yue Qin · 2026</span>
+    <span id="ny-clock" aria-label="Current time in New York"></span>
+    <span>New York, NY</span>
+  </footer>
+
+  <script>
+    // Nav: transparent white over cover video, frosted glass after
+    const nav = document.getElementById('main-nav');
+    const coverWrap = document.getElementById('cover-wrap');
+
+    function updateNavMode() {
+      const coverBottom = coverWrap.getBoundingClientRect().bottom;
+      if (coverBottom > 60) {
+        nav.classList.add('over-video');
+      } else {
+        nav.classList.remove('over-video');
+      }
+    }
+
+    window.addEventListener('scroll', updateNavMode, { passive: true });
+    updateNavMode();
+
+    // Live New York time in the footer
+    const nyClock = document.getElementById('ny-clock');
+    function updateNYClock() {
+      if (!nyClock) return;
+      const t = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/New_York',
+        hour: '2-digit', minute: '2-digit', hour12: false
+      }).format(new Date());
+      nyClock.textContent = t + ' NY';
+    }
+    updateNYClock();
+    setInterval(updateNYClock, 1000);
+  </script>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, easing: 'ease-out', once: false, offset: 120 });
+
+    // Hero bio + tags reveal — AOS mis-times elements directly under the tall
+    // cover video, so use a scroll-based reveal with hysteresis (replays each
+    // time you scroll back up, no thrash at the trigger boundary).
+    const heroReveals = document.querySelectorAll('.hero-reveal');
+    function updateHeroReveal() {
+      const vh = window.innerHeight;
+      heroReveals.forEach((el) => {
+        const top = el.getBoundingClientRect().top;
+        if (top < vh * 0.88) el.classList.add('in');
+        else if (top > vh) el.classList.remove('in');
+      });
+    }
+    window.addEventListener('scroll', updateHeroReveal, { passive: true });
+    window.addEventListener('resize', updateHeroReveal);
+    updateHeroReveal();
+  </script>
+
+</body>
+</html>

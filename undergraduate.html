@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Silent Sanctuary — Yue Qin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="project.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <style>
+    /* hero override for tall portrait image */
+    .hero-img {
+      max-height: 80vh;
+      object-position: center center;
+    }
+
+    /* poem block */
+    .poem {
+      font-size: 15px;
+      line-height: 2;
+      color: var(--secondary);
+      font-style: italic;
+      border-left: 2px solid var(--border);
+      padding-left: 24px;
+      margin: 32px 0;
+    }
+
+    /* tighter content padding around carousels */
+    .content { padding-top: 24px; padding-bottom: 16px; }
+    .content:first-of-type { padding-top: 64px; }
+    .content:last-of-type { padding-bottom: 80px; }
+    /* remove heading's top margin when it's the first thing after a carousel */
+    .gallery-section + .content .block-heading:first-child { margin-top: 0; }
+
+    /* three-up portrait grid */
+    .img-grid.cols-3 img {
+      aspect-ratio: 2/3;
+      object-fit: cover;
+    }
+
+    /* Three-level heading hierarchy (distinguished by size) */
+    .block-heading {            /* L1 */
+      font-size: 30px;
+      margin-top: 64px;
+      margin-bottom: 4px;
+    }
+    .block-sub {                /* L2 — subtitle directly under an L1 heading */
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      margin-top: 0;
+      margin-bottom: 24px;
+    }
+    /* L2 — same level, but standing on its own later in a section */
+    .block-sub-standalone {
+      margin-top: 44px;
+      margin-bottom: 14px;
+    }
+
+    /* Figure captions — italic, consistent spacing to image & next paragraph */
+    .img-caption {
+      font-style: italic;
+      text-align: center;
+      margin-top: 12px;
+      margin-bottom: 40px;
+    }
+    .img-full, .fig-pair, .img-grid { margin: 0 0 0; }
+
+    /* Figure 2 & 3 — fills text width exactly, equal height, no crop, no overflow.
+       flex-grow is set to each image's aspect ratio via JS. */
+    .fig-pair {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .fig-pair img {
+      flex: 1 1 0;
+      min-width: 0;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      display: block;
+    }
+    @media (max-width: 700px) {
+      .fig-pair { flex-direction: column; }
+      .fig-pair img { flex: none; width: 100%; }
+    }
+
+    /* poster grid: 2 tall + 1 wide */
+    .poster-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .poster-grid img {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      object-fit: cover;
+      display: block;
+    }
+    .poster-grid img.span2 {
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 600px) {
+      .poster-grid { grid-template-columns: 1fr; }
+      .poster-grid img.span2 { grid-column: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="pnav">
+    <a href="index.html" class="pnav-back">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      All Work
+    </a>
+    <span class="pnav-title">Silent Sanctuary</span>
+  </nav>
+
+  <img class="hero-img" src="assets/Silent Sanctuary /ug_group.jpg" alt="Silent Sanctuary — womenswear collection rendered in a rocky, starlit landscape" />
+
+  <div class="meta-bar">
+    <div class="meta-item">
+      <div class="meta-label">Project</div>
+      <div class="meta-value">Graduation Fashion Collection</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">School</div>
+      <div class="meta-value">Coventry University × CUZ</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Year</div>
+      <div class="meta-value">2024–2025</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Role</div>
+      <div class="meta-value">Fashion Designer · Concept &amp; Construction</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Tools</div>
+      <div class="meta-value">Pattern Cutting · Fabric Modification · Blender · Photoshop</div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <h2 class="block-heading" style="margin-top:0;">Overview</h2>
+    <p class="prose">
+      This collection explores clothing as a form of portable architecture. Beginning with childhood memories of building private shelters from everyday furniture, the project investigates how domestic space can be translated into wearable structures. Through spatial studies, pattern experimentation, and material development, flat furniture forms were transformed into three-dimensional garments that create a sense of enclosure around the body. Rather than treating clothing as decoration, the collection proposes garments as spatial boundaries that shape the relationship between body, memory, and environment.
+    </p>
+
+    <!-- Figure 1 -->
+    <img class="img-full" data-aos="fade-up" data-aos-duration="800" src="assets/Silent Sanctuary /figure1.jpg" alt="Mood board and fabric exploration" />
+    <p class="img-caption">Figure 1 — My mood board and fabric exploration (Qin Yue, 2024)</p>
+
+    <!-- Research -->
+    <h2 class="block-heading">Research</h2>
+    <p class="block-sub">From Memory to Materiality</p>
+    <p class="prose">
+      The research began with an artist's photographic work recreating childhood forts and secret spaces from household objects—the idea that the desire for enclosure is not childish but fundamental. I started building scenes with miniature furniture in my studio, studying how the proportions, angles, and shadows of domestic objects create the perception of private space.
+    </p>
+
+    <!-- Figure 2 & 3 -->
+    <div class="fig-pair">
+      <img src="assets/Silent Sanctuary /figure2.jpg" alt="Frantic — Joanna Piotrowska" loading="lazy" />
+      <img src="assets/Silent Sanctuary /figure3.jpg" alt="Frantic — Joanna Piotrowska" loading="lazy" />
+    </div>
+    <p class="img-caption">Figure 2 and 3 — Frantic (Joanna Piotrowska, 2016–2019)</p>
+
+    <p class="block-sub block-sub-standalone">Spatial Studies</p>
+    <p class="prose">
+      From these tabletop models, I extracted silhouettes and structural logics—the way a curtain divides a room, the way a high chair back shields the sitter, the way a folded blanket creates a hood. These became the templates for the collection's core shapes.
+    </p>
+
+    <!-- Figure 4 & 5 -->
+    <img class="img-full" data-aos="fade-up" data-aos-duration="800" src="assets/Silent Sanctuary /figure4.jpg" alt="Sketchbook page — miniature furniture based on real living space" loading="lazy" />
+    <p class="img-caption">Figure 4 — sketchbook page: A selection of miniature furniture based on my real living space (Qin Yue, 2024)</p>
+    <img class="img-full" data-aos="fade-up" data-aos-duration="800" src="assets/Silent Sanctuary /figure5.jpg" alt="Sketchbook page — an environment that simulates private spaces" loading="lazy" />
+    <p class="img-caption">Figure 5 — sketchbook page: An environment that simulates private spaces (Qin Yue, 2024)</p>
+
+    <!-- Form Development -->
+    <h2 class="block-heading">Form Development</h2>
+    <p class="block-sub">From 2D Furniture to 3D Garments</p>
+    <p class="prose">
+      The central technical challenge was translating flat furniture profiles into three-dimensional garment structures. Through pattern experiments—outward expansion, inward depression, and vertical cutting—I developed construction methods that allowed two-dimensional shapes to hold volume and directional presence once worn on the body.
+    </p>
+
+    <!-- Structural Insight -->
+    <p class="block-sub block-sub-standalone">Structural Insight</p>
+    <p class="prose">
+      The key insight was that furniture forms are already architectural: they assume the presence of a body and orient themselves around it.
+    </p>
+    <p class="prose">
+      This drove the collection's distinctive silhouettes: the oversized hood-collar framing the face like a room, cape panels opening and closing like curtain walls, and wide-leg trousers grounding the body with the weight of a threshold.
+    </p>
+
+    <!-- Material Exploration -->
+    <h2 class="block-heading">Material Exploration</h2>
+    <p class="block-sub">Fabric &amp; Surface Development</p>
+    <p class="prose">
+      The fabric process was iterative. An initial blueprinting experiment inspired by the moodboard produced results that felt overly literal and decorative.
+    </p>
+
+    <p class="block-sub block-sub-standalone">Material Experiments</p>
+    <p class="prose">
+      The solution was to work directly with the material itself. I conducted a series of fabric modification experiments—including cutting, pressing, and layering—before scanning the resulting textures and processing them digitally in Photoshop. This workflow generated print designs that felt embedded within the construction rather than applied onto it.
+    </p>
+    <p class="prose">
+      The final textile surfaces therefore retain visible traces of their own making.
+    </p>
+
+    <!-- Figure 6 & 7 -->
+    <img class="img-full" data-aos="fade-up" data-aos-duration="800" src="assets/Silent Sanctuary /figure6.png" alt="Sketchbook page — 2D to 3D conversion experiment" loading="lazy" />
+    <p class="img-caption">Figure 6 — sketchbook page: 2D to 3D conversion experiment (Qin Yue, 2024)</p>
+    <img class="img-full" data-aos="fade-up" data-aos-duration="800" src="assets/Silent Sanctuary /figure7.jpg" alt="Sketchbook page — color and fabric exploration" loading="lazy" />
+    <p class="img-caption">Figure 7 — sketchbook page: Color and fabric exploration (Qin Yue, 2024)</p>
+
+    <!-- Collection -->
+    <h2 class="block-heading">Collection</h2>
+    <p class="block-sub">Three Modes of Sanctuary</p>
+    <p class="prose">
+      The collection consists of three looks, each representing a different spatial condition of enclosure: <strong>concealment</strong>, <strong>openness held in tension</strong>, and <strong>vertical stillness</strong>.
+    </p>
+    <p class="prose">
+      The palette is intentionally restrained—deep teal navy and bleached linen white—allowing structure, proportion, and silhouette to communicate the architectural language of sanctuary without relying on decoration.
+    </p>
+
+  </div><!-- /content -->
+
+  <!-- LOOKS CAROUSEL -->
+  <div class="gallery-section">
+    <div class="gallery-viewport">
+    <div class="gallery-track" id="looks-track">
+      <div class="gallery-card" data-label="Look 1" data-img="assets/Silent Sanctuary /ug_1.png" data-alt="Look 1 — draped asymmetric silhouette with sculptural hood" data-gallery="looks">
+        <img src="assets/Silent Sanctuary /ug_1.png" alt="Look 1 — draped asymmetric silhouette with sculptural hood" loading="lazy" />
+        <span class="gallery-label">Look 1</span>
+        <button class="gallery-expand" aria-label="Expand Look 1">+</button>
+      </div>
+      <div class="gallery-card" data-label="Look 2" data-img="assets/Silent Sanctuary /ug_2.png" data-alt="Look 2 — structured coat with white contrast insert" data-gallery="looks">
+        <img src="assets/Silent Sanctuary /ug_2.png" alt="Look 2 — structured coat with white contrast insert" loading="lazy" />
+        <span class="gallery-label">Look 2</span>
+        <button class="gallery-expand" aria-label="Expand Look 2">+</button>
+      </div>
+      <div class="gallery-card" data-label="Look 3" data-img="assets/Silent Sanctuary /ug_3.png" data-alt="Look 3 — open curtain-cape over column skirt" data-gallery="looks">
+        <img src="assets/Silent Sanctuary /ug_3.png" alt="Look 3 — open curtain-cape over column skirt" loading="lazy" />
+        <span class="gallery-label">Look 3</span>
+        <button class="gallery-expand" aria-label="Expand Look 3">+</button>
+      </div>
+    </div>
+    </div>
+    <button class="gallery-arrow gallery-arrow-prev" data-track="looks-track" aria-label="Previous">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 4l-6 6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="gallery-arrow gallery-arrow-next" data-track="looks-track" aria-label="Next">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <p class="gallery-counter" id="looks-counter">1 / 3</p>
+  </div>
+
+  <div class="content">
+
+    <!-- Presentation -->
+    <h2 class="block-heading">Presentation</h2>
+    <p class="block-sub">Editorial Environment</p>
+    <p class="prose">
+      The collection was rendered within a 3D rocky landscape—isolated, mineral, and open to the sky—to position the garments outside the domestic interiors that originally inspired them.
+    </p>
+
+    <p class="block-sub block-sub-standalone">Body × Environment</p>
+    <p class="prose">
+      This external landscape transforms sanctuary into something portable: a condition that travels with the wearer rather than remaining tied to architecture.
+    </p>
+    <p class="prose">
+      Silver branch-like accessories echo crystalline formations emerging from the terrain, visually linking body, garment, and environment into a single spatial system.
+    </p>
+
+    <!-- Figure 8 -->
+    <img class="img-full" data-aos="fade-up" data-aos-duration="800" src="assets/Silent Sanctuary /figure8.jpg" alt="Collection line up" loading="lazy" />
+    <p class="img-caption">Figure 8 — collection line up (Qin Yue, 2024)</p>
+
+  </div><!-- /content -->
+
+  <!-- POSTERS CAROUSEL -->
+  <div class="gallery-section">
+    <div class="gallery-viewport">
+    <div class="gallery-track" id="posters-track">
+      <div class="gallery-card" data-label="Portrait" data-img="assets/Silent Sanctuary /ug_poster1.jpg" data-alt="Silent Sanctuary — close-up portrait with silver branching face accessory" data-gallery="posters">
+        <img src="assets/Silent Sanctuary /ug_poster1.jpg" alt="Silent Sanctuary — portrait with silver branching face accessory" loading="lazy" />
+        <span class="gallery-label">Portrait</span>
+        <button class="gallery-expand" aria-label="Expand Portrait">+</button>
+      </div>
+      <div class="gallery-card" data-label="Aerial" data-img="assets/Silent Sanctuary /ug_poster3.jpg" data-alt="Silent Sanctuary — aerial editorial shot, single look on rocks" data-gallery="posters">
+        <img src="assets/Silent Sanctuary /ug_poster3.jpg" alt="Silent Sanctuary — aerial editorial shot" loading="lazy" />
+        <span class="gallery-label">Aerial</span>
+        <button class="gallery-expand" aria-label="Expand Aerial">+</button>
+      </div>
+      <div class="gallery-card wide" data-label="Editorial" data-img="assets/Silent Sanctuary /ug_poster2.jpg" data-alt="Silent Sanctuary — full collection editorial poster with poem text" data-gallery="posters">
+        <img src="assets/Silent Sanctuary /ug_poster2.jpg" alt="Silent Sanctuary — full collection editorial poster" loading="lazy" />
+        <span class="gallery-label">Editorial</span>
+        <button class="gallery-expand" aria-label="Expand Editorial">+</button>
+      </div>
+    </div>
+    </div>
+    <button class="gallery-arrow gallery-arrow-prev" data-track="posters-track" aria-label="Previous">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 4l-6 6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="gallery-arrow gallery-arrow-next" data-track="posters-track" aria-label="Next">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <p class="gallery-counter" id="posters-counter">1 / 3</p>
+  </div>
+
+  <div class="content">
+
+    <!-- Reflection -->
+    <h2 class="block-heading">Reflection</h2>
+    <p class="block-sub">From Garment to Spatial Practice</p>
+    <p class="prose">
+      This project taught me that clothing operates spatially—not only on the body, but through its relationship with the surrounding environment. Deconstructing garments within spatial compositions deepened my understanding of garment structure in ways that purely technical pattern cutting could not.
+    </p>
+    <p class="prose">
+      The perceptual relationship between body, clothing, and environment has since become a perspective that informs every project I undertake.
+    </p>
+
+    <p class="block-sub block-sub-standalone">Continuing Question</p>
+    <p class="prose">
+      The collection ultimately opened a question that continues to guide my practice: <strong>what does it mean for clothing to function as a boundary, rather than simply a covering?</strong>
+    </p>
+
+    <!-- Looking Forward -->
+    <h2 class="block-heading">Looking Forward</h2>
+    <p class="prose">
+      The question the collection opened—what does it mean for clothing to function as a boundary, rather than simply a covering?—continues to shape the way I approach interaction, wearability, and spatial design today.
+    </p>
+
+    <div class="tag-row">
+      <span class="tag">Womenswear</span>
+      <span class="tag">Graduation Collection</span>
+      <span class="tag">Spatial Design</span>
+      <span class="tag">Pattern Construction</span>
+      <span class="tag">Fabric Modification</span>
+      <span class="tag">3D Rendering</span>
+      <span class="tag">Coventry University</span>
+      <span class="tag">First-Class Honours</span>
+    </div>
+
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous image">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 4l-8 8 8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next image">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 4l8 8-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+    <span class="lightbox-label" id="lightbox-label"></span>
+  </div>
+
+  <style>
+    /* GALLERY */
+    .gallery-section {
+      position: relative;
+      /* match the text column width (content max-width minus its 40px side padding) */
+      max-width: calc(var(--max) - 80px);
+      margin: 0 auto;
+      padding: 12px 0 20px;
+      overflow: visible;
+    }
+
+    .gallery-viewport { overflow: hidden; }
+
+    .gallery-track {
+      display: flex;
+      gap: 16px;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .gallery-card {
+      position: relative;
+      flex: 0 0 calc(50% - 8px);
+      height: 480px;
+      border-radius: 24px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #111;
+    }
+
+    .gallery-card.wide {
+      flex: 0 0 calc(50% - 8px);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .gallery-card:hover img { transform: scale(1.03); }
+
+    .gallery-label { display: none; }
+
+    .gallery-counter {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--muted, #8A96A3);
+      letter-spacing: 0.05em;
+    }
+
+    .gallery-expand {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(30, 30, 30, 0.55);
+      backdrop-filter: blur(8px);
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease-out, transform 0.15s ease-out;
+    }
+
+    .gallery-expand:hover {
+      background: rgba(30, 30, 30, 0.8);
+      transform: translateX(-50%) scale(1.1);
+    }
+
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted, #8A96A3);
+      transition: color 0.15s ease-out;
+      z-index: 10;
+    }
+
+    .gallery-arrow:hover { color: var(--text, #0A1317); }
+    .gallery-arrow:disabled { opacity: 0.3; pointer-events: none; }
+
+    .gallery-arrow-prev { left: -52px; }
+    .gallery-arrow-next { right: -52px; }
+
+    /* On narrow viewports there's no outer margin — tuck arrows just inside */
+    @media (max-width: 980px) {
+      .gallery-arrow-prev { left: 4px; }
+      .gallery-arrow-next { right: 4px; }
+      .gallery-arrow { color: var(--text, #0A1317); }
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(24px);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease-out;
+    }
+
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-img {
+      max-width: 72vw;
+      max-height: 80vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.6);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease-out;
+    }
+
+    .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease-out;
+    }
+
+    .lightbox-nav:hover { background: rgba(255,255,255,0.22); }
+    .lightbox-prev { left: 24px; }
+    .lightbox-next { right: 24px; }
+
+    .lightbox-label {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+  </style>
+
+  <script>
+    // --- Seamless infinite loop carousel ---
+    function initCarousel(trackId) {
+      const track = document.getElementById(trackId);
+      if (!track) return;
+      const section = track.closest('.gallery-section');
+      const prevBtn = section.querySelector('.gallery-arrow-prev');
+      const nextBtn = section.querySelector('.gallery-arrow-next');
+
+      // Clone first and last cards as bookends
+      const origCards = Array.from(track.querySelectorAll('.gallery-card'));
+      const total = origCards.length;
+      const firstClone = origCards[0].cloneNode(true);
+      const lastClone = origCards[total - 1].cloneNode(true);
+      firstClone.setAttribute('aria-hidden', 'true');
+      lastClone.setAttribute('aria-hidden', 'true');
+      track.appendChild(firstClone);
+      track.insertBefore(lastClone, origCards[0]);
+      // Layout: [lastClone(0), card1(1), card2(2), card3(3), firstClone(4)]
+
+      let idx = 1;
+      let locked = false;
+      const DURATION = 400;
+      const counter = section.querySelector('.gallery-counter');
+
+      function cardW() { return origCards[0].offsetWidth + 16; }
+
+      function updateCounter() {
+        if (!counter) return;
+        // idx 1..total maps to display 1..total
+        let display = idx;
+        if (display < 1) display = total;
+        if (display > total) display = 1;
+        counter.textContent = `${display} / ${total}`;
+      }
+
+      function setPos(i, animated) {
+        track.style.transition = animated
+          ? `transform ${DURATION}ms cubic-bezier(0.25,0.46,0.45,0.94)`
+          : 'none';
+        track.style.transform = `translateX(${-i * cardW()}px)`;
+        idx = i;
+        updateCounter();
+      }
+
+      function step(dir) {
+        if (locked) return;
+        locked = true;
+        setPos(idx + dir, true);
+        setTimeout(() => {
+          if (idx === total + 1) setPos(1, false);
+          if (idx === 0) setPos(total, false);
+          locked = false;
+        }, DURATION + 20);
+      }
+
+      if (nextBtn) nextBtn.addEventListener('click', () => step(1));
+      if (prevBtn) prevBtn.addEventListener('click', () => step(-1));
+
+      requestAnimationFrame(() => setPos(1, false));
+    }
+
+    // Original cards per gallery (collected before clones are added)
+    const looksOrig = Array.from(document.querySelectorAll('#looks-track .gallery-card'));
+    const postersOrig = Array.from(document.querySelectorAll('#posters-track .gallery-card'));
+    const origByGallery = { looks: looksOrig, posters: postersOrig };
+
+    initCarousel('looks-track');
+    initCarousel('posters-track');
+
+    // --- Lightbox ---
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxLabel = document.getElementById('lightbox-label');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+    let activeImages = [];
+    let lightboxIndex = 0;
+
+    const galleryNames = { looks: 'The Collection', posters: 'Presentation' };
+
+    function openLightbox(gallery, clickedImg) {
+      const origCards = origByGallery[gallery];
+      activeImages = origCards.map(c => ({ src: c.dataset.img, alt: c.dataset.alt, gallery }));
+      // Match by image src
+      lightboxIndex = origCards.findIndex(c => c.dataset.img === clickedImg);
+      if (lightboxIndex < 0) lightboxIndex = 0;
+      showLightboxImage();
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showLightboxImage() {
+      const img = activeImages[lightboxIndex];
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxLabel.textContent = galleryNames[img.gallery] + ' · ' + (lightboxIndex + 1) + ' / ' + activeImages.length;
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function stepLightbox(dir) {
+      lightboxIndex = (lightboxIndex + dir + activeImages.length) % activeImages.length;
+      showLightboxImage();
+    }
+
+    // Event delegation — works for real cards and clones
+    document.addEventListener('click', (e) => {
+      const card = e.target.closest('.gallery-card');
+      if (!card || !card.dataset.gallery) return;
+      openLightbox(card.dataset.gallery, card.dataset.img);
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); stepLightbox(-1); });
+    lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); stepLightbox(1); });
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') stepLightbox(-1);
+      if (e.key === 'ArrowRight') stepLightbox(1);
+    });
+  </script>
+
+  <script>
+    // Fill the two-up figure row to full text width at equal height (no overflow):
+    // flex-grow = each image's aspect ratio.
+    document.querySelectorAll('.fig-pair img').forEach((img) => {
+      const set = () => { img.style.flexGrow = (img.naturalWidth / img.naturalHeight) || 1; };
+      if (img.complete && img.naturalWidth) set();
+      else img.addEventListener('load', set);
+    });
+  </script>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 800, easing: "ease-out", once: true, offset: 60 });</script>
+
+</body>
+</html>

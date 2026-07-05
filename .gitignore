@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Large source video (not used by the site; web uses assets/TD/td-final.mp4)
+assets/TD/TD Final.mov
+
+# Scratch / preview config
+.claude/
+
+# Playwright scratch
+.playwright-mcp/

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>userOS — Yue Qin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="project.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <style>
+    /* Cover — fill full width at natural scale (no height cap) */
+    .hero-img {
+      width: 100%;
+      height: auto;
+      max-height: none;
+      object-fit: contain;
+    }
+    .content { padding-bottom: 100px; }
+    /* plain text links — no card background/border */
+    .pnav-pdf {
+      border: none;
+      border-radius: 0;
+      padding: 0;
+    }
+    .pnav-pdf:hover { background: none; text-decoration: underline; }
+    /* Overview label + Try on one line, Try right-aligned */
+    .uos-overview-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+    .uos-oh-label {
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="pnav">
+    <a href="index.html" class="pnav-back">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      All Work
+    </a>
+    <span class="pnav-title">userOS</span>
+    <a href="https://user-perspective-simulator-production.up.railway.app/" target="_blank" rel="noopener" class="pnav-pdf">Visit Live Site ↗</a>
+  </nav>
+
+  <img class="hero-img" src="assets/cover - user OS.png" alt="userOS — landing page" />
+
+  <div class="meta-bar" data-aos="fade-up" data-aos-duration="800">
+    <div class="meta-item">
+      <div class="meta-label">Type</div>
+      <div class="meta-value">AI Product · UX Research Tool</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Focus</div>
+      <div class="meta-value">User Perspective Simulation</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Role</div>
+      <div class="meta-value">Product &amp; Interaction Designer</div>
+    </div>
+  </div>
+
+  <div class="content" data-aos="fade-up" data-aos-duration="800">
+    <div class="uos-overview-head">
+      <p class="section-heading uos-oh-label">Overview</p>
+      <a href="https://user-perspective-simulator-production.up.railway.app/" target="_blank" rel="noopener" class="pnav-pdf">Try ↗</a>
+    </div>
+    <p class="prose">
+      userOS is a user perspective simulator — an AI tool that turns a plain product description into a set of distinct, believable user reactions and behavioral insights. Instead of waiting for real users to speak, teams can paste in an idea and immediately surface how different people might respond, hesitate, or drop off — grounded in how real people actually think.
+    </p>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 800, easing: 'ease-out', once: false, offset: 120 });</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bio Material — Yue Qin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="project.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <style>
+    .bio-gallery {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 40px 100px;
+    }
+    .bio-img-full {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 12px;
+    }
+    /* Two-up row — fills full width, equal height, no crop.
+       flex-grow is set to each image's aspect ratio via JS so both share height
+       while their left/right edges align with the full-width images. */
+    .bio-img-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      align-items: flex-start;
+    }
+    .bio-img-row img {
+      flex: 1 1 0;
+      min-width: 0;
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    @media (max-width: 700px) {
+      .bio-img-row { flex-direction: column; align-items: stretch; }
+      .bio-img-row img { flex: none; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="pnav">
+    <a href="index.html" class="pnav-back">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      All Work
+    </a>
+    <span class="pnav-title">Bio Material</span>
+    <span></span>
+  </nav>
+
+  <div class="meta-bar" data-aos="fade-up" data-aos-duration="800">
+    <div class="meta-item">
+      <div class="meta-label">Type</div>
+      <div class="meta-value">Material Research</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Focus</div>
+      <div class="meta-value">Biodegradable &amp; Bio-based Textiles</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Role</div>
+      <div class="meta-value">Designer · Researcher</div>
+    </div>
+  </div>
+
+  <div class="content" data-aos="fade-up" data-aos-duration="800">
+    <p class="section-heading">Overview</p>
+    <p class="prose">
+      Exploring biodegradable and bio-based materials as alternatives in fashion — experimenting with natural composites that grow, decompose, and return. Each sample tests a different formulation of organic binders, pigments, and fibrous substrates.
+    </p>
+  </div>
+
+  <div class="bio-gallery" data-aos="fade-up" data-aos-duration="800">
+
+    <!-- Row 1: IMG_5974 alone -->
+    <img class="bio-img-full" src="assets/BIo material/IMG_5974.jpg" alt="Bio Material — overview" />
+
+    <!-- Row 2: 1.0 材料 alone -->
+    <img class="bio-img-full" src="assets/BIo material/1.0 材料.jpg" alt="Bio Material — material sheet" />
+
+    <!-- Row 3: DSC02540 + DSC02557 -->
+    <div class="bio-img-row">
+      <img src="assets/BIo material/DSC02540.JPG" alt="Bio Material — sample detail" />
+      <img src="assets/BIo material/DSC02557.JPG" alt="Bio Material — sample detail" />
+    </div>
+
+    <!-- Row 4: 1 alone -->
+    <img class="bio-img-full" src="assets/BIo material/1.jpg" alt="Bio Material — sample" />
+
+    <!-- Row 5: DSC02677 + DSC02632 -->
+    <div class="bio-img-row">
+      <img src="assets/BIo material/DSC02677.JPG" alt="Bio Material — texture detail" />
+      <img src="assets/BIo material/DSC02632.JPG" alt="Bio Material — texture detail" />
+    </div>
+
+  </div>
+
+  <script>
+    // Give each image in a two-up row a flex-grow equal to its aspect ratio so
+    // the pair fills the full row at equal height (edges align with full images).
+    document.querySelectorAll('.bio-img-row img').forEach((img) => {
+      const set = () => { img.style.flexGrow = (img.naturalWidth / img.naturalHeight) || 1; };
+      if (img.complete && img.naturalWidth) set();
+      else img.addEventListener('load', set);
+    });
+  </script>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 800, easing: 'ease-out', once: false, offset: 120 });</script>
+</body>
+</html>
