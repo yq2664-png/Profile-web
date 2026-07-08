@@ -1,0 +1,293 @@
+/* hero override for tall portrait image */
+.hero-img {
+  max-height: 80vh;
+  object-position: center center;
+}
+
+/* poem block */
+.poem {
+  font-size: 15px;
+  line-height: 2;
+  color: var(--secondary);
+  font-style: italic;
+  border-left: 2px solid var(--border);
+  padding-left: 24px;
+  margin: 32px 0;
+}
+
+/* tighter content padding around carousels */
+.content { padding-top: 24px; padding-bottom: 16px; }
+.content:first-of-type { padding-top: 64px; }
+.content:last-of-type { padding-bottom: 80px; }
+/* remove heading's top margin when it's the first thing after a carousel */
+.gallery-section + .content .block-heading:first-child { margin-top: 0; }
+
+/* three-up portrait grid */
+.img-grid.cols-3 img {
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}
+
+/* Three-level heading hierarchy (distinguished by size) */
+.block-heading {            /* L1 */
+  font-size: 30px;
+  margin-top: 64px;
+  margin-bottom: 4px;
+}
+.block-sub {                /* L2 — subtitle directly under an L1 heading */
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+/* L2 — same level, but standing on its own later in a section */
+.block-sub-standalone {
+  margin-top: 44px;
+  margin-bottom: 14px;
+}
+
+/* Figure captions — italic, consistent spacing to image & next paragraph */
+.img-caption {
+  font-style: italic;
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 40px;
+}
+.img-full, .fig-pair, .img-grid { margin: 0 0 0; }
+
+/* Figure 2 & 3 — fills text width exactly, equal height, no crop, no overflow.
+   flex-grow is set to each image's aspect ratio via JS. */
+.fig-pair {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.fig-pair img {
+  flex: 1 1 0;
+  min-width: 0;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  display: block;
+}
+@media (max-width: 700px) {
+  .fig-pair { flex-direction: column; }
+  .fig-pair img { flex: none; width: 100%; }
+}
+
+/* poster grid: 2 tall + 1 wide */
+.poster-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 16px;
+  margin: 32px 0;
+}
+.poster-grid img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  object-fit: cover;
+  display: block;
+}
+.poster-grid img.span2 {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 600px) {
+  .poster-grid { grid-template-columns: 1fr; }
+  .poster-grid img.span2 { grid-column: 1; }
+}
+
+/* GALLERY */
+.gallery-section {
+  position: relative;
+  /* match the text column width (content max-width minus its 40px side padding) */
+  max-width: calc(var(--max) - 80px);
+  margin: 0 auto;
+  padding: 12px 0 20px;
+  overflow: visible;
+}
+
+.gallery-viewport { overflow: hidden; }
+
+.gallery-track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gallery-card {
+  position: relative;
+  flex: 0 0 calc(50% - 8px);
+  height: 480px;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #111;
+}
+
+.gallery-card.wide {
+  flex: 0 0 calc(50% - 8px);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gallery-card:hover img { transform: scale(1.03); }
+
+.gallery-label { display: none; }
+
+.gallery-counter {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--muted, #8A96A3);
+  letter-spacing: 0.05em;
+}
+
+.gallery-expand {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(30, 30, 30, 0.55);
+  backdrop-filter: blur(8px);
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease-out, transform 0.15s ease-out;
+}
+
+.gallery-expand:hover {
+  background: rgba(30, 30, 30, 0.8);
+  transform: translateX(-50%) scale(1.1);
+}
+
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted, #8A96A3);
+  transition: color 0.15s ease-out;
+  z-index: 10;
+}
+
+.gallery-arrow:hover { color: var(--text, #0A1317); }
+.gallery-arrow:disabled { opacity: 0.3; pointer-events: none; }
+
+.gallery-arrow-prev { left: -52px; }
+.gallery-arrow-next { right: -52px; }
+
+/* On narrow viewports there's no outer margin — tuck arrows just inside */
+@media (max-width: 980px) {
+  .gallery-arrow-prev { left: 4px; }
+  .gallery-arrow-next { right: 4px; }
+  .gallery-arrow { color: var(--text, #0A1317); }
+}
+
+/* LIGHTBOX */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(24px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-out;
+}
+
+.lightbox.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-img {
+  max-width: 72vw;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.6);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease-out;
+}
+
+.lightbox-close:hover { background: rgba(255,255,255,0.2); }
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease-out;
+}
+
+.lightbox-nav:hover { background: rgba(255,255,255,0.22); }
+.lightbox-prev { left: 24px; }
+.lightbox-next { right: 24px; }
+
+.lightbox-label {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}

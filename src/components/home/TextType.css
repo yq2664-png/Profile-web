@@ -1,0 +1,28 @@
+.text-type {
+  display: block;
+  cursor: default;
+}
+
+.text-type--paused .text-type__cursor {
+  opacity: 0;
+}
+
+.text-type__content {
+  white-space: pre-line;
+}
+
+.text-type__cursor {
+  display: inline;
+  margin-left: 2px;
+}
+
+.text-type__cursor--hidden {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-type__cursor {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}

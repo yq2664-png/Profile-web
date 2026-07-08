@@ -1,0 +1,107 @@
+/* Cover — fill full width, trim only the empty top/bottom margins (subject centered) */
+.hero-img {
+  width: 100%;
+  height: 56vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ---- Research-Informed Design section ---- */
+.research-item {
+  padding: 36px 0;
+  border-top: 1px solid var(--border);
+}
+.research-num {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+.research-num .rnum {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  flex: none;
+}
+.rlabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 24px 0 10px;
+}
+.rlist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+}
+.rlist li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--secondary);
+}
+.rlist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.rdecision {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+  border-left: 2px solid var(--border);
+  padding-left: 18px;
+  margin: 0;
+}
+.rlit {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.rlit-item {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--secondary);
+}
+.rlit-item .rlit-author { color: var(--text); font-weight: 500; }
+.rlit-item .rlit-title { font-style: italic; }
+.rlit-item a {
+  color: var(--accent);
+  text-decoration: none;
+  word-break: break-word;
+}
+.rlit-item a:hover { text-decoration: underline; }
+
+/* References — grey italic list at the very end */
+.references-block { margin-top: 8px; }
+.references-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+}
+.references-list li {
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.references-list a { color: var(--muted); text-decoration: underline; word-break: break-word; }
+.references-list a:hover { color: var(--secondary); }

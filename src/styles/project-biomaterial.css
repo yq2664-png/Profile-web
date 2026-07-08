@@ -1,0 +1,28 @@
+.bio-gallery {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 40px 100px;
+}
+.bio-img-full {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 12px;
+}
+.bio-img-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  align-items: flex-start;
+}
+.bio-img-row img {
+  flex: 1 1 0;
+  min-width: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+@media (max-width: 700px) {
+  .bio-img-row { flex-direction: column; align-items: stretch; }
+  .bio-img-row img { flex: none; width: 100%; }
+}

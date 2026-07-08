@@ -1,12 +1,29 @@
-# macOS
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Large local video (use td-final.mp4 instead)
+**/TD Final.mov
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
-**/.DS_Store
-
-# Large source video (not used by the site; web uses assets/TD/td-final.mp4)
-assets/TD/TD Final.mov
-
-# Scratch / preview config
 .claude/
-
-# Playwright scratch
 .playwright-mcp/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
