@@ -8,6 +8,8 @@ import ProjectMeta from '../components/project/ProjectMeta';
 import ProjectContent from '../components/project/ProjectContent';
 import '../styles/project.css';
 import '../styles/project-pages.css';
+import '../styles/project-biomaterial.css';
+import '../styles/project-undergraduate.css';
 
 export default function Project() {
   const { slug } = useParams();
@@ -34,15 +36,42 @@ export default function Project() {
   }
 
   const { page } = project;
+  const isBiomaterial = slug === 'biomaterial';
+
+  if (isBiomaterial) {
+    return (
+      <>
+        {CustomContent ? <CustomContent /> : null}
+      </>
+    );
+  }
+
+  const pageClassName = [
+    page.hero ? 'project-page-has-hero' : 'project-page-no-hero',
+    slug === 'undergraduate' ? 'project-page-ug' : '',
+    slug === 'user-os' ? 'project-page-uos' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
-    <>
+    <div className={pageClassName}>
       <ProjectNav title={page.title} externalLink={page.externalLink} />
       {page.hero ? (
-        <img className={page.hero.className} src={page.hero.src} alt={page.hero.alt} />
+        slug === 'undergraduate' ? (
+          <div className="ug-hero-frame">
+            <img className={page.hero.className} src={page.hero.src} alt={page.hero.alt} />
+          </div>
+        ) : slug === 'user-os' ? (
+          <div className="uos-hero-frame">
+            <img className={page.hero.className} src={page.hero.src} alt={page.hero.alt} />
+          </div>
+        ) : (
+          <img className={page.hero.className} src={page.hero.src} alt={page.hero.alt} />
+        )
       ) : null}
       <ProjectMeta items={page.meta} actionLink={page.metaAction} />
       {CustomContent ? <CustomContent /> : <ProjectContent sections={page.sections} />}
-    </>
+    </div>
   );
 }

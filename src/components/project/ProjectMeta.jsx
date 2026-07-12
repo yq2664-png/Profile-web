@@ -1,6 +1,6 @@
 export default function ProjectMeta({ items, actionLink }) {
   return (
-    <div className="meta-bar" data-aos="fade-up" data-aos-duration="800">
+    <div className="meta-bar">
       {items.map((item) => (
         <div className="meta-item" key={item.label}>
           <div className="meta-label">{item.label}</div>

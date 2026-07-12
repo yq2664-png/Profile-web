@@ -1,15 +1,6 @@
 import { Link } from 'react-router-dom';
+import { biomaterialMarqueeImages } from '../../data/biomaterialImages';
 import { getProjectPath } from '../../data/projects';
-
-const bioMarqueeImages = [
-  '/assets/BIo material/1.jpg',
-  '/assets/BIo material/DSC02540.JPG',
-  '/assets/BIo material/DSC02557.JPG',
-  '/assets/BIo material/DSC02632.JPG',
-  '/assets/BIo material/DSC02677.JPG',
-  '/assets/BIo material/IMG_5974.jpg',
-  '/assets/BIo material/1.0 材料.jpg',
-];
 
 const paintingMarqueeImages = [
   '/assets/Creative/3b4006cb6772089cda3809320e0274c6.JPG',
@@ -54,12 +45,12 @@ export default function ExplorationSection() {
             aria-label="Bio Material gallery"
           >
             <div className="bio-marquee-track">
-              {[...bioMarqueeImages, ...bioMarqueeImages].map((src, index) => (
+              {[...biomaterialMarqueeImages, ...biomaterialMarqueeImages].map((src, index) => (
                 <img
                   key={`${src}-${index}`}
                   src={src}
-                  alt={index < bioMarqueeImages.length ? 'Bio Material sample' : ''}
-                  aria-hidden={index >= bioMarqueeImages.length ? true : undefined}
+                  alt={index < biomaterialMarqueeImages.length ? 'Bio Material sample' : ''}
+                  aria-hidden={index >= biomaterialMarqueeImages.length ? true : undefined}
                   loading="lazy"
                 />
               ))}
@@ -72,7 +63,7 @@ export default function ExplorationSection() {
             <h3 className="bio-block-title">Painting</h3>
           </div>
           <div className="bio-marquee" aria-label="Painting gallery">
-            <div className="bio-marquee-track">
+            <div className="bio-marquee-track bio-marquee-track--reverse">
               {[...paintingMarqueeImages, ...paintingMarqueeImages].map((src, index) => (
                 <img
                   key={`${src}-${index}`}

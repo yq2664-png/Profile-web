@@ -25,7 +25,10 @@ function ProjectGallery({ id, items, galleryKey, galleryName }) {
   const trackRef = useRef(null);
   const [index, setIndex] = useState(1);
   const [locked, setLocked] = useState(false);
+  const indexRef = useRef(index);
   const total = items.length;
+
+  indexRef.current = index;
 
   const cardWidth = useCallback(() => {
     const track = trackRef.current;
@@ -49,21 +52,25 @@ function ProjectGallery({ id, items, galleryKey, galleryName }) {
 
   const step = (dir) => {
     if (locked) return;
+    const nextIndex = index + dir;
     setLocked(true);
-    setPos(index + dir, true);
-    setTimeout(() => {
-      if (index + dir === total + 1) setPos(1, false);
-      else if (index + dir === 0) setPos(total, false);
+    setPos(nextIndex, true);
+    window.setTimeout(() => {
+      if (nextIndex === total + 1) setPos(1, false);
+      else if (nextIndex === 0) setPos(total, false);
       setLocked(false);
     }, 420);
   };
 
   useEffect(() => {
     requestAnimationFrame(() => setPos(1, false));
-    const onResize = () => setPos(index, false);
+  }, [setPos]);
+
+  useEffect(() => {
+    const onResize = () => setPos(indexRef.current, false);
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
-  }, [index, setPos]);
+  }, [setPos]);
 
   const displayIndex = index < 1 ? total : index > total ? 1 : index;
 

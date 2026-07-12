@@ -25,9 +25,7 @@ export default function ProjectNav({ title, externalLink }) {
         >
           {externalLink.label}
         </a>
-      ) : (
-        <span />
-      )}
+      ) : null}
     </nav>
   );
 }

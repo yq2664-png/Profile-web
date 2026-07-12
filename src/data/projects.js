@@ -8,18 +8,17 @@ export const projects = {
       description:
         'A user-perspective simulator that turns a product description into AI-generated user reactions and behavioral insights — pressure-testing ideas before real users speak.',
       tags: ['UX Research', 'AI Product', 'Interaction Design'],
-      cover: '/assets/cover - user OS.jpeg',
+      cover: '/assets/User OS/cover - user OS.jpeg',
       coverAlt: 'userOS',
       imageContain: true,
     },
     page: {
       title: 'userOS',
       hero: {
-        src: '/assets/cover - user OS.jpeg',
+        src: '/assets/User OS/cover - user OS.jpeg',
         alt: 'userOS — landing page',
         className: 'hero-img hero-img-uos',
       },
-      externalLink: { label: 'Visit Live Site ↗', href: LIVE_SITE },
       meta: [
         { label: 'Time', value: '2026 6–7' },
         { label: 'Role', value: 'Developer · Product Designer · Interactive Designer' },
@@ -134,7 +133,7 @@ export const projects = {
       meta: [
         { label: 'Course', value: 'Wearable' },
         { label: 'School', value: 'NYU Integrated Design & Media' },
-        { label: 'Year', value: '2026' },
+        { label: 'Time', value: '2026 4–5' },
         { label: 'Role', value: 'Researcher · Developer · Interaction Designer' },
         { label: 'Tools', value: 'Arduino Nano 33 IoT · Pressure Sensors · Vibration Motors' },
       ],

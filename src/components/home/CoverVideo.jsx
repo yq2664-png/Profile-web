@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import TextType from './TextType';
 
-const COVER_TITLE = 'Design that\nlives between\nbodies and systems';
+const COVER_TITLE = 'Design that\nlives between\nbodies\u00A0and\u00A0systems';
 
 const CoverVideo = forwardRef(function CoverVideo(_props, ref) {
   return (

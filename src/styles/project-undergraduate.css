@@ -1,7 +1,58 @@
-/* hero override for tall portrait image */
-.hero-img {
-  max-height: 80vh;
+/* Silent Sanctuary — intro fold: hero + meta + Overview title */
+.project-page-ug {
+  --ug-hero-h: calc(100vh - 11.5rem);
+}
+
+.project-page-ug .ug-hero-frame {
+  height: var(--ug-hero-h);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.project-page-ug .ug-hero-frame > .hero-img.hero-img-ug {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
   object-position: center center;
+}
+
+.project-page-ug .meta-bar {
+  padding: 20px 40px;
+  gap: 32px 48px;
+}
+
+.project-page-ug .content:first-of-type {
+  padding-top: 20px;
+  padding-bottom: 64px;
+}
+
+.project-page-ug .content:first-of-type .block-heading {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .project-page-ug {
+    --ug-hero-h: calc(100vh - 14rem);
+  }
+
+  .project-page-ug .meta-bar {
+    padding: 16px 24px;
+    gap: 20px 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .project-page-ug {
+    --ug-hero-h: calc(100vh - 17rem);
+  }
 }
 
 /* poem block */

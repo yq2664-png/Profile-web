@@ -12,7 +12,7 @@
   --radius-sm: 12px;
   --radius-md: 24px;
   --radius-lg: 100px;
-  --font: 'Inter', -apple-system, sans-serif;
+  --font: 'Space Grotesk', -apple-system, sans-serif;
   --transition: 0.2s ease-out;
 }
 
@@ -269,16 +269,16 @@ nav {
 .reveal-line:nth-child(3) { transition-delay: 0.24s; }
 .reveal-line:nth-child(4) { transition-delay: 0.36s; }
 
-/* Hero rotating phrase — black bg, white text, no frame */
+/* Hero rotating phrase — black bg, white text */
 .hero-rotate {
   background: #000;
   color: #fff;
   overflow: hidden;
   line-height: 1.25;
-  padding: 0 0.08em;
+  padding: 0.04em 0.1em;
   margin-left: 0.06em;
   border: none;
-  border-radius: 0;
+  border-radius: 6px;
   box-shadow: none;
 }
 
@@ -544,6 +544,15 @@ section + section { border-top: 1px solid var(--border); }
 @keyframes bio-scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
+}
+
+.bio-marquee-track--reverse {
+  animation: bio-scroll-reverse 40s linear infinite;
+}
+
+@keyframes bio-scroll-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -830,8 +839,8 @@ footer {
 
 .video-hero-overlay h1,
 .video-hero-title {
-  font-family: 'Roboto Flex', 'Inter', sans-serif;
-  font-size: clamp(32px, 4vw, 58px);
+  font-family: var(--font);
+  font-size: clamp(30px, 3.6vw, 52px);
   font-weight: 600;
   line-height: 1.0;
   letter-spacing: -0.03em;
@@ -868,7 +877,7 @@ footer {
   font-size: 14px;
   font-weight: 600;
   padding: 12px 24px;
-  border-radius: var(--radius-lg);
+  border-radius: 6px;
   text-decoration: none;
   z-index: 3;
   transition: background var(--transition), transform var(--transition);
@@ -879,7 +888,7 @@ footer {
 @media (max-width: 800px) {
   .video-hero-overlay { width: 70%; padding-left: 24px; }
   .video-hero-overlay h1,
-  .video-hero-title { font-size: 28px; }
+  .video-hero-title { font-size: 26px; }
   .video-hero-cta { right: 24px; }
   .video-eyebrow { left: 24px; }
 }

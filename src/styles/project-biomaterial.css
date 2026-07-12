@@ -1,28 +1,366 @@
-.bio-gallery {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 0 40px 100px;
+.bio-essesi-page {
+  --bio-bg: #ffffff;
+  --bio-text: #211e1e;
+  --bio-muted: #8a8484;
+  --bio-header-h: 56px;
+  --bio-label-h: 16px;
+  --bio-label-gap: 4px;
+  --bio-frame-size: clamp(180px, 38dvh, 320px);
+
+  min-height: 100vh;
+  background: var(--bio-bg);
+  color: var(--bio-text);
+  font-family: var(--font);
+  font-size: 10px;
+  letter-spacing: 0.075em;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
-.bio-img-full {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin-bottom: 12px;
+
+.bio-essesi-label,
+.bio-essesi-close,
+.bio-essesi-meta-line,
+.bio-essesi-overview-title,
+.bio-essesi-overview,
+.bio-essesi-detail-caption {
+  text-transform: uppercase;
 }
-.bio-img-row {
+
+.bio-essesi-page .pnav {
+  background: transparent;
+  border-bottom: none;
+}
+
+.bio-essesi-page .pnav-back,
+.bio-essesi-page .pnav-title {
+  font-family: var(--font);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+  line-height: var(--bio-label-h);
+}
+
+.bio-essesi-page .pnav-back {
+  color: var(--bio-muted);
+}
+
+.bio-essesi-page .pnav-back:hover {
+  color: var(--bio-text);
+}
+
+.bio-essesi-page .pnav-title {
+  color: var(--bio-text);
+  font-weight: 400;
+  letter-spacing: 0.075em;
+}
+
+.bio-essesi-index {
+  transition: opacity 0.45s ease, transform 0.75s ease;
+}
+
+.bio-essesi-section {
+  min-height: 100dvh;
   display: flex;
-  gap: 12px;
-  margin-bottom: 12px;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--bio-header-h) + 32px) 40px 48px;
 }
-.bio-img-row img {
-  flex: 1 1 0;
-  min-width: 0;
+
+.bio-essesi-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(20px, 4vw, 56px);
   width: 100%;
-  height: auto;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.bio-essesi-row--2 {
+  --bio-frame-max-w: calc((100vw - 80px - 56px) / 2);
+}
+
+.bio-essesi-row--3 {
+  --bio-frame-max-w: calc((100vw - 80px - 112px) / 3);
+}
+
+.bio-essesi-row--1 .bio-essesi-frame {
+  width: min(var(--bio-frame-size), calc(100vw - 80px));
+  height: min(var(--bio-frame-size), calc(100vw - 80px));
+}
+
+.bio-essesi-detail-gallery.bio-essesi-row--1 {
+  --bio-frame-size: clamp(240px, 42vh, 480px);
+  --bio-frame-max-w: min(calc(100vw - 80px), 960px);
+}
+
+.bio-essesi-detail-gallery.bio-essesi-row--1 .bio-essesi-frame {
+  width: min(var(--bio-frame-size), var(--bio-frame-max-w));
+  height: var(--bio-frame-size);
+}
+
+.bio-essesi-detail-gallery.bio-essesi-row--1 .bio-essesi-frame--wide {
+  width: min(calc(var(--bio-frame-size) * var(--bio-frame-aspect, 1)), var(--bio-frame-max-w));
+  height: var(--bio-frame-size);
+}
+
+.bio-essesi-tile {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bio-label-gap);
+  text-align: center;
+  color: inherit;
+  transition: transform 0.75s ease, opacity 0.45s ease;
+}
+
+.bio-essesi-frame {
+  height: var(--bio-frame-size);
+  width: var(--bio-frame-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.75s ease;
+}
+
+.bio-essesi-frame--wide {
+  width: min(calc(var(--bio-frame-size) * var(--bio-frame-aspect, 1)), var(--bio-frame-max-w, 100vw));
+}
+
+.bio-essesi-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   display: block;
 }
-@media (max-width: 700px) {
-  .bio-img-row { flex-direction: column; align-items: stretch; }
-  .bio-img-row img { flex: none; width: 100%; }
+
+.bio-essesi-label {
+  font-size: 10px;
+  line-height: var(--bio-label-h);
+  color: var(--bio-muted);
+  white-space: nowrap;
+}
+
+.bio-essesi-tile:hover .bio-essesi-frame {
+  transform: scale(1.02);
+}
+
+.bio-essesi-page.is-detail-open .bio-essesi-index {
+  pointer-events: none;
+}
+
+.bio-essesi-page.is-detail-open .bio-essesi-tile {
+  transform: scale(0.88);
+  opacity: 0.18;
+}
+
+.bio-essesi-detail {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 72px 40px 80px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.75s ease;
+}
+
+.bio-essesi-detail.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.bio-essesi-detail-panel {
+  width: min(920px, 100%);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.75s ease 0.12s, transform 0.75s ease 0.12s;
+}
+
+.bio-essesi-detail.is-open .bio-essesi-detail-panel {
+  opacity: 1;
+  transform: none;
+}
+
+.bio-essesi-close {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 0 48px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  opacity: 0.72;
+  font-family: var(--font);
+  font-size: 10px;
+  letter-spacing: 0.075em;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.bio-essesi-close:hover {
+  opacity: 1;
+}
+
+.bio-essesi-detail-copy {
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+.bio-essesi-meta-line {
+  margin: 0 0 10px;
+  font-size: 10px;
+}
+
+.bio-essesi-meta-line span {
+  opacity: 0.72;
+}
+
+.bio-essesi-overview-title {
+  margin: 40px 0 16px;
+  font-size: 10px;
+  opacity: 0.72;
+}
+
+.bio-essesi-overview {
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 10px;
+  line-height: 1.8;
+  text-transform: uppercase;
+  color: var(--bio-text);
+  white-space: pre-wrap;
+}
+
+.bio-essesi-detail-gallery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(20px, 4vw, 56px);
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  --bio-frame-size: clamp(200px, 32vh, 360px);
+}
+
+.bio-essesi-detail-tile {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--bio-label-gap);
+  text-align: center;
+}
+
+.bio-essesi-detail-frame {
+  transition: none;
+}
+
+.bio-essesi-detail-frame img {
+  object-fit: contain;
+  transform: none;
+  transition: none;
+}
+
+.bio-essesi-detail-caption {
+  margin: 0;
+  font-size: 10px;
+  color: var(--bio-muted);
+  white-space: nowrap;
+}
+
+body.bio-essesi-active {
+  background: #ffffff;
+  color: #211e1e;
+}
+
+body.bio-essesi-detail-open {
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .bio-essesi-page {
+    --bio-header-h: 48px;
+    --bio-label-h: 14px;
+    --bio-frame-size: clamp(140px, 32dvh, 240px);
+  }
+
+  .bio-essesi-detail,
+  .bio-essesi-detail-gallery {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .bio-essesi-detail-gallery {
+    gap: 16px;
+  }
+
+  .bio-essesi-section {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: calc(var(--bio-header-h) + 24px);
+    padding-bottom: 32px;
+  }
+
+  .bio-essesi-row {
+    gap: 16px;
+  }
+
+  .bio-essesi-row--1 .bio-essesi-frame {
+    width: min(var(--bio-frame-size), calc(100vw - 40px));
+    height: min(var(--bio-frame-size), calc(100vw - 40px));
+  }
+
+  .bio-essesi-detail-gallery.bio-essesi-row--1 {
+    --bio-frame-max-w: calc(100vw - 40px);
+  }
+
+  .bio-essesi-detail-gallery.bio-essesi-row--1 .bio-essesi-frame,
+  .bio-essesi-detail-gallery.bio-essesi-row--1 .bio-essesi-frame--wide {
+    width: min(
+      calc(var(--bio-frame-size) * var(--bio-frame-aspect, 1)),
+      var(--bio-frame-max-w)
+    );
+    height: var(--bio-frame-size);
+  }
+
+  .bio-essesi-row--2,
+  .bio-essesi-detail-gallery.bio-essesi-row--2 {
+    --bio-frame-max-w: calc((100vw - 40px - 16px) / 2);
+  }
+
+  .bio-essesi-row--3,
+  .bio-essesi-detail-gallery.bio-essesi-row--3 {
+    --bio-frame-max-w: calc((100vw - 40px - 32px) / 3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bio-essesi-index,
+  .bio-essesi-tile,
+  .bio-essesi-frame,
+  .bio-essesi-detail,
+  .bio-essesi-detail-panel {
+    transition: none;
+  }
+
+  .bio-essesi-page.is-detail-open .bio-essesi-tile {
+    transform: none;
+    opacity: 1;
+  }
 }
