@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { getProject, getProjectPath, homeWorkSlugs } from '../../data/projects';
+import { resetScrollInstant } from '../../utils/resetScroll';
 
 function WorkTags({ tags }) {
   return (
@@ -42,7 +43,14 @@ function WorkRow({ slug, to, title, description, tags, cover, coverAlt, imageCon
   );
 
   return (
-    <Link className="work-row" to={to} data-slug={slug} data-aos="fade-up" data-aos-duration="800">
+    <Link
+      className="work-row"
+      to={to}
+      data-slug={slug}
+      data-aos="fade-up"
+      data-aos-duration="800"
+      onClick={resetScrollInstant}
+    >
       {inner}
     </Link>
   );

@@ -7,33 +7,6 @@
   object-fit: contain;
 }
 
-.project-page-uos {
-  --uos-hero-h: calc(100vh - 9rem);
-}
-
-.project-page-uos .uos-hero-frame {
-  width: 100%;
-  height: var(--uos-hero-h);
-  overflow: hidden;
-  background: var(--bg);
-}
-
-.project-page-uos .uos-hero-frame > .hero-img.hero-img-uos {
-  display: block;
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  max-height: none;
-  object-fit: cover;
-  object-position: center top;
-}
-
-@media (max-width: 900px) {
-  .project-page-uos {
-    --uos-hero-h: calc(100vh - 12rem);
-  }
-}
-
 .hero-img-wearable {
   width: 100%;
   height: 56vh;
