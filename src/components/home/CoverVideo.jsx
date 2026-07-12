@@ -6,9 +6,16 @@ const COVER_TITLE = 'Design that\nlives between\nbodies and systems';
 const CoverVideo = forwardRef(function CoverVideo(_props, ref) {
   return (
     <div className="cover-video-wrap" id="cover-wrap" ref={ref}>
-      <video autoPlay muted loop playsInline>
-        <source src="/assets/cover.mov" type="video/quicktime" />
-        <source src="/assets/cover.mov" type="video/mp4" />
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="/assets/cover-poster.jpg"
+      >
+        <source src="/assets/cover.webm" type="video/webm" />
+        <source src="/assets/cover.mp4" type="video/mp4" />
       </video>
       <div className="video-hero-overlay">
         <TextType
