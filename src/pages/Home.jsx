@@ -27,11 +27,13 @@ export default function Home() {
     <>
       <Nav overVideo={overVideo} />
       <CoverVideo ref={coverRef} />
-      <HeroSection />
-      <AboutSection />
-      <WorkSection />
-      <ExplorationSection />
-      <ContactSection />
+      <div className="home-page">
+        <HeroSection />
+        <AboutSection />
+        <WorkSection />
+        <ExplorationSection />
+        <ContactSection />
+      </div>
       <Footer />
     </>
   );

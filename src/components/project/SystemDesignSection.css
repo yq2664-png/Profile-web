@@ -1,0 +1,63 @@
+.uos-sd {
+  padding: 0 0 80px;
+}
+
+.uos-sd-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.uos-sd-header {
+  margin-bottom: 40px;
+}
+
+.uos-sd-lead {
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+.uos-sd-pipeline-image {
+  margin: 0;
+}
+
+.uos-sd-pipeline-image img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.uos-sd-callout {
+  margin: 48px 0 0;
+  max-width: none;
+  text-align: left;
+  background: none;
+  border: none;
+  border-left: 2px solid var(--accent);
+  border-radius: 0;
+  padding: 4px 0 4px 24px;
+  box-shadow: none;
+}
+
+.uos-sd-callout-quote {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+
+.uos-sd-callout-sub {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--secondary);
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .uos-sd-inner {
+    padding: 0 20px;
+  }
+}

@@ -157,10 +157,9 @@
 /* GALLERY */
 .gallery-section {
   position: relative;
-  /* match the text column width (content max-width minus its 40px side padding) */
-  max-width: calc(var(--max) - 80px);
+  max-width: var(--max);
   margin: 0 auto;
-  padding: 12px 0 20px;
+  padding: 12px 40px 20px;
   overflow: visible;
 }
 
@@ -256,6 +255,13 @@
 .gallery-arrow-next { right: -52px; }
 
 /* On narrow viewports there's no outer margin — tuck arrows just inside */
+@media (max-width: 600px) {
+  .gallery-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 @media (max-width: 980px) {
   .gallery-arrow-prev { left: 4px; }
   .gallery-arrow-next { right: 4px; }

@@ -1,4 +1,13 @@
+import { ProjectSection } from '../ProjectWriting';
+import '../uos-sections.css';
 import '../../../styles/project-synthetic.css';
+
+const REFERENCES = [
+  { href: 'https://youtu.be/oha5NDWbBCY', label: 'https://youtu.be/oha5NDWbBCY' },
+  { href: 'https://youtu.be/KtplxTpYcHQ', label: 'https://youtu.be/KtplxTpYcHQ' },
+  { href: 'https://youtu.be/aiWGenwJe4M', label: 'https://youtu.be/aiWGenwJe4M' },
+  { href: 'https://youtu.be/kcZH2zcHANc', label: 'https://youtu.be/kcZH2zcHANc' },
+];
 
 export default function SyntheticContent() {
   return (
@@ -9,42 +18,31 @@ export default function SyntheticContent() {
         </video>
       </div>
 
-      <div className="content" data-aos="fade-up" data-aos-duration="800">
-        <p className="section-heading">Overview</p>
-        <p className="prose">
+      <ProjectSection
+        title="Synthetic Ocean"
+        titleId="synthetic-overview"
+        first
+      >
+        <p className="uos-sec-prose">
           Synthetic Ocean explores a speculative future in which the ocean is no longer a purely
-          natural environment, but a hybrid ecosystem formed by plastic waste, artificial
-          materials, machine intelligence, and human intervention. Through generative visuals in
-          TouchDesigner, the project imagines marine life evolving into metallic, synthetic
-          organisms, questioning where the boundary between nature and artificiality truly lies.
+          natural environment, but a hybrid ecosystem formed by plastic waste, artificial materials,
+          machine intelligence, and human intervention. Through generative visuals in TouchDesigner,
+          the project imagines marine life evolving into metallic, synthetic organisms, questioning
+          where the boundary between nature and artificiality truly lies.
         </p>
-      </div>
+      </ProjectSection>
 
-      <div className="ref-list" data-aos="fade-up" data-aos-duration="800">
-        <p className="section-heading">Reference</p>
-        <ul>
-          <li>
-            <a href="https://youtu.be/oha5NDWbBCY" target="_blank" rel="noopener noreferrer">
-              https://youtu.be/oha5NDWbBCY
-            </a>
-          </li>
-          <li>
-            <a href="https://youtu.be/KtplxTpYcHQ" target="_blank" rel="noopener noreferrer">
-              https://youtu.be/KtplxTpYcHQ
-            </a>
-          </li>
-          <li>
-            <a href="https://youtu.be/aiWGenwJe4M" target="_blank" rel="noopener noreferrer">
-              https://youtu.be/aiWGenwJe4M
-            </a>
-          </li>
-          <li>
-            <a href="https://youtu.be/kcZH2zcHANc" target="_blank" rel="noopener noreferrer">
-              https://youtu.be/kcZH2zcHANc
-            </a>
-          </li>
+      <ProjectSection title="Reference" titleId="synthetic-reference">
+        <ul className="uos-sec-list">
+          {REFERENCES.map((ref) => (
+            <li key={ref.href}>
+              <a href={ref.href} target="_blank" rel="noopener noreferrer">
+                {ref.label}
+              </a>
+            </li>
+          ))}
         </ul>
-      </div>
+      </ProjectSection>
     </>
   );
 }

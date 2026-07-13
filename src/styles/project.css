@@ -104,7 +104,7 @@ body {
   display: block;
 }
 
-.hero-img:not(.hero-img-ug):not(.hero-img-uos) {
+.hero-img:not(.hero-img-ug):not(.hero-img-uos):not(.hero-img-ideation) {
   width: 100%;
   max-height: 520px;
   object-fit: cover;

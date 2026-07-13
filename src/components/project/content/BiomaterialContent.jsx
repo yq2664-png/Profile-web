@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ProjectNav from '../ProjectNav';
+import '../uos-sections.css';
 import {
   biomaterialDisplayName,
   biomaterialIndexRows,
@@ -132,8 +133,8 @@ export default function BiomaterialContent() {
               </p>
             ))}
 
-            <p className="bio-essesi-overview-title">Overview</p>
-            <p className="bio-essesi-overview">{BIO_OVERVIEW}</p>
+            <h2 className="uos-sec-title">Overview</h2>
+            <p className="uos-sec-prose bio-essesi-overview">{BIO_OVERVIEW}</p>
           </div>
 
           {detailTiles.length > 0 ? (

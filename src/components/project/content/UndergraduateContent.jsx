@@ -1,25 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+  ProjectImage,
+  ProjectImageGrid,
+  ProjectSection,
+  ProjectTags,
+} from '../ProjectWriting';
+import '../uos-sections.css';
 import '../../../styles/project-undergraduate.css';
-
-function FigPair({ images }) {
-  useEffect(() => {
-    document.querySelectorAll('.fig-pair img').forEach((img) => {
-      const set = () => {
-        img.style.flexGrow = img.naturalWidth / img.naturalHeight || 1;
-      };
-      if (img.complete && img.naturalWidth) set();
-      else img.addEventListener('load', set);
-    });
-  }, []);
-
-  return (
-    <div className="fig-pair">
-      {images.map((img) => (
-        <img key={img.src} src={img.src} alt={img.alt} loading="lazy" />
-      ))}
-    </div>
-  );
-}
 
 function ProjectGallery({ id, items, galleryKey, galleryName }) {
   const trackRef = useRef(null);
@@ -131,6 +118,17 @@ const POSTERS = [
   { src: '/assets/Silent Sanctuary /ug_poster2.jpg', alt: 'Silent Sanctuary — full collection editorial poster', label: 'Editorial', wide: true },
 ];
 
+const TAGS = [
+  'Womenswear',
+  'Graduation Collection',
+  'Spatial Design',
+  'Pattern Construction',
+  'Fabric Modification',
+  '3D Rendering',
+  'Coventry University',
+  'First-Class Honours',
+];
+
 export default function UndergraduateContent() {
   const [lightbox, setLightbox] = useState(null);
 
@@ -181,11 +179,12 @@ export default function UndergraduateContent() {
 
   return (
     <>
-      <div className="content">
-        <h2 className="block-heading" style={{ marginTop: 0 }}>
-          Overview
-        </h2>
-        <p className="prose">
+      <ProjectSection
+        title="Clothing as Portable Architecture"
+        titleId="ug-overview"
+        first
+      >
+        <p className="uos-sec-prose">
           This collection explores clothing as a form of portable architecture. Beginning with childhood
           memories of building private shelters from everyday furniture, the project investigates how
           domestic space can be translated into wearable structures. Through spatial studies, pattern
@@ -194,164 +193,154 @@ export default function UndergraduateContent() {
           clothing as decoration, the collection proposes garments as spatial boundaries that shape the
           relationship between body, memory, and environment.
         </p>
-
-        <img
-          className="img-full"
-          data-aos="fade-up"
-          data-aos-duration="800"
+        <ProjectImage
           src="/assets/Silent Sanctuary /figure1.jpg"
           alt="Mood board and fabric exploration"
+          caption="Figure 1 — My mood board and fabric exploration (Qin Yue, 2024)"
         />
-        <p className="img-caption">Figure 1 — My mood board and fabric exploration (Qin Yue, 2024)</p>
+      </ProjectSection>
 
-        <h2 className="block-heading">Research</h2>
-        <p className="block-sub">From Memory to Materiality</p>
-        <p className="prose">
+      <ProjectSection num="1" title="From Memory to Materiality" titleId="ug-research">
+        <p className="uos-sec-prose">
           The research began with an artist&apos;s photographic work recreating childhood forts and secret
           spaces from household objects—the idea that the desire for enclosure is not childish but
           fundamental. I started building scenes with miniature furniture in my studio, studying how the
           proportions, angles, and shadows of domestic objects create the perception of private space.
         </p>
-
-        <FigPair
+        <ProjectImageGrid
           images={[
             { src: '/assets/Silent Sanctuary /figure2.jpg', alt: 'Frantic — Joanna Piotrowska' },
             { src: '/assets/Silent Sanctuary /figure3.jpg', alt: 'Frantic — Joanna Piotrowska' },
           ]}
+          caption="Figure 2 and 3 — Frantic (Joanna Piotrowska, 2016–2019)"
         />
-        <p className="img-caption">Figure 2 and 3 — Frantic (Joanna Piotrowska, 2016–2019)</p>
-
-        <p className="block-sub block-sub-standalone">Spatial Studies</p>
-        <p className="prose">
+        <h3 className="uos-sec-sub">Spatial Studies</h3>
+        <p className="uos-sec-prose">
           From these tabletop models, I extracted silhouettes and structural logics—the way a curtain
           divides a room, the way a high chair back shields the sitter, the way a folded blanket creates
           a hood. These became the templates for the collection&apos;s core shapes.
         </p>
+        <ProjectImage
+          src="/assets/Silent Sanctuary /figure4.jpg"
+          alt="Sketchbook page — miniature furniture based on real living space"
+          caption="Figure 4 — sketchbook page: A selection of miniature furniture based on my real living space (Qin Yue, 2024)"
+        />
+        <ProjectImage
+          src="/assets/Silent Sanctuary /figure5.jpg"
+          alt="Sketchbook page — an environment that simulates private spaces"
+          caption="Figure 5 — sketchbook page: An environment that simulates private spaces (Qin Yue, 2024)"
+        />
+      </ProjectSection>
 
-        <img className="img-full" data-aos="fade-up" data-aos-duration="800" src="/assets/Silent Sanctuary /figure4.jpg" alt="Sketchbook page — miniature furniture based on real living space" loading="lazy" />
-        <p className="img-caption">Figure 4 — sketchbook page: A selection of miniature furniture based on my real living space (Qin Yue, 2024)</p>
-        <img className="img-full" data-aos="fade-up" data-aos-duration="800" src="/assets/Silent Sanctuary /figure5.jpg" alt="Sketchbook page — an environment that simulates private spaces" loading="lazy" />
-        <p className="img-caption">Figure 5 — sketchbook page: An environment that simulates private spaces (Qin Yue, 2024)</p>
-
-        <h2 className="block-heading">Form Development</h2>
-        <p className="block-sub">From 2D Furniture to 3D Garments</p>
-        <p className="prose">
+      <ProjectSection num="2" title="From 2D Furniture to 3D Garments" titleId="ug-form">
+        <p className="uos-sec-prose">
           The central technical challenge was translating flat furniture profiles into three-dimensional
           garment structures. Through pattern experiments—outward expansion, inward depression, and vertical
           cutting—I developed construction methods that allowed two-dimensional shapes to hold volume and
           directional presence once worn on the body.
         </p>
-
-        <p className="block-sub block-sub-standalone">Structural Insight</p>
-        <p className="prose">
+        <h3 className="uos-sec-sub">Structural Insight</h3>
+        <p className="uos-sec-prose">
           The key insight was that furniture forms are already architectural: they assume the presence of a
           body and orient themselves around it.
         </p>
-        <p className="prose">
+        <p className="uos-sec-prose">
           This drove the collection&apos;s distinctive silhouettes: the oversized hood-collar framing the face
           like a room, cape panels opening and closing like curtain walls, and wide-leg trousers grounding
           the body with the weight of a threshold.
         </p>
+      </ProjectSection>
 
-        <h2 className="block-heading">Material Exploration</h2>
-        <p className="block-sub">Fabric &amp; Surface Development</p>
-        <p className="prose">
+      <ProjectSection num="3" title="Fabric & Surface Development" titleId="ug-material">
+        <p className="uos-sec-prose">
           The fabric process was iterative. An initial blueprinting experiment inspired by the moodboard
           produced results that felt overly literal and decorative.
         </p>
-
-        <p className="block-sub block-sub-standalone">Material Experiments</p>
-        <p className="prose">
+        <h3 className="uos-sec-sub">Material Experiments</h3>
+        <p className="uos-sec-prose">
           The solution was to work directly with the material itself. I conducted a series of fabric
           modification experiments—including cutting, pressing, and layering—before scanning the resulting
           textures and processing them digitally in Photoshop. This workflow generated print designs that
           felt embedded within the construction rather than applied onto it.
         </p>
-        <p className="prose">The final textile surfaces therefore retain visible traces of their own making.</p>
+        <p className="uos-sec-prose">The final textile surfaces therefore retain visible traces of their own making.</p>
+        <ProjectImage
+          src="/assets/Silent Sanctuary /figure6.png"
+          alt="Sketchbook page — 2D to 3D conversion experiment"
+          caption="Figure 6 — sketchbook page: 2D to 3D conversion experiment (Qin Yue, 2024)"
+        />
+        <ProjectImage
+          src="/assets/Silent Sanctuary /figure7.jpg"
+          alt="Sketchbook page — color and fabric exploration"
+          caption="Figure 7 — sketchbook page: Color and fabric exploration (Qin Yue, 2024)"
+        />
+      </ProjectSection>
 
-        <img className="img-full" data-aos="fade-up" data-aos-duration="800" src="/assets/Silent Sanctuary /figure6.png" alt="Sketchbook page — 2D to 3D conversion experiment" loading="lazy" />
-        <p className="img-caption">Figure 6 — sketchbook page: 2D to 3D conversion experiment (Qin Yue, 2024)</p>
-        <img className="img-full" data-aos="fade-up" data-aos-duration="800" src="/assets/Silent Sanctuary /figure7.jpg" alt="Sketchbook page — color and fabric exploration" loading="lazy" />
-        <p className="img-caption">Figure 7 — sketchbook page: Color and fabric exploration (Qin Yue, 2024)</p>
-
-        <h2 className="block-heading">Collection</h2>
-        <p className="block-sub">Three Modes of Sanctuary</p>
-        <p className="prose">
+      <ProjectSection num="4" title="Three Modes of Sanctuary" titleId="ug-collection">
+        <p className="uos-sec-prose">
           The collection consists of three looks, each representing a different spatial condition of
           enclosure: <strong>concealment</strong>, <strong>openness held in tension</strong>, and{' '}
           <strong>vertical stillness</strong>.
         </p>
-        <p className="prose">
+        <p className="uos-sec-prose">
           The palette is intentionally restrained—deep teal navy and bleached linen white—allowing
           structure, proportion, and silhouette to communicate the architectural language of sanctuary
           without relying on decoration.
         </p>
-      </div>
+      </ProjectSection>
 
       <ProjectGallery id="looks-track" items={LOOKS} galleryKey="looks" galleryName="The Collection" />
 
-      <div className="content">
-        <h2 className="block-heading">Presentation</h2>
-        <p className="block-sub">Editorial Environment</p>
-        <p className="prose">
+      <ProjectSection num="5" title="Editorial Environment" titleId="ug-presentation">
+        <p className="uos-sec-prose">
           The collection was rendered within a 3D rocky landscape—isolated, mineral, and open to the
           sky—to position the garments outside the domestic interiors that originally inspired them.
         </p>
-
-        <p className="block-sub block-sub-standalone">Body × Environment</p>
-        <p className="prose">
+        <h3 className="uos-sec-sub">Body × Environment</h3>
+        <p className="uos-sec-prose">
           This external landscape transforms sanctuary into something portable: a condition that travels
           with the wearer rather than remaining tied to architecture.
         </p>
-        <p className="prose">
+        <p className="uos-sec-prose">
           Silver branch-like accessories echo crystalline formations emerging from the terrain, visually
           linking body, garment, and environment into a single spatial system.
         </p>
-
-        <img className="img-full" data-aos="fade-up" data-aos-duration="800" src="/assets/Silent Sanctuary /figure8.jpg" alt="Collection line up" loading="lazy" />
-        <p className="img-caption">Figure 8 — collection line up (Qin Yue, 2024)</p>
-      </div>
+        <ProjectImage
+          src="/assets/Silent Sanctuary /figure8.jpg"
+          alt="Collection line up"
+          caption="Figure 8 — collection line up (Qin Yue, 2024)"
+        />
+      </ProjectSection>
 
       <ProjectGallery id="posters-track" items={POSTERS} galleryKey="posters" galleryName="Presentation" />
 
-      <div className="content">
-        <h2 className="block-heading">Reflection</h2>
-        <p className="block-sub">From Garment to Spatial Practice</p>
-        <p className="prose">
+      <ProjectSection num="6" title="From Garment to Spatial Practice" titleId="ug-reflection">
+        <p className="uos-sec-prose">
           This project taught me that clothing operates spatially—not only on the body, but through its
           relationship with the surrounding environment. Deconstructing garments within spatial compositions
           deepened my understanding of garment structure in ways that purely technical pattern cutting could
           not.
         </p>
-        <p className="prose">
+        <p className="uos-sec-prose">
           The perceptual relationship between body, clothing, and environment has since become a perspective
           that informs every project I undertake.
         </p>
-
-        <p className="block-sub block-sub-standalone">Continuing Question</p>
-        <p className="prose">
+        <h3 className="uos-sec-sub">Continuing Question</h3>
+        <p className="uos-sec-prose">
           The collection ultimately opened a question that continues to guide my practice:{' '}
           <strong>what does it mean for clothing to function as a boundary, rather than simply a covering?</strong>
         </p>
+      </ProjectSection>
 
-        <h2 className="block-heading">Looking Forward</h2>
-        <p className="prose">
+      <ProjectSection num="7" title="Boundary as Design Lens" titleId="ug-forward">
+        <p className="uos-sec-prose">
           The question the collection opened—what does it mean for clothing to function as a boundary,
           rather than simply a covering?—continues to shape the way I approach interaction, wearability,
           and spatial design today.
         </p>
+      </ProjectSection>
 
-        <div className="tag-row">
-          <span className="tag">Womenswear</span>
-          <span className="tag">Graduation Collection</span>
-          <span className="tag">Spatial Design</span>
-          <span className="tag">Pattern Construction</span>
-          <span className="tag">Fabric Modification</span>
-          <span className="tag">3D Rendering</span>
-          <span className="tag">Coventry University</span>
-          <span className="tag">First-Class Honours</span>
-        </div>
-      </div>
+      <ProjectTags tags={TAGS} />
 
       <div className={`lightbox${lightbox ? ' open' : ''}`} role="dialog" aria-modal="true" aria-label="Image viewer" onClick={(e) => e.target.classList.contains('lightbox') && closeLightbox()}>
         <button type="button" className="lightbox-close" aria-label="Close" onClick={closeLightbox}>

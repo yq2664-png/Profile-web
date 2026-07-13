@@ -1,21 +1,27 @@
-function OverviewSection({ section }) {
+import SystemDesignSection from './SystemDesignSection';
+import KeyFeaturesSection from './KeyFeaturesSection';
+import { UOSSectionShell } from './UOSSectionShell';
+
+function sectionTitleId(section) {
+  const label = section.title ?? section.heading ?? 'section';
+  return `uos-section-${label.replace(/\s+/g, '-').toLowerCase()}`;
+}
+
+function OverviewSection({ section, first }) {
+  const titleId = sectionTitleId(section);
+
   return (
-    <div className="content" data-aos="fade-up" data-aos-duration="800">
-      <div className="uos-overview-head">
-        <p className="section-heading uos-oh-label">{section.heading}</p>
-        {section.tryLink ? (
-          <a
-            href={section.tryLink.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="pnav-pdf"
-          >
-            {section.tryLink.label}
-          </a>
-        ) : null}
-      </div>
-      <p className="prose">{section.prose}</p>
-    </div>
+    <UOSSectionShell
+      title={section.title ?? section.heading}
+      titleId={titleId}
+      first={first}
+    >
+      {section.paragraphs?.map((text, index) => (
+        <p className="uos-sec-prose" key={index}>
+          {text}
+        </p>
+      ))}
+    </UOSSectionShell>
   );
 }
 
@@ -38,6 +44,16 @@ function FlowSection({ section }) {
   );
 }
 
+function VideoSection({ section }) {
+  return (
+    <div className="uos-video-wrap" data-aos="fade-up" data-aos-duration="800">
+      <video controls autoPlay muted loop playsInline>
+        <source src={section.src} type="video/mp4" />
+      </video>
+    </div>
+  );
+}
+
 function ShotSection({ section }) {
   return (
     <div className="uos-shot" data-aos="fade-up" data-aos-duration="800">
@@ -54,17 +70,15 @@ function ShotSection({ section }) {
   );
 }
 
-function NarrativeSection({ section }) {
+function NarrativeSection({ section, first }) {
+  const titleId = sectionTitleId(section);
+
   return (
-    <div className="content uos-narrative" data-aos="fade-up" data-aos-duration="800">
-      <p className="section-heading">{section.eyebrow}</p>
-      <h2 className="block-heading" style={{ marginTop: 0 }}>
-        {section.heading}
-      </h2>
+    <UOSSectionShell num={section.num} title={section.heading} titleId={titleId} first={first}>
       {section.blocks.map((block, index) => {
         if (block.list) {
           return (
-            <ul className="uos-list" key={index}>
+            <ul className="uos-sec-list" key={index}>
               {block.list.map((item, itemIndex) => (
                 <li key={itemIndex}>{item}</li>
               ))}
@@ -73,27 +87,18 @@ function NarrativeSection({ section }) {
         }
         if (block.callout) {
           return (
-            <p className="uos-callout" key={index}>
+            <p className="uos-sec-callout" key={index}>
               {block.callout}
             </p>
           );
         }
         return (
-          <p className="prose" key={index}>
+          <p className="uos-sec-prose" key={index}>
             {block.p}
           </p>
         );
       })}
-    </div>
-  );
-}
-
-function PlainOverviewSection({ section }) {
-  return (
-    <div className="content" data-aos="fade-up" data-aos-duration="800">
-      <p className="section-heading">{section.heading}</p>
-      <p className="prose">{section.prose}</p>
-    </div>
+    </UOSSectionShell>
   );
 }
 
@@ -103,19 +108,24 @@ export default function ProjectContent({ sections }) {
   }
 
   return sections.map((section, index) => {
+    const isFirstContent =
+      index === sections.findIndex((s) => s.type === 'overview' || s.type === 'narrative');
+
     switch (section.type) {
+      case 'video':
+        return <VideoSection key={`${section.type}-${index}`} section={section} />;
       case 'overview':
-        return section.tryLink ? (
-          <OverviewSection key={`${section.type}-${index}`} section={section} />
-        ) : (
-          <PlainOverviewSection key={`${section.type}-${index}`} section={section} />
-        );
+        return <OverviewSection key={`${section.type}-${index}`} section={section} first={isFirstContent} />;
       case 'narrative':
-        return <NarrativeSection key={`${section.type}-${index}`} section={section} />;
+        return <NarrativeSection key={`${section.type}-${index}`} section={section} first={isFirstContent} />;
       case 'flow':
         return <FlowSection key={`${section.type}-${index}`} section={section} />;
       case 'shot':
         return <ShotSection key={`${section.type}-${index}`} section={section} />;
+      case 'systemDesign':
+        return <SystemDesignSection key={`${section.type}-${index}`} />;
+      case 'keyFeatures':
+        return <KeyFeaturesSection key={`${section.type}-${index}`} />;
       default:
         return null;
     }

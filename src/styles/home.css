@@ -304,9 +304,9 @@ nav {
   color: var(--muted);
 }
 
-/* SECTION */
-section { padding: 80px 48px; }
-section + section { border-top: 1px solid var(--border); }
+/* SECTION — scoped to home page only */
+.home-page section { padding: 80px 48px; }
+.home-page section + section { border-top: 1px solid var(--border); }
 #about { border-top: 1px solid var(--border); }
 #exploration { border-top: 1px solid var(--border); }
 

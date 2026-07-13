@@ -55,6 +55,8 @@ export default function Project() {
   const pageClassName = [
     page.hero ? 'project-page-has-hero' : 'project-page-no-hero',
     slug === 'undergraduate' ? 'project-page-ug' : '',
+    slug === 'ideation' ? 'project-page-ideation' : '',
+    slug === 'sensory' ? 'project-page-sensory' : '',
   ]
     .filter(Boolean)
     .join(' ');
@@ -65,6 +67,10 @@ export default function Project() {
       {page.hero ? (
         slug === 'undergraduate' ? (
           <div className="ug-hero-frame">
+            <img className={page.hero.className} src={page.hero.src} alt={page.hero.alt} />
+          </div>
+        ) : slug === 'ideation' ? (
+          <div className="ideation-hero-frame">
             <img className={page.hero.className} src={page.hero.src} alt={page.hero.alt} />
           </div>
         ) : (
