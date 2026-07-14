@@ -105,3 +105,18 @@
 }
 .references-list a { color: var(--muted); text-decoration: underline; word-break: break-word; }
 .references-list a:hover { color: var(--secondary); }
+
+.wearable-findings {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wearable-findings p {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}

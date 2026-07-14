@@ -1,0 +1,87 @@
+.about-exp {
+  min-width: 0;
+}
+
+.about-exp-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.about-exp-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.about-exp-trigger {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  padding: 14px 0;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  transition: opacity 0.16s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.about-exp-trigger .edu-head {
+  width: 100%;
+}
+
+.about-exp-trigger .edu-degree {
+  margin-bottom: 0;
+}
+
+.about-exp-trigger:hover {
+  opacity: 0.72;
+}
+
+.about-exp-trigger.is-active {
+  opacity: 1;
+}
+
+.about-exp-panel {
+  overflow: hidden;
+}
+
+.about-exp-panel-inner {
+  padding: 0 0 12px;
+}
+
+.about-exp-details {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.about-exp-details li {
+  position: relative;
+  padding-left: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--secondary);
+}
+
+.about-exp-details li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-exp-trigger {
+    transition: none;
+  }
+}

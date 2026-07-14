@@ -3,6 +3,10 @@
   position: relative;
   vertical-align: baseline;
   overflow: hidden;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
 }
 
 .text-rotate-inner,
@@ -10,6 +14,26 @@
   display: inline-flex;
   flex-wrap: wrap;
   white-space: pre-wrap;
+  align-items: baseline;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+
+.text-rotate-word {
+  display: inline-flex;
+  align-items: baseline;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.text-rotate-element {
+  display: inline-block;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
 }
 
 .text-rotate-sr-only {
@@ -22,14 +46,6 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-
-.text-rotate-word {
-  display: inline-flex;
-}
-
-.text-rotate-element {
-  display: inline-block;
 }
 
 .text-rotate-space {

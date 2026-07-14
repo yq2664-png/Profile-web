@@ -54,7 +54,7 @@ const REFERENCES = [
   </>,
 ];
 
-function ResearchBlock({ num, title, prose, findings, decision }) {
+function ResearchBlock({ num, title, prose, findings }) {
   return (
     <div className="proj-research-block">
       <h3 className="proj-research-title">
@@ -63,13 +63,11 @@ function ResearchBlock({ num, title, prose, findings, decision }) {
       </h3>
       <p className="uos-sec-prose">{prose}</p>
       <p className="proj-label">Research Findings</p>
-      <ul className="uos-sec-list">
+      <div className="uos-sec-callout wearable-findings">
         {findings.map((item) => (
-          <li key={item}>{item}</li>
+          <p key={item}>{item}</p>
         ))}
-      </ul>
-      <p className="proj-label">Design Decision</p>
-      <p className="uos-sec-callout">{decision}</p>
+      </div>
     </div>
   );
 }
@@ -135,46 +133,42 @@ export default function WearableContent() {
         <ResearchBlock
           num="01"
           title="Self-touch is a natural form of emotional regulation"
-          prose="Psychological research suggests that spontaneous self-touch is an important strategy for regulating emotions. Rather than being meaningless repetitive behaviour, self-touch has been associated with reduced physiological stress, increased feelings of safety, and restoration of emotional balance after stressful experiences."
+          prose="Psychological research suggests that spontaneous self-touch is an important strategy for regulating emotions. Rather than being meaningless repetitive behaviour, self-touch has been associated with reduced physiological stress, increased feelings of safety, and restoration of emotional balance after stressful experiences (Field, 2010; Morrison, 2016)."
           findings={[
             'Self-touch reduces physiological stress responses.',
             'Repetitive tactile behaviours naturally support emotional regulation.',
             'Touch increases perceived comfort and emotional security.',
           ]}
-          decision="Rather than replacing self-soothing behaviours with new interactions, Soothe Sleeve builds upon tactile habits users already perform unconsciously."
         />
         <ResearchBlock
           num="02"
           title="Pleasant touch is processed differently by the human body"
-          prose="Research in affective neuroscience has identified specialised C-tactile afferents, nerve fibres that respond specifically to slow, gentle touch. Activation of these pathways is associated with comfort, social bonding, parasympathetic regulation, and emotional wellbeing. Unlike visual or auditory feedback, touch directly shapes how emotions are experienced."
+          prose="Research in affective neuroscience has identified specialised C-tactile afferents, nerve fibres that respond specifically to slow, gentle touch. Activation of these pathways is associated with comfort, social bonding, parasympathetic regulation, and emotional wellbeing. Unlike visual or auditory feedback, touch directly shapes how emotions are experienced (McGlone et al., 2014)."
           findings={[
             'Pleasant touch activates dedicated affective sensory pathways.',
             'Gentle tactile stimulation promotes emotional wellbeing.',
             'Touch contributes to parasympathetic regulation and stress recovery.',
           ]}
-          decision="Instead of relying on screens or visual notifications, Soothe Sleeve communicates through soft textile materials and subtle haptic feedback."
         />
         <ResearchBlock
           num="03"
           title="Interaction emerges through the body"
-          prose="Research in Embodied Interaction argues that interaction is fundamentally shaped by bodily movement and physical engagement rather than screen-based interfaces alone. Similarly, Soma Design proposes that technology should deepen bodily awareness instead of competing for users' attention. These perspectives suggest that meaningful interaction can emerge from existing bodily habits rather than newly learned gestures."
+          prose="Research in Embodied Interaction argues that interaction is fundamentally shaped by bodily movement and physical engagement rather than screen-based interfaces alone (Dourish, 2001). Similarly, Soma Design proposes that technology should deepen bodily awareness instead of competing for users' attention (Höök, 2018). These perspectives suggest that meaningful interaction can emerge from existing bodily habits rather than newly learned gestures."
           findings={[
             'Interaction is grounded in bodily experience.',
             'Everyday bodily habits provide meaningful interaction opportunities.',
             'Technology can enhance body awareness rather than distract from it.',
           ]}
-          decision="Instead of asking users to learn new gestures, Soothe Sleeve integrates with familiar tactile behaviours that already occur naturally in everyday life."
         />
         <ResearchBlock
           num="04"
           title="Emotional wellbeing is becoming a global design challenge"
-          prose="According to the World Health Organization, approximately 301 million people worldwide live with anxiety disorders, making anxiety one of the most prevalent mental health conditions globally. Beyond clinical diagnoses, everyday stress affects a much broader population, highlighting the need for technologies that support emotional wellbeing in daily life."
+          prose="According to the World Health Organization, approximately 301 million people worldwide live with anxiety disorders, making anxiety one of the most prevalent mental health conditions globally. Beyond clinical diagnoses, everyday stress affects a much broader population, highlighting the need for technologies that support emotional wellbeing in daily life (World Health Organization [WHO], 2023)."
           findings={[
             '301 million people worldwide live with anxiety disorders.',
             'Anxiety disorders are among the most prevalent mental health conditions globally.',
             'Emotional wellbeing requires preventive as well as clinical support.',
           ]}
-          decision="Rather than positioning Soothe Sleeve as a medical device, the project focuses on supporting everyday emotional wellbeing through subtle and non-disruptive interaction."
         />
       </ProjectSection>
 
@@ -217,7 +211,7 @@ export default function WearableContent() {
         caption="System flow: user interaction → pressure sensor captures → system interprets → haptic output via textile feedback. The inner forearm placement is chosen for its density of C-tactile afferents — nerve fibers specialized for gentle, affective touch."
       />
 
-      <ProjectSection num="5" title="Why Vibration" titleId="wearable-vibration">
+      <ProjectSection num="5" title="Concept & Why Vibration" titleId="wearable-vibration">
         <p className="uos-sec-prose">
           Texture creates passive comfort; vibration adds active response. Familiar fabrics — knitted
           weaves, blankets, soft clothing — create emotional grounding through recognition. The sleeve

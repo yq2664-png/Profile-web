@@ -15,9 +15,9 @@ export default function HeroSection() {
       <div className="hero-fade">
         <p className="hero-bio">
           <span className="reveal-line">I&apos;m Yue Qin,</span>
-          <span className="reveal-line">a designer and researcher</span>
+          <span className="reveal-line">A designer and researcher</span>
           <span className="reveal-line">
-            exploring{' '}
+            Exploring{' '}
             <RotatingText
               texts={HERO_ROTATE_TEXTS}
               mainClassName="hero-rotate"
@@ -27,8 +27,9 @@ export default function HeroSection() {
             />
             .
           </span>
+          <span className="reveal-line">Creating meaningful connections</span>
           <span className="reveal-line">
-            I build wearables and embodied interfaces that connect{' '}
+            Between{' '}
             <RotatingText
               texts={HERO_CONNECT_TEXTS}
               mainClassName="hero-rotate"

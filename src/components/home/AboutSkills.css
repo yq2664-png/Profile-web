@@ -1,0 +1,51 @@
+.about-skills {
+  min-width: 0;
+  width: 100%;
+}
+
+.about-skills-row {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 16px 24px;
+}
+
+.about-skill-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  flex: 1 1 180px;
+}
+
+.about-skill-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.about-skill-detail {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--secondary);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+@media (max-width: 800px) {
+  .about-skills-row {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .about-skill-item {
+    flex: none;
+    width: 100%;
+  }
+}

@@ -1,7 +1,6 @@
 import { forwardRef } from 'react';
-import TextType from './TextType';
-
-const COVER_TITLE = 'Design that\nlives between\nbodies\u00A0and\u00A0systems';
+import CoverHeroTitle from './CoverHeroTitle';
+import SpecularButton from './SpecularButton';
 
 const CoverVideo = forwardRef(function CoverVideo(_props, ref) {
   return (
@@ -18,22 +17,28 @@ const CoverVideo = forwardRef(function CoverVideo(_props, ref) {
         <source src="/assets/cover.mp4" type="video/mp4" />
       </video>
       <div className="video-hero-overlay">
-        <TextType
-          as="h1"
-          text={COVER_TITLE}
-          typingSpeed={42}
-          initialDelay={400}
-          loop
-          pauseOnHover
-          showCursor
-          hideCursorWhileTyping={false}
-          cursorCharacter="|"
-          className="video-hero-title"
-        />
+        <CoverHeroTitle />
       </div>
-      <a href="#work" className="video-hero-cta">
+      <SpecularButton
+        href="#work"
+        className="video-hero-cta"
+        size="sm"
+        radius={6}
+        tint="#ffffff"
+        tintOpacity={0.12}
+        blur={12}
+        textColor="#ffffff"
+        lineColor="#ffffff"
+        baseColor="#ffffff"
+        intensity={1.15}
+        shineSize={14}
+        shineFade={36}
+        thickness={1.1}
+        followMouse
+        proximity={280}
+      >
         View Work
-      </a>
+      </SpecularButton>
       <div className="cover-video-hint">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
           <path

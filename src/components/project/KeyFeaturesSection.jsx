@@ -51,21 +51,6 @@ export default function KeyFeaturesSection() {
             loading="lazy"
           />
         </motion.figure>
-
-        <motion.blockquote
-          className="uos-kf-callout"
-          initial={{ opacity: 0, y: reduced ? 0 : 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: reduced ? 0 : 24 }}
-          transition={{ duration: reduced ? 0 : 0.65, delay: reduced ? 0 : 0.15, ease: EASE }}
-        >
-          <p className="uos-kf-callout-text">
-            Good product decisions come from understanding users—not just generating outputs.
-          </p>
-          <p className="uos-kf-callout-text">
-            User Research OS is designed to make that reasoning process more transparent, collaborative,
-            and actionable.
-          </p>
-        </motion.blockquote>
       </div>
     </section>
   );

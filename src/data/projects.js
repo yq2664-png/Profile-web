@@ -48,7 +48,7 @@ export const projects = {
             { p: 'Designers conduct interviews, analyze research, and brainstorm ideas to reduce uncertainty. Yet before a product reaches real users, many decisions still rely on intuition rather than evidence.' },
             { p: 'AI has become increasingly effective at organizing information and summarizing research, but it rarely helps designers explore different user perspectives or challenge their assumptions.' },
             { p: 'This led me to ask:' },
-            { callout: 'What if AI could help designers think like their users before real users ever interact with the product?' },
+            { callout: 'What if AI could help designers think from their users\u2019 perspectives and reduce unnecessary trial and error?' },
           ],
         },
         {

@@ -1,4 +1,6 @@
 import DecayCard from './DecayCard';
+import AboutExperience from './AboutExperience';
+import AboutSkills from './AboutSkills';
 
 export default function AboutSection() {
   return (
@@ -9,6 +11,7 @@ export default function AboutSection() {
       <div className="about-grid">
         <div className="about-main">
           <div data-aos="fade-up" data-aos-duration="800">
+            <p className="about-edu-label">Education</p>
             <ul className="edu-list">
               <li className="edu-item">
                 <div className="edu-head">
@@ -18,24 +21,18 @@ export default function AboutSection() {
                 <p className="edu-degree">
                   Master of Science in Integrated Design and Media · 2025 – 2027 (Expected)
                 </p>
-                <p className="edu-modules">
-                  Ideation &amp; Prototyping · Sensory Ecology · Creative Coding · Histories,
-                  Theories and Practices of Haptics · Wearable Technology · Interactive New Media
-                  with TouchDesigner
-                </p>
               </li>
               <li className="edu-item">
                 <div className="edu-head">
                   <p className="edu-school">Coventry University</p>
                   <p className="edu-loc">Coventry, United Kingdom</p>
                 </div>
-                <p className="edu-degree">
-                  Bachelor of Arts in Fashion and Accessories Design (Joint Program) · 2021 – 2025
-                </p>
-                <p className="edu-modules">
-                  First-Class Honours｜Fashion Design · Integrated Design · Visual Communications ·
-                  Introduction to Advertising
-                </p>
+                <div className="edu-degree-row">
+                  <p className="edu-degree">
+                    Bachelor of Arts in Fashion and Accessories Design (Joint Program) · 2021 – 2025
+                  </p>
+                  <p className="edu-honour">First-Class Honours</p>
+                </div>
               </li>
               <li className="edu-item">
                 <div className="edu-head">
@@ -48,29 +45,11 @@ export default function AboutSection() {
                 <p className="edu-detail">
                   Outstanding Graduate · Zhejiang Provincial Government Scholarship
                 </p>
-                <p className="edu-modules">
-                  Techniques of Fashion Illustration · Apparel Technology · Multimedia Technology and
-                  Application · Fashion Photography · Display Design
-                </p>
               </li>
             </ul>
-          </div>
-          <div className="skills-grid" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-            <div className="skill-group">
-              <h4>Research</h4>
-              <p>User Interviews · Contextual Inquiry · Journey Mapping · Usability Testing</p>
-            </div>
-            <div className="skill-group">
-              <h4>Code</h4>
-              <p>P5.js · JavaScript · Arduino · TouchDesigner</p>
-            </div>
-            <div className="skill-group">
-              <h4>Fabrication</h4>
-              <p>Apparel Technology · 3D Printing · Laser Cutting · Soldering · Knitting</p>
-            </div>
-            <div className="skill-group">
-              <h4>Design Tools</h4>
-              <p>Figma · Adobe Suite · Blender · Arduino IDE</p>
+
+            <div className="about-exp-block" data-aos="fade-up" data-aos-duration="800" data-aos-delay="120">
+              <AboutExperience />
             </div>
           </div>
         </div>
@@ -80,7 +59,7 @@ export default function AboutSection() {
             className="about-photo-wrap"
             data-aos="fade-up"
             data-aos-duration="800"
-            data-aos-delay="120"
+            data-aos-delay="80"
           >
             <DecayCard
               className="about-photo-decay"
@@ -93,9 +72,12 @@ export default function AboutSection() {
               edgeFeather={12}
             />
           </div>
-          <div className="about-aside-meta" data-aos="fade-up" data-aos-duration="800" data-aos-delay="160">
+          <div className="about-aside-meta" data-aos="fade-up" data-aos-duration="800" data-aos-delay="120">
             <h2 className="about-name">Yue Qin</h2>
             <p className="about-title">Fashion &amp; Accessories Designer · Creative Coder</p>
+          </div>
+          <div className="about-aside-skills" data-aos="fade-up" data-aos-duration="800" data-aos-delay="160">
+            <AboutSkills />
           </div>
         </aside>
       </div>
