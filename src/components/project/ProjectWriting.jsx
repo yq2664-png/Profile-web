@@ -5,7 +5,7 @@ export { UOSSectionShell as ProjectSection };
 export function ProjectImage({ src, alt, caption }) {
   return (
     <figure className="proj-media" data-aos="fade-up" data-aos-duration="800">
-      <img className="proj-media-img" src={src} alt={alt} loading="lazy" />
+      <img className="proj-media-img" src={src} alt={alt} loading="lazy" decoding="async" />
       {caption ? <figcaption className="proj-media-caption">{caption}</figcaption> : null}
     </figure>
   );
@@ -16,7 +16,7 @@ export function ProjectImageGrid({ images, caption, cols = 2 }) {
     <figure className="proj-media" data-aos="fade-up" data-aos-duration="800">
       <div className={`proj-media-grid cols-${cols}`}>
         {images.map((img) => (
-          <img key={img.src} src={img.src} alt={img.alt} loading="lazy" />
+          <img key={img.src} src={img.src} alt={img.alt} loading="lazy" decoding="async" />
         ))}
       </div>
       {caption ? <figcaption className="proj-media-caption">{caption}</figcaption> : null}

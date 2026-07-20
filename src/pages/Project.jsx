@@ -68,14 +68,32 @@ export default function Project() {
       {page.hero ? (
         slug === 'undergraduate' ? (
           <div className="ug-hero-frame">
-            <img className={page.hero.className} src={page.hero.src} alt={page.hero.alt} />
+            <img
+              className={page.hero.className}
+              src={page.hero.src}
+              alt={page.hero.alt}
+              fetchPriority="high"
+              decoding="async"
+            />
           </div>
         ) : slug === 'ideation' ? (
           <div className="ideation-hero-frame">
-            <img className={page.hero.className} src={page.hero.src} alt={page.hero.alt} />
+            <img
+              className={page.hero.className}
+              src={page.hero.src}
+              alt={page.hero.alt}
+              fetchPriority="high"
+              decoding="async"
+            />
           </div>
         ) : (
-          <img className={page.hero.className} src={page.hero.src} alt={page.hero.alt} />
+          <img
+            className={page.hero.className}
+            src={page.hero.src}
+            alt={page.hero.alt}
+            fetchPriority="high"
+            decoding="async"
+          />
         )
       ) : null}
       <ProjectMeta items={page.meta} actionLink={page.metaAction} />

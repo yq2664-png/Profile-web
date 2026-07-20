@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import AutoplayVideo from '../media/AutoplayVideo';
 import { biomaterialMarqueeImages } from '../../data/biomaterialImages';
 import { getProjectPath } from '../../data/projects';
 
@@ -25,9 +26,7 @@ export default function ExplorationSection() {
           </div>
           <Link to={getProjectPath('synthetic')} className="exploration-video-link" aria-label="Synthetic Ocean School">
             <div className="work-video-full">
-              <video autoPlay muted loop playsInline>
-                <source src="/assets/TD/td-final.mp4" type="video/mp4" />
-              </video>
+              <AutoplayVideo src="/assets/TD/td-final.mp4" />
             </div>
           </Link>
         </div>

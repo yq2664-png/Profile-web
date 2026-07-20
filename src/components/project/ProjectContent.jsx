@@ -2,6 +2,7 @@ import SystemDesignSection from './SystemDesignSection';
 import KeyFeaturesSection from './KeyFeaturesSection';
 import { UOSSectionShell } from './UOSSectionShell';
 import { ProjectImage } from './ProjectWriting';
+import AutoplayVideo from '../media/AutoplayVideo';
 
 function sectionTitleId(section) {
   const label = section.title ?? section.heading ?? 'section';
@@ -48,9 +49,7 @@ function FlowSection({ section }) {
 function VideoSection({ section }) {
   return (
     <div className="uos-video-wrap" data-aos="fade-up" data-aos-duration="800">
-      <video controls autoPlay muted loop playsInline>
-        <source src={section.src} type="video/mp4" />
-      </video>
+      <AutoplayVideo src={section.src} controls poster={section.poster} />
     </div>
   );
 }
@@ -58,7 +57,7 @@ function VideoSection({ section }) {
 function ShotSection({ section }) {
   return (
     <div className="uos-shot" data-aos="fade-up" data-aos-duration="800">
-      <img src={section.image} alt={section.alt} loading="lazy" />
+      <img src={section.image} alt={section.alt} loading="lazy" decoding="async" />
       {section.caption ? (
         <p className="uos-shot-caption">
           {section.caption.before}

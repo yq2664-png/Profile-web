@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
 import { ProjectImage, ProjectSection, ProjectTags } from '../ProjectWriting';
+import { useProjectMediaLightbox } from '../../../hooks/useProjectMediaLightbox';
+import ProjectMediaLightbox from '../ProjectMediaLightbox';
 import '../uos-sections.css';
 
 const TAGS = [
@@ -46,66 +47,10 @@ const IMAGES = [
 ];
 
 export default function SensoryContent() {
-  const [lightbox, setLightbox] = useState(null);
-
-  useEffect(() => {
-    const onClick = (e) => {
-      const img = e.target.closest('.project-page-sensory .proj-media img');
-      if (!img) return;
-
-      const src = img.getAttribute('src') ?? '';
-      const index = IMAGES.findIndex(
-        (item) => src === item.src || src.endsWith(item.src.replace(/^\//, '')),
-      );
-      if (index < 0) return;
-
-      setLightbox({ index, items: IMAGES });
-      document.body.style.overflow = 'hidden';
-    };
-
-    document.addEventListener('click', onClick);
-    return () => document.removeEventListener('click', onClick);
-  }, []);
-
-  useEffect(() => {
-    if (!lightbox) return undefined;
-
-    const onKey = (e) => {
-      if (e.key === 'Escape') {
-        setLightbox(null);
-        document.body.style.overflow = '';
-      }
-      if (e.key === 'ArrowLeft') {
-        setLightbox((lb) => ({
-          ...lb,
-          index: (lb.index - 1 + lb.items.length) % lb.items.length,
-        }));
-      }
-      if (e.key === 'ArrowRight') {
-        setLightbox((lb) => ({
-          ...lb,
-          index: (lb.index + 1) % lb.items.length,
-        }));
-      }
-    };
-
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [lightbox]);
-
-  const closeLightbox = () => {
-    setLightbox(null);
-    document.body.style.overflow = '';
-  };
-
-  const stepLightbox = (dir) => {
-    setLightbox((lb) => ({
-      ...lb,
-      index: (lb.index + dir + lb.items.length) % lb.items.length,
-    }));
-  };
-
-  const activeImage = lightbox ? lightbox.items[lightbox.index] : null;
+  const { lightbox, closeLightbox, stepLightbox, activeImage } = useProjectMediaLightbox(
+    IMAGES,
+    '.project-page-sensory .proj-media img',
+  );
 
   return (
     <>
@@ -220,53 +165,12 @@ export default function SensoryContent() {
 
       <ProjectTags tags={TAGS} />
 
-      <div
-        className={`ideation-lightbox${lightbox ? ' is-open' : ''}`}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Image viewer"
-        aria-hidden={!lightbox}
-        onClick={(e) => e.target.classList.contains('ideation-lightbox') && closeLightbox()}
-      >
-        <button type="button" className="ideation-lightbox-close" aria-label="Close" onClick={closeLightbox}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
-        </button>
-        {activeImage ? (
-          <>
-            <button
-              type="button"
-              className="ideation-lightbox-nav ideation-lightbox-prev"
-              aria-label="Previous image"
-              onClick={() => stepLightbox(-1)}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M15 4l-8 8 8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-            </button>
-            <figure className="ideation-lightbox-figure" onClick={(e) => e.stopPropagation()}>
-              <img className="ideation-lightbox-img" src={activeImage.src} alt={activeImage.alt} />
-              {activeImage.caption ? (
-                <figcaption className="ideation-lightbox-caption">{activeImage.caption}</figcaption>
-              ) : null}
-            </figure>
-            <button
-              type="button"
-              className="ideation-lightbox-nav ideation-lightbox-next"
-              aria-label="Next image"
-              onClick={() => stepLightbox(1)}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M9 4l8 8-8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-            </button>
-            <span className="ideation-lightbox-counter">
-              {lightbox.index + 1} / {lightbox.items.length}
-            </span>
-          </>
-        ) : null}
-      </div>
+      <ProjectMediaLightbox
+        lightbox={lightbox}
+        activeImage={activeImage}
+        onClose={closeLightbox}
+        onStep={stepLightbox}
+      />
     </>
   );
 }

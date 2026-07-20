@@ -1,4 +1,5 @@
 import { ProjectSection } from '../ProjectWriting';
+import AutoplayVideo from '../../media/AutoplayVideo';
 import '../uos-sections.css';
 import '../../../styles/project-synthetic.css';
 
@@ -13,9 +14,7 @@ export default function SyntheticContent() {
   return (
     <>
       <div className="td-video-wrap" data-aos="fade-up" data-aos-duration="800">
-        <video controls autoPlay muted loop playsInline>
-          <source src="/assets/TD/td-final.mp4" type="video/mp4" />
-        </video>
+        <AutoplayVideo src="/assets/TD/td-final.mp4" controls />
       </div>
 
       <ProjectSection

@@ -1,3 +1,5 @@
+import LightboxImage from './LightboxImage';
+
 export default function ProjectMediaLightbox({ lightbox, activeImage, onClose, onStep }) {
   return (
     <div
@@ -26,7 +28,7 @@ export default function ProjectMediaLightbox({ lightbox, activeImage, onClose, o
           ) : null}
 
           <figure className="ideation-lightbox-figure" onClick={(e) => e.stopPropagation()}>
-            <img className="ideation-lightbox-img" src={activeImage.src} alt={activeImage.alt} />
+            <LightboxImage src={activeImage.src} alt={activeImage.alt} />
             {activeImage.caption ? (
               <figcaption className="ideation-lightbox-caption">{activeImage.caption}</figcaption>
             ) : null}

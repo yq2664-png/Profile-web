@@ -29,6 +29,7 @@ export const projects = {
         {
           type: 'video',
           src: '/assets/User OS/Overall.mp4',
+          poster: '/assets/User OS/cover - user OS.png',
         },
         {
           type: 'overview',
