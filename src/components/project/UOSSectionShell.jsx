@@ -8,7 +8,7 @@ export function UOSSectionShell({ num, title, titleId, first, children }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.12 });
   const reduced = useReducedMotion();
-  const displayTitle = num ? `${num} ${title}` : title;
+  const displayTitle = [num, title].filter(Boolean).join(' ');
 
   return (
     <section

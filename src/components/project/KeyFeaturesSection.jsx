@@ -32,22 +32,8 @@ export default function KeyFeaturesSection() {
         >
           <img
             className="uos-kf-overview-img"
-            src="/assets/User OS/Core Capabilities.png"
-            alt="Core Capabilities — user perspective simulation, evidence-based reasoning, multi-lens evaluation, and actionable product decisions"
-            loading="lazy"
-          />
-        </motion.figure>
-
-        <motion.figure
-          className="uos-kf-screenshot"
-          initial={{ opacity: 0, y: reduced ? 0 : 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: reduced ? 0 : 24 }}
-          transition={{ duration: reduced ? 0 : 0.55, delay: reduced ? 0 : 0.1, ease: EASE }}
-        >
-          <img
-            className="uos-kf-overview-img"
-            src="/assets/User OS/screenshoot.jpg"
-            alt="User Research OS product screenshot"
+            src="/assets/User OS/Perspective Convergence Diagram.png"
+            alt="Perspective Convergence Diagram — real voices, simulated perspectives, and designer-curated insights converging into transparent reasoning and product decisions"
             loading="lazy"
           />
         </motion.figure>

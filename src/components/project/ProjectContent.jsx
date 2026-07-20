@@ -1,6 +1,7 @@
 import SystemDesignSection from './SystemDesignSection';
 import KeyFeaturesSection from './KeyFeaturesSection';
 import { UOSSectionShell } from './UOSSectionShell';
+import { ProjectImage } from './ProjectWriting';
 
 function sectionTitleId(section) {
   const label = section.title ?? section.heading ?? 'section';
@@ -71,7 +72,10 @@ function ShotSection({ section }) {
 }
 
 function NarrativeSection({ section, first }) {
-  const titleId = sectionTitleId(section);
+  const titleId = sectionTitleId({
+    ...section,
+    heading: section.heading || section.num || 'section',
+  });
 
   return (
     <UOSSectionShell num={section.num} title={section.heading} titleId={titleId} first={first}>
@@ -90,6 +94,11 @@ function NarrativeSection({ section, first }) {
             <p className="uos-sec-callout" key={index}>
               {block.callout}
             </p>
+          );
+        }
+        if (block.image) {
+          return (
+            <ProjectImage key={index} src={block.image} alt={block.alt ?? ''} caption={block.caption} />
           );
         }
         return (

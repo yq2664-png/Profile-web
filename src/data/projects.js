@@ -45,30 +45,35 @@ export const projects = {
           heading: 'Inspiration',
           blocks: [
             { p: 'Every product decision begins with an assumption about users.' },
-            { p: 'Designers conduct interviews, analyze research, and brainstorm ideas to reduce uncertainty. Yet before a product reaches real users, many decisions still rely on intuition rather than evidence.' },
-            { p: 'AI has become increasingly effective at organizing information and summarizing research, but it rarely helps designers explore different user perspectives or challenge their assumptions.' },
+            {
+              p: 'Designers conduct interviews, analyze research, and brainstorm ideas to reduce uncertainty. Yet before products reach real users, many decisions still rely on intuition rather than evidence.',
+            },
+            {
+              p: 'While AI has become increasingly effective at organizing information and summarizing research, it rarely supports the reasoning process behind design decisions.',
+            },
             { p: 'This led me to ask:' },
-            { callout: 'What if AI could help designers think from their users\u2019 perspectives and reduce unnecessary trial and error?' },
+            {
+              callout:
+                'What if AI could help designers think from their users\u2019 perspectives and reduce unnecessary trial and error?',
+            },
           ],
         },
         {
           type: 'narrative',
           num: '2',
-          heading: 'Idea Validation',
+          heading: 'Insight',
           blocks: [
-            { p: 'To validate the opportunity, I interviewed UX designers, product designers, and design researchers.' },
-            { p: 'Despite their different workflows, they shared similar challenges:' },
+            { p: 'Understanding users rarely comes from a single source.' },
             {
-              list: [
-                'Research is scattered across multiple tools.',
-                'Turning findings into design decisions is time-consuming.',
-                'Brainstorming often relies on intuition.',
-                'AI summarizes information but rarely supports design thinking.',
-              ],
+              p: 'Designers naturally combine different perspectives throughout the design process\u2014from online user voices and existing research to personal observations and imagined user archetypes. However, these perspectives remain disconnected, making it difficult to compare viewpoints and turn them into confident product decisions.',
             },
-            { p: 'One insight stood out:' },
-            { callout: "Designers don't need another AI generator—they need an AI collaborator that helps them think." },
-            { p: 'This shifted the project from improving efficiency to supporting better design decisions.' },
+            {
+              p: 'This insight became the foundation of User Research OS: a reasoning workflow that brings together real user voices, AI-simulated perspectives, and designer-curated insights into one structured decision-making process.',
+            },
+            {
+              image: '/assets/User OS/insight.png',
+              alt: 'Insight — combining real user voices, simulated perspectives, and designer-curated insights',
+            },
           ],
         },
         {
@@ -76,16 +81,17 @@ export const projects = {
           num: '3',
           heading: 'Design Opportunity',
           blocks: [
-            { p: 'Based on these findings, I reframed the design challenge.' },
-            { p: 'Instead of helping designers organize research faster, I wanted to help them:' },
+            { p: 'User understanding shouldn\'t be limited to one source.' },
             {
-              list: [
-                'understand users more deeply',
-                'explore multiple perspectives',
-                'validate assumptions before making design decisions',
-              ],
+              p: 'This project investigates how AI can support designers by bringing together multiple forms of evidence—real voices, simulated perspectives, and designer-curated insights—into one transparent reasoning process.',
             },
-            { callout: 'Rather than building another AI persona or PRD generator, I envisioned User Research OS as an AI-supported design research workspace—a collaborative thinking partner that helps designers turn research into product decisions.' },
+            {
+              p: 'The goal is not simply to generate more feedback, but to expand the breadth of perspectives available to designers and support the entire journey from discovery to actionable product decisions.',
+            },
+            {
+              image: '/assets/User OS/Design opportunity.jpg',
+              alt: 'Design Opportunity — expanding perspectives from discovery to actionable product decisions',
+            },
           ],
         },
         { type: 'keyFeatures' },
@@ -190,8 +196,8 @@ export const projects = {
       meta: [
         { label: 'Course', value: 'Ideation & Prototyping' },
         { label: 'School', value: 'NYU Integrated Design & Media' },
-        { label: 'Year', value: '2025–2026' },
-        { label: 'Role', value: 'Researcher · UX Designer' },
+        { label: 'Time', value: '2025 11-12' },
+        { label: 'Role', value: 'Researcher · UI/UX Designer' },
         { label: 'Tools', value: 'Figma · Card Sorting · User Interviews' },
       ],
       sections: [],
