@@ -73,6 +73,8 @@ export const projects = {
             {
               image: '/assets/User OS/insight.png',
               alt: 'Insight — combining real user voices, simulated perspectives, and designer-curated insights',
+              caption:
+                'Figure 1 — Insight synthesis: designers combine online user voices, existing research, personal observations, and imagined user archetypes, yet these perspectives remain fragmented and difficult to compare.',
             },
           ],
         },
@@ -91,6 +93,8 @@ export const projects = {
             {
               image: '/assets/User OS/Design opportunity.jpg',
               alt: 'Design Opportunity — expanding perspectives from discovery to actionable product decisions',
+              caption:
+                'Figure 2 — Design opportunity: mapping how fragmented evidence, disconnected reasoning, and low decision confidence can be addressed by integrating multiple perspectives into transparent, evidence-based product decisions.',
             },
           ],
         },
@@ -125,7 +129,7 @@ export const projects = {
     home: {
       description:
         'A modular haptic garment that transforms repetitive touch into a calming ritual — wearable technology as emotional care, not efficiency.',
-      tags: ['Wearable', 'Physical Computing', 'Arduino'],
+      tags: ['Wearable Computing', 'Embodied Interaction', 'Affective Haptics'],
       cover: '/assets/cover-wearable.jpg',
       coverAlt: 'Soothe Sleeve',
     },
@@ -153,7 +157,7 @@ export const projects = {
     home: {
       description:
         'An installation that turns live weather data, ambient sound, and movement into a visual portrait of an emotional moment — then mails it to you.',
-      tags: ['Interactive Installation', 'Creative Coding', 'P5.js'],
+      tags: ['Interactive Installation', 'Multisensory Experience', 'Generative Media'],
       cover: '/assets/cover-sensory.png',
       coverAlt: 'Inner Weather',
     },
@@ -181,7 +185,7 @@ export const projects = {
     home: {
       description:
         'Mapping the structural logic that makes fast fashion inevitable — supply chains, carbon cycles, and the limits of consumer choice.',
-      tags: ['Research', 'Systems Thinking', 'Data Visualization'],
+      tags: ['Transparency', 'Interaction', 'Sustainable Fashion'],
       cover: '/assets/cover-ideation.jpg',
       coverAlt: 'Slow Fashion: Rethinking the System',
       imageContain: true,
@@ -210,7 +214,7 @@ export const projects = {
     home: {
       description:
         'A three-look womenswear collection that treats the garment as architecture — a mobile territory the wearer carries with them.',
-      tags: ['Fashion Design', 'Pattern Construction', '3D Rendering'],
+      tags: ['Fashion Design', 'Spatial Exploration', 'Material Experimentation'],
       cover: '/assets/Silent Sanctuary /ug_group.jpg',
       coverAlt: 'Silent Sanctuary',
     },
@@ -234,22 +238,24 @@ export const projects = {
 
   synthetic: {
     slug: 'synthetic',
-    title: 'Synthetic Ocean',
+    title: 'Synthetic Ocean School',
     home: {
       description: null,
       tags: [],
       cover: null,
-      coverAlt: 'Synthetic Ocean',
+      coverAlt: 'Synthetic Ocean School',
       isVideo: true,
       videoSrc: '/assets/TD/td-final.mp4',
     },
     page: {
-      title: 'Synthetic Ocean',
+      title: 'Synthetic Ocean School',
       hero: null,
       meta: [
-        { label: 'Type', value: 'Generative Visuals' },
+        { label: 'School', value: 'NYU Integrated Design & Media' },
+        { label: 'Time', value: '2026 4–5' },
+        { label: 'Type', value: 'Digital Media' },
         { label: 'Tool', value: 'TouchDesigner' },
-        { label: 'Role', value: 'Designer · Creative Coder' },
+        { label: 'Role', value: 'Designer' },
       ],
       sections: [],
     },
@@ -269,7 +275,7 @@ export const projects = {
       title: 'Bio Material',
       hero: null,
       meta: [
-        { label: 'Type', value: 'Material Research' },
+        { label: 'Type', value: 'Bio Material' },
         { label: 'Focus', value: 'Biodegradable & Bio-based Textiles' },
         { label: 'Role', value: 'Designer · Researcher' },
       ],

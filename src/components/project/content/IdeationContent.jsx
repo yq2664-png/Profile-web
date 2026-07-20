@@ -3,14 +3,9 @@ import { ProjectImage, ProjectSection, ProjectTags } from '../ProjectWriting';
 import '../uos-sections.css';
 
 const TAGS = [
-  'UX Research',
-  'Systems Thinking',
-  'Card Sorting',
-  'User Interviews',
-  'Wireframing',
-  'Figma',
-  'Fashion Systems',
-  'Sustainability',
+  'Transparency',
+  'Interaction',
+  'Sustainable Fashion',
 ];
 
 const IMAGES = [

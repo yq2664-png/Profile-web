@@ -21,6 +21,16 @@
   margin: 0;
 }
 
+.uos-kf-overview .proj-media {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.uos-kf-overview + .uos-kf-overview {
+  margin-top: 32px;
+}
+
 .uos-kf-screenshot {
   margin: 32px 0 0;
 }

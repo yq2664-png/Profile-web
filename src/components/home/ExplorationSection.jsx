@@ -18,12 +18,12 @@ export default function ExplorationSection() {
       <div className="exploration-list">
         <div className="exploration-item" data-aos="fade-up" data-aos-duration="800">
           <div className="exploration-item-header">
-            <h3 className="work-row-title">Synthetic Ocean</h3>
+            <h3 className="work-row-title">Synthetic Ocean School</h3>
             <Link to={getProjectPath('synthetic')} className="bio-block-view">
               View <span aria-hidden="true">→</span>
             </Link>
           </div>
-          <Link to={getProjectPath('synthetic')} className="exploration-video-link" aria-label="Synthetic Ocean">
+          <Link to={getProjectPath('synthetic')} className="exploration-video-link" aria-label="Synthetic Ocean School">
             <div className="work-video-full">
               <video autoPlay muted loop playsInline>
                 <source src="/assets/TD/td-final.mp4" type="video/mp4" />

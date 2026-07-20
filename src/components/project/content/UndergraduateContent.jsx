@@ -119,14 +119,9 @@ const POSTERS = [
 ];
 
 const TAGS = [
-  'Womenswear',
-  'Graduation Collection',
-  'Spatial Design',
-  'Pattern Construction',
-  'Fabric Modification',
-  '3D Rendering',
-  'Coventry University',
-  'First-Class Honours',
+  'Fashion Design',
+  'Spatial Exploration',
+  'Material Experimentation',
 ];
 
 export default function UndergraduateContent() {

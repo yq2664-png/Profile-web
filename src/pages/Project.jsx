@@ -57,6 +57,7 @@ export default function Project() {
     slug === 'undergraduate' ? 'project-page-ug' : '',
     slug === 'ideation' ? 'project-page-ideation' : '',
     slug === 'sensory' ? 'project-page-sensory' : '',
+    slug === 'user-os' ? 'project-page-uos' : '',
   ]
     .filter(Boolean)
     .join(' ');

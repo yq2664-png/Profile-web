@@ -22,6 +22,10 @@ export const biomaterialIndexRows = [
   {
     id: 'row-leather-application',
     detailMode: 'row',
+    detailCaption: {
+      title: 'BIO LEATHER',
+      materials: 'Agar · Gelatin · Glycerin · Water',
+    },
     tiles: [
       { file: 'BIO Leather1.JPG' },
       { file: 'BIO Leather2.JPG' },
@@ -31,6 +35,10 @@ export const biomaterialIndexRows = [
   {
     id: 'row-ceramic',
     detailMode: 'row',
+    detailCaption: {
+      title: 'BIO CERAMIC',
+      materials: 'Water · Gelatin · Eggshell powder',
+    },
     tiles: [{ file: 'ceramic1.JPG' }, { file: 'ceramic2.JPG' }],
   },
 ];
@@ -40,7 +48,43 @@ export function biomaterialSrc(file) {
 }
 
 export function biomaterialDisplayName(file) {
-  return file.replace(/\.[^.]+$/, '').toUpperCase();
+  const baseName = file.replace(/\.[^.]+$/, '');
+  const numberedMatch = baseName.match(/^(.+?)(\d+)$/);
+  const bioPrefix = baseName.toLowerCase().startsWith('ceramic') ? 'Bio ' : '';
+
+  if (numberedMatch) {
+    return `${bioPrefix}${numberedMatch[1].trim()} · ${numberedMatch[2]}`.toUpperCase();
+  }
+
+  return `${bioPrefix}${baseName}`.toUpperCase();
+}
+
+export function biomaterialMaterials(file) {
+  const materialsByFile = {
+    'Bio yarn.jpg': 'Glycerin · Sodium alginate · Water · Calcium chloride',
+    'Bio plastic.jpg':
+      'Glycerin · Sodium alginate · Water\nSunflower oil · Calcium chloride',
+    'BIO Leather1.JPG': 'Agar · Gelatin · Glycerin · Water',
+    'BIO Leather2.JPG': 'Agar · Gelatin · Glycerin · Water',
+    'Material application.jpg': 'Agar · Gelatin · Glycerin · Water',
+    'ceramic1.JPG': 'Water · Gelatin · Eggshell powder',
+    'ceramic2.JPG': 'Water · Gelatin · Eggshell powder',
+  };
+
+  return materialsByFile[file] ?? '';
+}
+
+export function biomaterialLightboxItems(tiles, sharedDetailCaption) {
+  return tiles.map((tile) => {
+    const title = biomaterialDisplayName(tile.file);
+    const materials = sharedDetailCaption?.materials ?? biomaterialMaterials(tile.file);
+
+    return {
+      src: biomaterialSrc(tile.file),
+      alt: title,
+      caption: materials ? `${title}\n${materials}` : title,
+    };
+  });
 }
 
 export function getBiomaterialRowById(id) {

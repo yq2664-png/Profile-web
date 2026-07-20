@@ -8,14 +8,9 @@ import '../uos-sections.css';
 import '../../../styles/project-wearable.css';
 
 const TAGS = [
-  'Wearable Design',
-  'Physical Computing',
-  'Arduino',
-  'Haptic Feedback',
-  'Pressure Sensors',
-  'Pattern Cutting',
-  'Anxiety Design',
+  'Wearable Computing',
   'Embodied Interaction',
+  'Affective Haptics',
 ];
 
 const REFERENCES = [

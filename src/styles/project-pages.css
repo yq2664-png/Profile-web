@@ -186,9 +186,11 @@
   .uos-callout { font-size: 18px; }
 }
 
-/* Ideation — clickable images + light modal */
+/* Ideation / Sensory / userOS — clickable images + light modal */
 .project-page-ideation .proj-media img,
-.project-page-sensory .proj-media img {
+.project-page-sensory .proj-media img,
+.project-page-uos .proj-media img,
+.project-page-uos .uos-kf-overview img {
   cursor: zoom-in;
 }
 

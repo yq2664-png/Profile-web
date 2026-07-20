@@ -1,16 +1,23 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { lockBodyScroll, resetBodyScrollLock, unlockBodyScroll } from '../../../utils/scrollLock';
+import { useBioDetailLayoutFit } from '../../../hooks/useBioDetailLayoutFit';
+import { useProjectMediaLightbox } from '../../../hooks/useProjectMediaLightbox';
 import ProjectNav from '../ProjectNav';
+import ProjectMediaLightbox from '../ProjectMediaLightbox';
 import '../uos-sections.css';
+import '../../../styles/project-pages.css';
 import {
   biomaterialDisplayName,
   biomaterialIndexRows,
+  biomaterialLightboxItems,
+  biomaterialMaterials,
   biomaterialSrc,
   getBiomaterialDetailFromHash,
 } from '../../../data/biomaterialImages';
 
 const BIO_META = [
-  { label: 'Type', value: 'Material Research' },
+  { label: 'Type', value: 'Bio Material' },
   { label: 'Focus', value: 'Biodegradable & Bio-based Textiles' },
   { label: 'Role', value: 'Designer · Researcher' },
 ];
@@ -27,25 +34,45 @@ function getDetailFromHash() {
   return getBiomaterialDetailFromHash(hash.slice('detail-'.length));
 }
 
-function handleFrameImageLoad(event) {
+function handleFrameImageLoad(event, fitLayout) {
   const img = event.currentTarget;
   const frame = img.parentElement;
   const { naturalWidth, naturalHeight } = img;
 
-  if (!naturalWidth || !naturalHeight || naturalWidth <= naturalHeight) {
-    return;
+  if (naturalWidth && naturalHeight && naturalWidth > naturalHeight) {
+    frame.classList.add('bio-essesi-frame--wide');
+    frame.style.setProperty('--bio-frame-aspect', String(naturalWidth / naturalHeight));
   }
 
-  frame.classList.add('bio-essesi-frame--wide');
-  frame.style.setProperty('--bio-frame-aspect', String(naturalWidth / naturalHeight));
+  fitLayout?.();
 }
 
 export default function BiomaterialContent() {
   const location = useLocation();
   const [activeDetail, setActiveDetail] = useState(getDetailFromHash);
+  const detailOpenRef = useRef(Boolean(getDetailFromHash()));
 
   const isDetailOpen = Boolean(activeDetail);
   const detailTiles = activeDetail?.tiles ?? [];
+  const sharedDetailCaption = activeDetail?.row?.detailCaption;
+  const { pageRef, detailRef, panelRef, fitLayout } = useBioDetailLayoutFit(
+    isDetailOpen,
+    activeDetail?.row?.id ?? '',
+  );
+  const lightboxImages = useMemo(
+    () => (isDetailOpen ? biomaterialLightboxItems(detailTiles, sharedDetailCaption) : []),
+    [detailTiles, isDetailOpen, sharedDetailCaption],
+  );
+  const {
+    lightbox,
+    closeLightbox,
+    stepLightbox,
+    activeImage,
+  } = useProjectMediaLightbox(
+    lightboxImages,
+    '.bio-essesi-detail-gallery .bio-essesi-detail-frame img',
+    { manageBodyScroll: false },
+  );
 
   const openDetail = useCallback((row, tile) => {
     const hashId = row.detailMode === 'tile' ? tile.tileId : row.id;
@@ -53,16 +80,30 @@ export default function BiomaterialContent() {
   }, []);
 
   const applyDetailState = useCallback((detail) => {
+    const willOpen = Boolean(detail);
+
+    if (!detailOpenRef.current && willOpen) {
+      lockBodyScroll();
+    } else if (detailOpenRef.current && !willOpen) {
+      unlockBodyScroll();
+    }
+
+    detailOpenRef.current = willOpen;
     setActiveDetail(detail);
-    document.body.classList.toggle('bio-essesi-detail-open', Boolean(detail));
+    document.body.classList.toggle('bio-essesi-detail-open', willOpen);
   }, []);
 
   const closeDetail = useCallback(() => {
+    if (lightbox) {
+      closeLightbox();
+    }
+
     if (window.location.hash) {
       window.history.replaceState(null, '', location.pathname);
     }
+
     applyDetailState(null);
-  }, [location.pathname, applyDetailState]);
+  }, [applyDetailState, closeLightbox, lightbox, location.pathname]);
 
   useEffect(() => {
     document.body.classList.add('bio-essesi-active');
@@ -75,12 +116,14 @@ export default function BiomaterialContent() {
     window.addEventListener('hashchange', syncDetailState);
     return () => {
       window.removeEventListener('hashchange', syncDetailState);
+      detailOpenRef.current = false;
+      resetBodyScrollLock();
       document.body.classList.remove('bio-essesi-active', 'bio-essesi-detail-open');
     };
   }, [applyDetailState]);
 
   return (
-    <div className={`bio-essesi-page${isDetailOpen ? ' is-detail-open' : ''}`}>
+    <div ref={pageRef} className={`bio-essesi-page${isDetailOpen ? ' is-detail-open' : ''}`}>
       {!isDetailOpen ? <ProjectNav title="Bio Material" /> : null}
 
       <main className="bio-essesi-index" aria-hidden={isDetailOpen}>
@@ -115,13 +158,14 @@ export default function BiomaterialContent() {
       </main>
 
       <div
+        ref={detailRef}
         className={`bio-essesi-detail${isDetailOpen ? ' is-open' : ''}`}
         role="dialog"
         aria-modal="true"
         aria-hidden={!isDetailOpen}
         onClick={closeDetail}
       >
-        <div className="bio-essesi-detail-panel" onClick={(event) => event.stopPropagation()}>
+        <div ref={panelRef} className="bio-essesi-detail-panel" onClick={(event) => event.stopPropagation()}>
           <button type="button" className="bio-essesi-close" onClick={closeDetail}>
             Close
           </button>
@@ -138,28 +182,54 @@ export default function BiomaterialContent() {
           </div>
 
           {detailTiles.length > 0 ? (
-            <div
-              className={`bio-essesi-detail-gallery bio-essesi-row bio-essesi-row--${detailTiles.length}`}
-            >
-              {detailTiles.map((tile) => (
-                <figure key={tile.file} className="bio-essesi-detail-tile">
-                  <div className="bio-essesi-frame bio-essesi-detail-frame">
-                    <img
-                      src={biomaterialSrc(tile.file)}
-                      alt={biomaterialDisplayName(tile.file)}
-                      loading="lazy"
-                      onLoad={handleFrameImageLoad}
-                    />
-                  </div>
-                  <figcaption className="bio-essesi-detail-caption">
-                    {biomaterialDisplayName(tile.file)}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+            <>
+              <div
+                className={`bio-essesi-detail-gallery bio-essesi-row bio-essesi-row--${detailTiles.length}${sharedDetailCaption ? ' bio-essesi-detail-gallery--shared-caption' : ''}`}
+              >
+                {detailTiles.map((tile) => (
+                  <figure key={tile.file} className="bio-essesi-detail-tile">
+                    <div className="bio-essesi-frame bio-essesi-detail-frame">
+                      <img
+                        src={biomaterialSrc(tile.file)}
+                        alt={biomaterialDisplayName(tile.file)}
+                        loading="lazy"
+                        onLoad={(event) => handleFrameImageLoad(event, fitLayout)}
+                      />
+                    </div>
+                    {!sharedDetailCaption ? (
+                      <figcaption className="bio-essesi-detail-caption">
+                        <span className="bio-essesi-detail-caption-title">
+                          {biomaterialDisplayName(tile.file)}
+                        </span>
+                        {biomaterialMaterials(tile.file) ? (
+                          <span className="bio-essesi-detail-caption-materials">
+                            {biomaterialMaterials(tile.file)}
+                          </span>
+                        ) : null}
+                      </figcaption>
+                    ) : null}
+                  </figure>
+                ))}
+              </div>
+              {sharedDetailCaption ? (
+                <figcaption className="bio-essesi-detail-caption bio-essesi-detail-caption--shared">
+                  <span className="bio-essesi-detail-caption-title">{sharedDetailCaption.title}</span>
+                  <span className="bio-essesi-detail-caption-materials">
+                    {sharedDetailCaption.materials}
+                  </span>
+                </figcaption>
+              ) : null}
+            </>
           ) : null}
         </div>
       </div>
+
+      <ProjectMediaLightbox
+        lightbox={lightbox}
+        activeImage={activeImage}
+        onClose={closeLightbox}
+        onStep={stepLightbox}
+      />
     </div>
   );
 }

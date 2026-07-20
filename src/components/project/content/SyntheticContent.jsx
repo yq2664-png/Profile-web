@@ -19,7 +19,7 @@ export default function SyntheticContent() {
       </div>
 
       <ProjectSection
-        title="Synthetic Ocean"
+        title="Synthetic Ocean School"
         titleId="synthetic-overview"
         first
       >

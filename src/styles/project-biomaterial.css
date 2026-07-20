@@ -5,6 +5,10 @@
   --bio-header-h: 56px;
   --bio-label-h: 16px;
   --bio-label-gap: 4px;
+  --bio-detail-copy-gap: 72px;
+  --bio-detail-close-gap: 48px;
+  --bio-detail-padding-y: 72px;
+  --bio-detail-gallery-vh: 32vh;
   --bio-frame-size: clamp(180px, 38dvh, 320px);
 
   min-height: 100vh;
@@ -91,7 +95,7 @@
 }
 
 .bio-essesi-detail-gallery.bio-essesi-row--1 {
-  --bio-frame-size: clamp(240px, 42vh, 480px);
+  --bio-frame-size: clamp(160px, var(--bio-detail-gallery-vh), 480px);
   --bio-frame-max-w: min(calc(100vw - 80px), 960px);
 }
 
@@ -168,9 +172,11 @@
   inset: 0;
   z-index: 20;
   display: flex;
+  align-items: center;
   justify-content: center;
+  overflow-x: hidden;
   overflow-y: auto;
-  padding: 72px 40px 80px;
+  padding: var(--bio-detail-padding-y) 40px;
   background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -201,7 +207,7 @@
   background: none;
   border: none;
   padding: 0;
-  margin: 0 0 48px;
+  margin: 0 0 var(--bio-detail-close-gap);
   cursor: pointer;
   display: block;
   margin-left: auto;
@@ -219,7 +225,7 @@
 
 .bio-essesi-detail-copy {
   text-align: center;
-  margin-bottom: 72px;
+  margin-bottom: var(--bio-detail-copy-gap);
 }
 
 .bio-essesi-meta-line {
@@ -255,7 +261,7 @@
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
-  --bio-frame-size: clamp(200px, 32vh, 360px);
+  --bio-frame-size: clamp(120px, var(--bio-detail-gallery-vh), 360px);
 }
 
 .bio-essesi-detail-tile {
@@ -263,12 +269,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--bio-label-gap);
+  gap: var(--bio-detail-copy-gap);
   text-align: center;
 }
 
 .bio-essesi-detail-frame {
   transition: none;
+  cursor: zoom-in;
 }
 
 .bio-essesi-detail-frame img {
@@ -279,9 +286,40 @@
 
 .bio-essesi-detail-caption {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.bio-essesi-detail-caption-title {
   font-size: 10px;
-  color: var(--bio-muted);
+  color: var(--bio-text);
   white-space: nowrap;
+}
+
+.bio-essesi-detail-caption-materials {
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--bio-muted);
+  white-space: pre-line;
+  max-width: min(56ch, 92vw);
+}
+
+.bio-essesi-detail-caption--shared {
+  width: 100%;
+  margin-top: var(--bio-detail-copy-gap);
+  align-items: center;
+  text-align: center;
+}
+
+.bio-essesi-detail-caption--shared .bio-essesi-detail-caption-materials {
+  max-width: none;
+}
+
+.bio-essesi-page .ideation-lightbox-caption {
+  white-space: pre-line;
 }
 
 body.bio-essesi-active {
@@ -289,15 +327,16 @@ body.bio-essesi-active {
   color: #211e1e;
 }
 
-body.bio-essesi-detail-open {
-  overflow: hidden;
-}
-
 @media (max-width: 640px) {
   .bio-essesi-page {
     --bio-header-h: 48px;
     --bio-label-h: 14px;
     --bio-frame-size: clamp(140px, 32dvh, 240px);
+  }
+
+  .bio-essesi-detail {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .bio-essesi-detail,

@@ -215,6 +215,7 @@ section.uos-de {
   padding: 0 40px 80px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0;
 }
 

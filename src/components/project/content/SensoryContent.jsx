@@ -3,14 +3,9 @@ import { ProjectImage, ProjectSection, ProjectTags } from '../ProjectWriting';
 import '../uos-sections.css';
 
 const TAGS = [
-  'Creative Coding',
   'Interactive Installation',
-  'P5.js',
-  'GPT API',
-  'Weather API',
-  'TouchDesigner',
-  'Sensory Design',
-  'Environmental Data',
+  'Multisensory Experience',
+  'Generative Media',
 ];
 
 const IMAGES = [
