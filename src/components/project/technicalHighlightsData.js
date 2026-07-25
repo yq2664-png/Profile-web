@@ -2,49 +2,103 @@ export const TECHNICAL_HIGHLIGHTS = [
   {
     num: '01',
     title: 'Context Intake',
+    subtitle: 'Adaptive Product Intake',
     description:
-      'Designed an adaptive context collection system for products at different development stages—including ideas, prototypes, and live products. The workflow dynamically adjusts required inputs, minimizing unnecessary friction while preserving sufficient context for downstream AI reasoning.',
+      'Designed an adaptive context collection system that gathers product information, research materials, and supporting evidence across different development stages—from early concepts and prototypes to live products. The workflow dynamically adjusts required inputs while preserving essential context for downstream AI analysis.',
     highlights: ['Stage-aware context collection', 'Progressive disclosure', 'Context normalization'],
-    tech: 'React · Dynamic Forms · State Management',
+    images: [
+      {
+        src: '/assets/User OS/Context Intake 1 .png',
+        alt: 'Context Intake — adaptive product intake interface, screen 1',
+      },
+      {
+        src: '/assets/User OS/Context Intake 2.png',
+        alt: 'Context Intake — adaptive product intake interface, screen 2',
+      },
+      {
+        src: '/assets/User OS/Context Intake 3.png',
+        alt: 'Context Intake — adaptive product intake interface, screen 3',
+      },
+    ],
   },
   {
     num: '02',
-    title: 'Perspective Generation',
+    title: 'Multi-Source Perspectives',
+    subtitle: 'Hybrid Perspective Integration',
     description:
-      'Built a hybrid perspective generation pipeline that combines real user voices retrieved from online communities, AI-simulated personas, and designer-curated observations into a unified reasoning context. Prompt orchestration standardizes heterogeneous inputs while preserving their original perspective.',
-    highlights: ['Multi-source perspective integration', 'Prompt orchestration', 'Perspective normalization'],
-    tech: 'OpenAI API · Prompt Engineering · Structured Outputs',
+      'Built a unified perspective layer that combines real user voices, AI-generated perspectives, designer-provided research, and UX expert evaluation into one shared evidence space. Each perspective maintains its original viewpoint while contributing to a broader understanding of the product experience.',
+    highlights: [
+      'Real + simulated perspective integration',
+      'UX expert evaluation layer',
+      'Perspective normalization',
+    ],
+    images: [
+      {
+        src: '/assets/User OS/Multi-Source Perspectives 1.png',
+        alt: 'Multi-Source Perspectives — hybrid perspective integration, screen 1',
+      },
+      {
+        src: '/assets/User OS/Multi-Source Perspectives 2.png',
+        alt: 'Multi-Source Perspectives — hybrid perspective integration, screen 2',
+      },
+      {
+        src: '/assets/User OS/Multi-Source Perspectives 3.png',
+        alt: 'Multi-Source Perspectives — hybrid perspective integration, screen 3',
+      },
+    ],
   },
   {
     num: '03',
-    title: 'Insight Prioritization',
+    title: 'Evidence-Based Insights',
+    subtitle: 'Behavioral Insight Synthesis',
     description:
-      'Transformed hundreds of individual perspectives into structured behavioral insights. Rather than summarizing comments, the system clusters recurring patterns and prioritizes findings across frustrations, hidden needs, trust issues, and decision barriers using impact, frequency, confidence, and product relevance.',
-    highlights: ['Behavioral insight clustering', 'Multi-factor priority scoring', 'Explainable ranking'],
-    tech: 'LLM Reasoning · JSON Schema · Ranking Pipeline',
+      'Transformed multi-source perspectives into structured behavioral insights. Instead of simply summarizing feedback, the system identifies recurring patterns, unmet needs, trust issues, and decision barriers across different user perspectives.',
+    highlights: ['Behavioral pattern clustering', 'Hidden need discovery', 'Impact-based prioritization'],
+    images: [
+      {
+        src: '/assets/User OS/Evidence-Based Insights 1.png',
+        alt: 'Evidence-Based Insights — behavioral insight synthesis, screen 1',
+      },
+      {
+        src: '/assets/User OS/Evidence-Based Insights 2.png',
+        alt: 'Evidence-Based Insights — behavioral insight synthesis, screen 2',
+      },
+    ],
   },
   {
     num: '04',
-    title: 'Reasoning Chains',
+    title: 'Transparent Design Reasoning',
+    subtitle: 'Evidence-Connected Reasoning Chains',
     description:
-      'Designed an explicit reasoning layer that links raw user perspectives to synthesized behavioral insights. Every reasoning chain traces user evidence through matched findings and behavioral patterns—with confidence levels—making AI-generated conclusions transparent, inspectable, and explainable.',
-    highlights: ['Evidence threading', 'Confidence-ranked reasoning', 'Perspective-to-pattern mapping'],
-    tech: 'LLM Reasoning · JSON Schema · Explainable Chains',
+      'Created an explicit reasoning layer that connects user evidence, behavioral patterns, and UX findings to explain why problems occur. Each reasoning chain traces the relationship between perspectives, insights, UX principles, and design implications, making AI conclusions transparent and inspectable.',
+    highlights: ['Evidence-to-insight mapping', 'UX principle integration', 'Confidence-ranked reasoning'],
+    images: [
+      {
+        src: '/assets/User OS/Transparent Design Reasoning.png',
+        alt: 'Transparent Design Reasoning — evidence-connected reasoning chains',
+      },
+    ],
   },
   {
     num: '05',
-    title: 'Framework Evaluation',
+    title: 'Evidence-Backed Product Decisions',
+    subtitle: 'Actionable Decision Generation',
     description:
-      'Implemented an evidence-driven evaluation engine that reviews products across multiple UX frameworks—including Nielsen Heuristics, WCAG, Apple HIG, Material Design, Cognitive Load, and Trust. Frameworks are activated only when supported by relevant evidence, ensuring every evaluation remains contextually grounded.',
-    highlights: ['Conditional framework activation', 'Evidence-backed evaluation', 'Cross-framework synthesis'],
-    tech: 'Structured Prompting · UX Heuristics · Evidence Linking',
-  },
-  {
-    num: '06',
-    title: 'Decision Generation',
-    description:
-      'Translated prioritized insights—and, in the Deep analysis path, reasoning chains and framework evaluations—into actionable product decisions, including design opportunities, UX improvements, feature requirements, and measurable success metrics. Every recommendation remains fully traceable to supporting evidence.',
-    highlights: ['Actionable design recommendations', 'Product requirement generation', 'Traceable decision making'],
-    tech: 'Structured Prompting · Decision Framework · Evidence Linking',
+      'Translated insights, reasoning chains, and UX findings into actionable product decisions. Each recommendation remains traceable to supporting evidence and is converted into structured requirements, priorities, and measurable success metrics.',
+    highlights: [
+      'Traceable product decisions',
+      'Requirement generation',
+      'Evidence-grounded success metrics',
+    ],
+    images: [
+      {
+        src: '/assets/User OS/Evidence-Backed Product Decisions 1.png',
+        alt: 'Evidence-Backed Product Decisions — actionable decision generation, screen 1',
+      },
+      {
+        src: '/assets/User OS/Evidence-Backed Product Decisions 2.png',
+        alt: 'Evidence-Backed Product Decisions — actionable decision generation, screen 2',
+      },
+    ],
   },
 ];

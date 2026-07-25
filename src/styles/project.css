@@ -146,6 +146,13 @@ body.scroll-locked {
   font-size: 14px;
   font-weight: 600;
   white-space: nowrap;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.meta-action:hover {
+  color: var(--accent-hover);
 }
 
 /* CONTENT */

@@ -1,4 +1,5 @@
 import { UOSSectionShell } from './UOSSectionShell';
+import { ProjectImage } from './ProjectWriting';
 import { TECHNICAL_HIGHLIGHTS } from './technicalHighlightsData';
 import './SystemDesignSection.css';
 import './uos-sections.css';
@@ -12,6 +13,7 @@ export default function SystemDesignSection() {
             <span className="proj-research-num">{item.num}</span>
             {item.title}
           </h3>
+          {item.subtitle ? <p className="uos-th-subtitle">{item.subtitle}</p> : null}
           <p className="uos-sec-prose">{item.description}</p>
           <p className="uos-th-kicker">Highlights</p>
           <ul className="uos-sec-list">
@@ -19,10 +21,13 @@ export default function SystemDesignSection() {
               <li key={point}>{point}</li>
             ))}
           </ul>
-          <p className="uos-th-tech">
-            <span className="uos-th-kicker">Tech</span>
-            {item.tech}
-          </p>
+          {item.images?.length ? (
+            <div className="uos-th-images">
+              {item.images.map((image) => (
+                <ProjectImage key={image.src} src={image.src} alt={image.alt} />
+              ))}
+            </div>
+          ) : null}
         </div>
       ))}
     </UOSSectionShell>

@@ -11,16 +11,12 @@
   margin: 0 0 8px;
 }
 
-.uos-th-tech {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--muted);
-  margin: 0;
-}
-
-.uos-th-tech .uos-th-kicker {
-  display: block;
-  margin-bottom: 4px;
+.uos-th-subtitle {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 0 0 12px;
 }
 
 .uos-th-item .uos-sec-prose {
@@ -28,5 +24,16 @@
 }
 
 .uos-th-item .uos-sec-list {
-  margin-bottom: 16px;
+  margin-bottom: 0;
+}
+
+.uos-th-images {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.uos-th-images .proj-media {
+  margin: 0;
 }

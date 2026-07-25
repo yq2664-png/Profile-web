@@ -17,7 +17,7 @@ export default function KeyFeaturesSection() {
       <div className="uos-kf-inner">
         <header className="uos-kf-header">
           <h2 id="uos-kf-title" className="uos-sec-title">
-            4 Core Capabilities
+            Core Capabilities
           </h2>
           <p className="uos-sec-prose uos-kf-lead">
             User Research OS is designed to support the entire design thinking process—from understanding

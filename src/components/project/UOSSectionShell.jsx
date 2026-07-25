@@ -4,11 +4,11 @@ import './uos-sections.css';
 
 const EASE = [0.25, 0.46, 0.45, 0.94];
 
-export function UOSSectionShell({ num, title, titleId, first, children }) {
+export function UOSSectionShell({ title, titleId, first, children }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.12 });
   const reduced = useReducedMotion();
-  const displayTitle = [num, title].filter(Boolean).join(' ');
+  const displayTitle = title;
 
   return (
     <section

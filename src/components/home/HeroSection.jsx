@@ -29,7 +29,7 @@ export default function HeroSection() {
           </span>
           <span className="reveal-line">Creating meaningful connections</span>
           <span className="reveal-line">
-            Between{' '}
+            Across{' '}
             <RotatingText
               texts={HERO_CONNECT_TEXTS}
               mainClassName="hero-rotate"

@@ -27,12 +27,10 @@ export default function AboutSection() {
                   <p className="edu-school">Coventry University</p>
                   <p className="edu-loc">Coventry, United Kingdom</p>
                 </div>
-                <div className="edu-degree-row">
-                  <p className="edu-degree">
-                    Bachelor of Arts in Fashion and Accessories Design (Joint Program) · 2021 – 2025
-                  </p>
-                  <p className="edu-honour">First-Class Honours</p>
-                </div>
+                <p className="edu-degree">
+                  Bachelor of Arts in Fashion and Accessories Design (Joint Program) · 2021 – 2025
+                </p>
+                <p className="edu-detail">First-Class Honours</p>
               </li>
               <li className="edu-item">
                 <div className="edu-head">

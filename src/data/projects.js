@@ -8,9 +8,8 @@ export const projects = {
       description:
         'A user-perspective simulator that turns a product description into AI-generated user reactions and behavioral insights — pressure-testing ideas before real users speak.',
       tags: ['UX Research', 'AI Product', 'Interaction Design'],
-      cover: '/assets/User OS/cover - user OS.png',
+      cover: '/assets/cover/user os.JPG',
       coverAlt: 'userOS',
-      imageContain: true,
     },
     page: {
       title: 'userOS',
@@ -131,7 +130,7 @@ export const projects = {
       description:
         'A modular haptic garment that transforms repetitive touch into a calming ritual — wearable technology as emotional care, not efficiency.',
       tags: ['Wearable Computing', 'Embodied Interaction', 'Affective Haptics'],
-      cover: '/assets/cover-wearable.jpg',
+      cover: '/assets/cover/wearable.JPG',
       coverAlt: 'Soothe Sleeve',
     },
     page: {
@@ -159,7 +158,7 @@ export const projects = {
       description:
         'An installation that turns live weather data, ambient sound, and movement into a visual portrait of an emotional moment — then mails it to you.',
       tags: ['Interactive Installation', 'Multisensory Experience', 'Generative Media'],
-      cover: '/assets/cover-sensory.png',
+      cover: '/assets/cover/cover-sensory.png',
       coverAlt: 'Inner Weather',
     },
     page: {
@@ -187,9 +186,8 @@ export const projects = {
       description:
         'Mapping the structural logic that makes fast fashion inevitable — supply chains, carbon cycles, and the limits of consumer choice.',
       tags: ['Transparency', 'Interaction', 'Sustainable Fashion'],
-      cover: '/assets/cover-ideation.jpg',
+      cover: '/assets/cover/cover-ideation.JPG',
       coverAlt: 'Slow Fashion: Rethinking the System',
-      imageContain: true,
     },
     page: {
       title: 'Slow Fashion: Rethinking the System',

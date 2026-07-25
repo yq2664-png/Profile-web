@@ -410,20 +410,23 @@ nav {
   color: var(--muted);
 }
 
-.work-right img,
+.work-right {
+  width: 100%;
+}
+
+.work-cover {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.work-cover img,
 .work-right video {
   width: 100%;
+  height: 100%;
   display: block;
   object-fit: cover;
-  aspect-ratio: 4/3;
-}
-
-.work-right img.work-img-contain {
-  object-fit: contain;
-}
-
-.work-row[data-slug="user-os"] .work-right img {
-  transform: scale(1.05);
 }
 
 /* Full-width uncropped video row (Synthetic Ocean) */

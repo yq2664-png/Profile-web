@@ -1,3 +1,5 @@
+import { TECHNICAL_HIGHLIGHTS } from './technicalHighlightsData';
+
 export const UOS_KEY_FEATURE_IMAGES = [
   {
     src: '/assets/User OS/Core Capabilities.jpg',
@@ -5,13 +7,17 @@ export const UOS_KEY_FEATURE_IMAGES = [
     caption:
       'Figure 3 — Core capabilities: the product interface organized across Input, Perspectives, Insights, Reasoning, Review, and Decisions, supporting the full journey from product context to actionable recommendations.',
   },
-  {
-    src: '/assets/User OS/workflow.png',
-    alt: 'User Research OS workflow — structured reasoning from product context to design decisions',
-    caption:
-      'Figure 4 — System workflow: a structured pipeline from context intake and perspective generation through insight synthesis, with Standard and Deep analysis paths converging on prioritized product decisions.',
-  },
 ];
+
+export function collectTechnicalHighlightImages() {
+  return TECHNICAL_HIGHLIGHTS.flatMap((item) =>
+    (item.images ?? []).map((image) => ({
+      src: image.src,
+      alt: image.alt ?? '',
+      caption: image.caption ?? '',
+    })),
+  );
+}
 
 export function collectUOSImages(sections) {
   const images = [];
@@ -29,5 +35,5 @@ export function collectUOSImages(sections) {
     }
   }
 
-  return [...images, ...UOS_KEY_FEATURE_IMAGES];
+  return [...images, ...UOS_KEY_FEATURE_IMAGES, ...collectTechnicalHighlightImages()];
 }

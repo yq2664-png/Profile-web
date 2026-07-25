@@ -12,7 +12,7 @@ export default function ProjectMeta({ items, actionLink }) {
           href={actionLink.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="meta-action pnav-pdf"
+          className="meta-action"
         >
           {actionLink.label}
         </a>

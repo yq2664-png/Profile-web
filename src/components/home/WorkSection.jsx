@@ -22,7 +22,7 @@ function WorkRowView() {
   );
 }
 
-function WorkRow({ slug, to, title, description, tags, cover, coverAlt, imageContain }) {
+function WorkRow({ slug, to, title, description, tags, cover, coverAlt }) {
   const inner = (
     <div className="work-body">
       <div className="work-left">
@@ -32,12 +32,9 @@ function WorkRow({ slug, to, title, description, tags, cover, coverAlt, imageCon
         <WorkRowView />
       </div>
       <div className="work-right">
-        <img
-          src={cover}
-          alt={coverAlt}
-          loading="lazy"
-          className={imageContain ? 'work-img-contain' : undefined}
-        />
+        <div className="work-cover">
+          <img src={cover} alt={coverAlt} loading="lazy" decoding="async" />
+        </div>
       </div>
     </div>
   );
@@ -75,7 +72,6 @@ export default function WorkSection() {
               tags={project.home.tags}
               cover={project.home.cover}
               coverAlt={project.home.coverAlt}
-              imageContain={project.home.imageContain}
             />
           );
         })}

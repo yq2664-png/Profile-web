@@ -2,14 +2,12 @@ export default function ContactSection() {
   return (
     <section id="contact">
       <div className="contact-wrap">
-        <h2 className="contact-heading" data-aos="fade-up" data-aos-duration="1000">
-          Let&apos;s work together
-        </h2>
-        <p className="contact-sub" data-aos="fade-up" data-aos-duration="800" data-aos-delay="150">
+        <h2 className="contact-heading">Let&apos;s work together</h2>
+        <p className="contact-sub">
           I&apos;m open to internships, collaborations, and research opportunities in interaction
           design, wearable technology, and speculative fashion. Based in New York.
         </p>
-        <div className="contact-links" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+        <div className="contact-links">
           <a href="mailto:yq2664@nyu.edu" className="contact-link primary">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path
