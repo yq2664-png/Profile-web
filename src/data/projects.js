@@ -186,13 +186,13 @@ export const projects = {
       description:
         'Mapping the structural logic that makes fast fashion inevitable — supply chains, carbon cycles, and the limits of consumer choice.',
       tags: ['Transparency', 'Interaction', 'Sustainable Fashion'],
-      cover: '/assets/cover/cover-ideation.JPG',
+      cover: '/assets/cover-ideation.JPG',
       coverAlt: 'Slow Fashion: Rethinking the System',
     },
     page: {
       title: 'Slow Fashion: Rethinking the System',
       hero: {
-        src: '/assets/cover-ideation.jpg',
+        src: '/assets/ideation/cover-ideation.JPG',
         alt: 'Fast Fashion research spread — supply chain, carbon emissions, greenwashing',
         className: 'hero-img hero-img-ideation',
       },

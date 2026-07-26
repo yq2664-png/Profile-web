@@ -20,37 +20,39 @@
 }
 
 .hero-img-ideation {
+  width: 100%;
+  height: calc(100vh - 11.5rem);
+  object-fit: cover;
+  object-position: center;
   display: block;
-  width: auto;
-  height: auto;
-  max-width: min(640px, calc(100vw - 80px));
-  max-height: min(480px, calc(100vh - 240px));
-  object-fit: contain;
-  object-position: center center;
+}
+
+.project-page-has-hero .hero-img-ideation {
+  height: calc(100vh - 11.5rem);
+  max-height: none;
 }
 
 .project-page-ideation .ideation-hero-frame {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 56px 40px 16px;
+  padding: 56px 0 0;
   background: var(--bg);
 }
 
 .project-page-ideation .ideation-hero-frame .hero-img-ideation {
-  max-width: min(640px, calc(100vw - 80px));
-  max-height: min(480px, calc(100vh - 240px));
+  width: 100%;
+  max-width: none;
+  max-height: none;
+  height: calc(100vh - 11.5rem);
+  object-fit: cover;
 }
 
 @media (max-width: 640px) {
   .project-page-ideation .ideation-hero-frame {
-    padding: 56px 20px 12px;
+    padding: 56px 0 0;
   }
 
   .project-page-ideation .ideation-hero-frame .hero-img-ideation {
-    max-width: calc(100vw - 40px);
-    max-height: min(360px, calc(100vh - 260px));
+    height: calc(100vh - 13rem);
   }
 }
 
