@@ -15,12 +15,6 @@ export default function SystemDesignSection() {
           </h3>
           {item.subtitle ? <p className="uos-th-subtitle">{item.subtitle}</p> : null}
           <p className="uos-sec-prose">{item.description}</p>
-          <p className="uos-th-kicker">Highlights</p>
-          <ul className="uos-sec-list">
-            {item.highlights.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-          </ul>
           {item.images?.length ? (
             <div className="uos-th-images">
               {item.images.map((image) => (

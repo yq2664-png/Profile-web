@@ -2,15 +2,6 @@
   margin-top: 48px;
 }
 
-.uos-th-kicker {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 0 0 8px;
-}
-
 .uos-th-subtitle {
   font-size: 16px;
   font-weight: 600;
@@ -21,10 +12,6 @@
 
 .uos-th-item .uos-sec-prose {
   margin-bottom: 20px;
-}
-
-.uos-th-item .uos-sec-list {
-  margin-bottom: 0;
 }
 
 .uos-th-images {
