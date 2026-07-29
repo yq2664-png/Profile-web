@@ -18,7 +18,12 @@ export default function SystemDesignSection() {
           {item.images?.length ? (
             <div className="uos-th-images">
               {item.images.map((image) => (
-                <ProjectImage key={image.src} src={image.src} alt={image.alt} />
+                <ProjectImage
+                  key={image.src}
+                  src={image.src}
+                  alt={image.alt}
+                  caption={image.caption}
+                />
               ))}
             </div>
           ) : null}

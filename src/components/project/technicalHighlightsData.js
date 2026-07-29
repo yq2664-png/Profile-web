@@ -9,6 +9,8 @@ export const TECHNICAL_HIGHLIGHTS = [
       {
         src: '/assets/User OS/Highlights-03.jpg',
         alt: 'Context Intake — adaptive product intake interface',
+        caption:
+          'Figure 4 — Context Intake: adaptive product intake that adjusts required inputs across early concepts, prototypes, and live products while preserving essential context for downstream analysis.',
       },
     ],
   },
@@ -22,6 +24,8 @@ export const TECHNICAL_HIGHLIGHTS = [
       {
         src: '/assets/User OS/Highlights-04.jpg',
         alt: 'Multi-Source Perspectives — hybrid perspective integration',
+        caption:
+          'Figure 5 — Multi-Source Perspectives: real user voices, AI-generated perspectives, designer research, and UX expert evaluation combined in one shared evidence space.',
       },
     ],
   },
@@ -35,6 +39,8 @@ export const TECHNICAL_HIGHLIGHTS = [
       {
         src: '/assets/User OS/Highlights-05.jpg',
         alt: 'Evidence-Based Insights — behavioral insight synthesis',
+        caption:
+          'Figure 6 — Evidence-Based Insights: multi-source perspectives synthesized into structured behavioral patterns, unmet needs, trust issues, and decision barriers.',
       },
     ],
   },
@@ -48,6 +54,8 @@ export const TECHNICAL_HIGHLIGHTS = [
       {
         src: '/assets/User OS/Highlights-06.jpg',
         alt: 'Transparent Design Reasoning — evidence-connected reasoning chains',
+        caption:
+          'Figure 7 — Transparent Design Reasoning: evidence-connected reasoning chains linking perspectives, insights, UX principles, and design implications.',
       },
     ],
   },
@@ -61,6 +69,8 @@ export const TECHNICAL_HIGHLIGHTS = [
       {
         src: '/assets/User OS/Highlights-07.jpg',
         alt: 'Evidence-Backed Product Decisions — actionable decision generation',
+        caption:
+          'Figure 8 — Evidence-Backed Product Decisions: insights and reasoning translated into traceable requirements, priorities, and measurable success metrics.',
       },
     ],
   },
