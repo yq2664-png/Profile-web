@@ -7,6 +7,8 @@ const paintingMarqueeImages = [
   '/assets/Creative/3b4006cb6772089cda3809320e0274c6.JPG',
   '/assets/Creative/6b2eea77b30863907d95d3e15f3c7a74.jpg',
   '/assets/Creative/2bf01ce235d0b9194d9bb78ea3eb439f.jpg',
+  '/assets/Creative/0f82d34afde988121af2f5ea3232b4e7.jpg',
+  '/assets/Creative/b2ac5999aeba2ca0b7cf19e3dfd221d1.jpg',
 ];
 
 export default function ExplorationSection() {

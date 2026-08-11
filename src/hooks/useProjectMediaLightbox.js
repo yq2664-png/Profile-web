@@ -81,27 +81,28 @@ export function useProjectMediaLightbox(images, selector, { manageBodyScroll = t
   };
 
   const activeImage = lightbox ? lightbox.items[lightbox.index] : null;
+  const lightboxIndex = lightbox?.index;
+  const lightboxItems = lightbox?.items;
 
   useEffect(() => {
-    if (!lightbox?.items?.length) return undefined;
+    if (!lightboxItems?.length) return undefined;
 
     const prefetch = (index) => {
-      const item = lightbox.items[index];
+      const item = lightboxItems[index];
       if (!item?.src) return;
       const img = new Image();
       img.decoding = 'async';
       img.src = item.src;
     };
 
-    const { items, index } = lightbox;
-    prefetch(index);
-    if (items.length > 1) {
-      prefetch((index + 1) % items.length);
-      prefetch((index - 1 + items.length) % items.length);
+    prefetch(lightboxIndex);
+    if (lightboxItems.length > 1) {
+      prefetch((lightboxIndex + 1) % lightboxItems.length);
+      prefetch((lightboxIndex - 1 + lightboxItems.length) % lightboxItems.length);
     }
 
     return undefined;
-  }, [lightbox?.index, lightbox?.items]);
+  }, [lightboxIndex, lightboxItems]);
 
   return { lightbox, closeLightbox, stepLightbox, activeImage };
 }

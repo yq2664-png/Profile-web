@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, createElement, useMemo, useCallback } from 'react';
+import { useEffect, useId, useRef, useState, createElement, useMemo, useCallback } from 'react';
 import { gsap } from 'gsap';
 import './TextType.css';
 
@@ -24,23 +24,20 @@ const TextType = ({
   pauseOnHover = false,
   ...props
 }) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const [currentCharIndex, setCurrentCharIndex] = useState(0);
+  const reducedMotion =
+    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const initialText = Array.isArray(text) ? (text[0] ?? '') : (text ?? '');
+  const [displayedText, setDisplayedText] = useState(reducedMotion ? initialText : '');
+  const [currentCharIndex, setCurrentCharIndex] = useState(reducedMotion ? initialText.length : 0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(!startOnVisible);
+  const [isVisible, setIsVisible] = useState(reducedMotion || !startOnVisible);
   const [isPaused, setIsPaused] = useState(false);
   const cursorRef = useRef(null);
-  const containerRef = useRef(null);
+  const generatedId = useId();
+  const containerId = props.id ?? `text-type-${generatedId.replace(/:/g, '')}`;
 
   const textArray = useMemo(() => (Array.isArray(text) ? text : [text]), [text]);
-
-  useEffect(() => {
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    setDisplayedText(textArray[0] ?? '');
-    setCurrentCharIndex(textArray[0]?.length ?? 0);
-    setIsVisible(true);
-  }, [textArray]);
 
   const getRandomSpeed = useCallback(() => {
     if (!variableSpeed) return typingSpeed;
@@ -54,7 +51,10 @@ const TextType = ({
   };
 
   useEffect(() => {
-    if (!startOnVisible || !containerRef.current) return undefined;
+    if (!startOnVisible || reducedMotion) return undefined;
+
+    const container = document.getElementById(containerId);
+    if (!container) return undefined;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -65,13 +65,13 @@ const TextType = ({
       { threshold: 0.1 },
     );
 
-    observer.observe(containerRef.current);
+    observer.observe(container);
     return () => observer.disconnect();
-  }, [startOnVisible]);
+  }, [containerId, reducedMotion, startOnVisible]);
 
   useEffect(() => {
     if (!showCursor || !cursorRef.current) return undefined;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    if (reducedMotion) return undefined;
 
     gsap.set(cursorRef.current, { opacity: 1 });
     gsap.to(cursorRef.current, {
@@ -81,11 +81,11 @@ const TextType = ({
       yoyo: true,
       ease: 'power2.inOut',
     });
-  }, [showCursor, cursorBlinkDuration]);
+  }, [showCursor, cursorBlinkDuration, reducedMotion]);
 
   useEffect(() => {
     if (!isVisible || isPaused) return undefined;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    if (reducedMotion) return undefined;
 
     let timeout;
     const currentText = textArray[currentTextIndex];
@@ -94,16 +94,14 @@ const TextType = ({
     const executeTypingAnimation = () => {
       if (isDeleting) {
         if (displayedText === '') {
-          setIsDeleting(false);
-          if (currentTextIndex === textArray.length - 1 && !loop) return;
+          timeout = setTimeout(() => {
+            setIsDeleting(false);
+            if (currentTextIndex === textArray.length - 1 && !loop) return;
 
-          if (onSentenceComplete) {
-            onSentenceComplete(textArray[currentTextIndex], currentTextIndex);
-          }
-
-          setCurrentTextIndex((prev) => (prev + 1) % textArray.length);
-          setCurrentCharIndex(0);
-          timeout = setTimeout(() => {}, pauseDuration);
+            onSentenceComplete?.(textArray[currentTextIndex], currentTextIndex);
+            setCurrentTextIndex((prev) => (prev + 1) % textArray.length);
+            setCurrentCharIndex(0);
+          }, pauseDuration);
         } else {
           timeout = setTimeout(() => {
             setDisplayedText((prev) => prev.slice(0, -1));
@@ -149,6 +147,7 @@ const TextType = ({
     variableSpeed,
     onSentenceComplete,
     getRandomSpeed,
+    reducedMotion,
   ]);
 
   const shouldHideCursor =
@@ -175,7 +174,7 @@ const TextType = ({
   return createElement(
     Component,
     {
-      ref: containerRef,
+      id: containerId,
       className: `text-type ${className}${isPaused ? ' text-type--paused' : ''}`,
       onPointerEnter: handlePointerEnter,
       onPointerLeave: handlePointerLeave,

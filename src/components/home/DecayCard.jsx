@@ -27,8 +27,9 @@ export default function DecayCard({
 
   const transformRef = useRef(null);
   const displacementMapRef = useRef(null);
-  const cursor = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
-  const cachedCursor = useRef({ ...cursor.current });
+  const initialCursor = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+  const cursor = useRef(initialCursor);
+  const cachedCursor = useRef(initialCursor);
   const winsize = useRef({ width: window.innerWidth, height: window.innerHeight });
 
   const sizeStyle =

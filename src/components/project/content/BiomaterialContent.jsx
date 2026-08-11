@@ -53,7 +53,7 @@ export default function BiomaterialContent() {
   const detailOpenRef = useRef(Boolean(getDetailFromHash()));
 
   const isDetailOpen = Boolean(activeDetail);
-  const detailTiles = activeDetail?.tiles ?? [];
+  const detailTiles = useMemo(() => activeDetail?.tiles ?? [], [activeDetail]);
   const sharedDetailCaption = activeDetail?.row?.detailCaption;
   const { pageRef, detailRef, panelRef, fitLayout } = useBioDetailLayoutFit(
     isDetailOpen,

@@ -12,19 +12,18 @@ export default function CoverHeroTitle({
   initialDelay = 400,
   className = '',
 }) {
-  const [displayedWord, setDisplayedWord] = useState('');
+  const reducedMotion =
+    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const [displayedWord, setDisplayedWord] = useState(reducedMotion ? WORDS[0] : '');
   const [wordIndex, setWordIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(reducedMotion ? WORDS[0].length : 0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const cursorRef = useRef(null);
   const startedRef = useRef(false);
-  const reducedMotion = useRef(
-    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-  );
 
   useEffect(() => {
-    if (!cursorRef.current || reducedMotion.current) return undefined;
+    if (!cursorRef.current || reducedMotion) return undefined;
 
     gsap.set(cursorRef.current, { opacity: 1 });
     const tween = gsap.to(cursorRef.current, {
@@ -36,14 +35,10 @@ export default function CoverHeroTitle({
     });
 
     return () => tween.kill();
-  }, []);
+  }, [reducedMotion]);
 
   useEffect(() => {
-    if (reducedMotion.current) {
-      setDisplayedWord(WORDS[0]);
-      setCharIndex(WORDS[0].length);
-      return undefined;
-    }
+    if (reducedMotion) return undefined;
 
     if (isPaused) return undefined;
 
@@ -52,10 +47,11 @@ export default function CoverHeroTitle({
 
     if (isDeleting) {
       if (displayedWord === '') {
-        setIsDeleting(false);
-        setWordIndex((prev) => (prev + 1) % WORDS.length);
-        setCharIndex(0);
-        timeout = setTimeout(() => {}, 120);
+        timeout = setTimeout(() => {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % WORDS.length);
+          setCharIndex(0);
+        }, 120);
       } else {
         timeout = setTimeout(() => {
           setDisplayedWord((prev) => prev.slice(0, -1));
@@ -87,6 +83,7 @@ export default function CoverHeroTitle({
     isDeleting,
     isPaused,
     pauseDuration,
+    reducedMotion,
     typingSpeed,
     wordIndex,
   ]);

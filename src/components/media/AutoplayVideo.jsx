@@ -13,16 +13,15 @@ export default function AutoplayVideo({
   type = 'video/mp4',
 }) {
   const videoRef = useRef(null);
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(
+    () => typeof IntersectionObserver === 'undefined',
+  );
 
   useEffect(() => {
     const node = videoRef.current;
     if (!node) return undefined;
 
-    if (typeof IntersectionObserver === 'undefined') {
-      setActive(true);
-      return undefined;
-    }
+    if (typeof IntersectionObserver === 'undefined') return undefined;
 
     const observer = new IntersectionObserver(
       ([entry]) => {

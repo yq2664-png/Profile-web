@@ -1,16 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 export default function LightboxImage({ src, alt }) {
-  const imgRef = useRef(null);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    setLoaded(false);
-    const img = imgRef.current;
-    if (img?.complete) {
-      setLoaded(true);
-    }
-  }, [src]);
+  const [loadedSrc, setLoadedSrc] = useState(null);
+  const loaded = loadedSrc === src;
 
   return (
     <>
@@ -20,12 +12,11 @@ export default function LightboxImage({ src, alt }) {
         </div>
       ) : null}
       <img
-        ref={imgRef}
         className={`ideation-lightbox-img${loaded ? ' is-loaded' : ''}`}
         src={src}
         alt={alt}
         decoding="async"
-        onLoad={() => setLoaded(true)}
+        onLoad={() => setLoadedSrc(src)}
       />
     </>
   );
