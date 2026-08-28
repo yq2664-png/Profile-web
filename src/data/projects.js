@@ -1,6 +1,31 @@
 const LIVE_SITE = 'https://user-perspective-simulator-production.up.railway.app/';
+const SIGNAL_LIVE = 'https://signal-production-d8d9.up.railway.app/feed';
 
 export const projects = {
+  signal: {
+    slug: 'signal',
+    title: 'Signal',
+    home: {
+      description:
+        'An intelligence feed that turns AI launches, research, and real-world developer evidence into ranked attention for PMs and designers.',
+      tags: ['AI Product', 'Information Architecture', 'Product Design'],
+      cover: '/assets/Signal/Product Framework Overview.png',
+      coverAlt: 'Signal — product framework from capture to synthesis',
+    },
+    page: {
+      title: 'Signal',
+      hero: null,
+      meta: [
+        { label: 'Time', value: '2026 8' },
+        { label: 'Role', value: 'Product Designer' },
+        { label: 'Focus', value: 'PMs · Designers' },
+        { label: 'Status', value: 'Prototype' },
+      ],
+      metaAction: { label: 'Try ↗', href: SIGNAL_LIVE },
+      sections: [],
+    },
+  },
+
   'user-os': {
     slug: 'user-os',
     title: 'userOS',
@@ -283,7 +308,7 @@ export const projects = {
   },
 };
 
-export const homeWorkSlugs = ['user-os', 'wearable', 'sensory', 'ideation', 'undergraduate'];
+export const homeWorkSlugs = ['signal', 'user-os', 'wearable', 'sensory', 'ideation', 'undergraduate'];
 
 export function getProject(slug) {
   return projects[slug] ?? null;

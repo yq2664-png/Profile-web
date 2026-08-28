@@ -6,8 +6,9 @@ const EASE = [0.25, 0.46, 0.45, 0.94];
 
 export function UOSSectionShell({ title, titleId, first, children }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, amount: 0.12 });
+  const inView = useInView(ref, { once: true, amount: 0.01, margin: '80px 0px 0px 0px' });
   const reduced = useReducedMotion();
+  const visible = Boolean(first) || reduced || inView;
   const displayTitle = title;
 
   return (
@@ -19,8 +20,8 @@ export function UOSSectionShell({ title, titleId, first, children }) {
       <div className="uos-sec-inner">
         <motion.header
           className="uos-sec-header"
-          initial={{ opacity: 0, y: reduced ? 0 : 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: reduced ? 0 : 20 }}
+          initial={first || reduced ? false : { opacity: 0, y: 20 }}
+          animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 20 }}
           transition={{ duration: reduced ? 0 : 0.55, ease: EASE }}
         >
           <h2 id={titleId} className="uos-sec-title">
@@ -29,9 +30,9 @@ export function UOSSectionShell({ title, titleId, first, children }) {
         </motion.header>
         <motion.div
           className="uos-sec-body"
-          initial={{ opacity: 0, y: reduced ? 0 : 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: reduced ? 0 : 16 }}
-          transition={{ duration: reduced ? 0 : 0.55, delay: reduced ? 0 : 0.08, ease: EASE }}
+          initial={first || reduced ? false : { opacity: 0, y: 16 }}
+          animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 16 }}
+          transition={{ duration: reduced ? 0 : 0.55, delay: reduced || first ? 0 : 0.08, ease: EASE }}
         >
           {children}
         </motion.div>

@@ -188,12 +188,35 @@
   .uos-callout { font-size: 18px; }
 }
 
-/* Ideation / Sensory / userOS — clickable images + light modal */
+/* Ideation / Sensory / userOS / Signal — clickable images + light modal */
 .project-page-ideation .proj-media img,
 .project-page-sensory .proj-media img,
 .project-page-uos .proj-media img,
-.project-page-uos .uos-kf-overview img {
+.project-page-uos .uos-kf-overview img,
+.project-page-signal .proj-media img {
   cursor: zoom-in;
+}
+
+.project-page-signal .uos-flow {
+  margin: 0 0 8px;
+}
+
+.project-page-signal .uos-sec-body .uos-flow:has(+ .proj-media) {
+  margin-bottom: 0;
+}
+
+.project-page-signal .uos-sec-body > .uos-sec-callout:first-child {
+  margin-top: 0;
+}
+
+.project-page-signal .uos-sec-callout + .uos-sec-prose {
+  margin-top: 28px;
+}
+
+.project-page-signal .uos-sec-body .proj-media--portrait {
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .ideation-lightbox {

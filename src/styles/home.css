@@ -429,6 +429,16 @@ nav {
   object-fit: cover;
 }
 
+.work-row[data-slug="signal"] .work-cover {
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.work-row[data-slug="signal"] .work-cover img {
+  object-fit: contain;
+  object-position: center;
+}
+
 /* Full-width uncropped video row (Synthetic Ocean) */
 .work-video-full video {
   width: 100%;

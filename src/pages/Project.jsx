@@ -58,6 +58,7 @@ export default function Project() {
     slug === 'ideation' ? 'project-page-ideation' : '',
     slug === 'sensory' ? 'project-page-sensory' : '',
     slug === 'user-os' ? 'project-page-uos' : '',
+    slug === 'signal' ? 'project-page-signal' : '',
   ]
     .filter(Boolean)
     .join(' ');

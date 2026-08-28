@@ -2,9 +2,13 @@ import { UOSSectionShell } from './UOSSectionShell';
 
 export { UOSSectionShell as ProjectSection };
 
-export function ProjectImage({ src, alt, caption }) {
+export function ProjectImage({ src, alt, caption, className }) {
   return (
-    <figure className="proj-media" data-aos="fade-up" data-aos-duration="800">
+    <figure
+      className={['proj-media', className].filter(Boolean).join(' ')}
+      data-aos="fade-up"
+      data-aos-duration="800"
+    >
       <img className="proj-media-img" src={src} alt={alt} loading="lazy" decoding="async" />
       {caption ? <figcaption className="proj-media-caption">{caption}</figcaption> : null}
     </figure>
