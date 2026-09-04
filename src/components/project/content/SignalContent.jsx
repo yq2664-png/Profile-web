@@ -7,35 +7,40 @@ const TAGS = ['AI Product', 'Information Architecture', 'Product Design'];
 
 const IMAGES = [
   {
-    src: '/assets/Signal/Product Framework Overview.png',
-    alt: 'Signal product framework — Capture, Qualify, Rank, Understand, Synthesize',
+    src: '/assets/Signal/signal_user_research.png',
+    alt: 'User research — information needs and requirements for AI PMs and designers',
     caption:
-      'Figure 1 — Product framework: raw sources move through Capture → Qualify → Rank → Understand → Synthesize, each stage with its own logic, interface, and output.',
+      'Figure 1 — User research: four information needs (model capability, research signals, product landscape, market reaction) and four requirements (channel diversity, timeliness, quality, actionability).',
   },
   {
-    src: '/assets/Signal/Source Coverage.png',
-    alt: 'Source coverage — official labs, research venues, and developer evidence',
+    src: '/assets/Signal/signal_system_overview.png',
+    alt: 'Signal system overview — Sources, Capture, Rank & Show',
     caption:
-      'Figure 2 — Source coverage: official product signals, research discovery, and developer evidence each answer a different question; background media stays context-only.',
+      'Figure 2 — System overview: gated capture from Official, Research, Community, and Background sources, merged into one ranked Feed with Impact Briefs.',
   },
   {
-    src: '/assets/Signal/multi - source capture.png',
-    alt: 'Multi-source capture pipeline from official, research, and community tracks',
+    src: '/assets/Signal/signal_source_strategy.png',
+    alt: 'Source strategy — why Official, Research, and Developer families, and how each is trusted',
     caption:
-      'Figure 3 — Multi-source capture: three source tracks run in parallel, each with its own qualification logic, then converge into qualified intelligence.',
-    className: 'proj-media--portrait',
+      'Figure 3 — Source strategy: each family is selected for the evidence it uniquely provides, then gated by its own discovery and trust criteria. Background stays context-only.',
+  },
+  {
+    src: '/assets/Signal/signal_multi_source_capture.png',
+    alt: 'Multi-source capture — Official, Research, and Community tracks plus background inputs',
+    caption:
+      'Figure 4 — Multi-source capture: three core intelligence tracks plus qualified background inputs converge into one ranked waterfall Feed.',
   },
   {
     src: '/assets/Signal/Qualification Logic.png',
     alt: 'Qualification logic for launches, research papers, and developer community evidence',
     caption:
-      'Figure 4 — Qualification logic: launches, papers, and community evidence each pass through a different standard of evidence before entering the ranked feed.',
+      'Figure 5 — Qualification logic: launches, papers, and community evidence each pass through a different standard of evidence before entering the ranked feed.',
   },
   {
     src: '/assets/Signal/UNIFIED RANKING.png',
     alt: 'Unified ranking logic — business priority, role diversity, recency and spacing',
     caption:
-      'Figure 5 — Unified ranking: business priority, role diversity, and recency/spacing allocate a mixed attention window — not a single global score.',
+      'Figure 6 — Unified ranking: business priority, role diversity, and recency/spacing allocate a mixed attention window — not a single global score.',
   },
 ];
 
@@ -59,148 +64,148 @@ export default function SignalContent() {
   return (
     <>
       <ProjectSection title="Overview" titleId="signal-overview" first>
-        <p className="uos-sec-callout">
-          Signal turns the flood of AI information into ranked, role-aware intelligence for product
-          managers and designers.
-        </p>
         <p className="uos-sec-prose">
           Labs ship weekly. Papers land daily. Developers report what actually works — and what
           breaks. Signal captures those streams, qualifies each by its own standard of evidence, and
           ranks a mixed window of attention so teams can see what shipped, what may become possible,
           and what is happening in real use.
         </p>
+        <p className="uos-sec-callout">
+          Signal turns the flood of AI information into ranked, role-aware intelligence for AI
+          product managers and designers.
+        </p>
       </ProjectSection>
 
       <ProjectSection title="Problem" titleId="signal-problem">
         <p className="uos-sec-prose">
-          The AI ecosystem no longer suffers from too little information. It suffers from too little
-          judgment.
+          AI product managers and designers are hired to ship. Staying current is expected, but it
+          is not the job. The day goes to delivery. Information intake gets the leftover minutes
+          — if it gets any time at all.
         </p>
         <p className="uos-sec-prose">
-          Product managers and designers are expected to stay current: new models, new capabilities,
-          new tools, new failure modes. But a lab changelog, an arXiv paper, and a GitHub thread are
-          not the same kind of signal. When they are treated as one undifferentiated feed, two
-          things happen. Everything looks urgent. And the thing that actually matters gets buried.
+          In those minutes, the stream is still undifferentiated: lab launches, research papers,
+          community threads, and commentary, all competing at the same volume. The result is not a
+          knowledge gap. It is a signal-to-noise problem. There is too much to scan, and too little
+          that is worth the time they do not have.
         </p>
         <p className="proj-label">The real gap</p>
         <p className="uos-sec-callout">
-          PMs and designers don&apos;t need more AI information. They need a way to tell which
-          signals deserve their attention.
+          AI PMs and designers do not lack sources. They lack a high-SNR feed that fits the time
+          they have between shipping.
         </p>
+      </ProjectSection>
+
+      <ProjectSection title="User Research" titleId="signal-research">
+        <p className="uos-sec-prose">
+          Interviews asked a single question: what information do AI PMs and designers need to stay
+          ahead of AI change? Four needs came back — model capability, research signals, the product
+          landscape, and market reaction — and four requirements for the information itself:
+          diversity of channels, timeliness, quality beyond headlines, and a takeaway they can act
+          on.
+        </p>
+        <p className="uos-sec-callout">
+          The problem wasn&apos;t access to AI information — it was knowing what to watch, what to
+          trust, and what it means for the product.
+        </p>
+        <Fig src="/assets/Signal/signal_user_research.png" />
       </ProjectSection>
 
       <ProjectSection title="Design Goal" titleId="signal-goal">
         <p className="uos-sec-prose">
-          The design shift is from information overload to actionable intelligence.
+          The design shift is from more information to a higher signal-to-noise ratio — and from a
+          generic stream to recommendations shaped by role and product context.
         </p>
         <p className="proj-label">How Might We</p>
         <p className="uos-sec-callout">
-          How might we help PMs and designers move from scanning everything to acting on what
-          matters?
+          How might we give AI product managers and designers a high-SNR, personalized window of
+          intelligence in the little time they have?
         </p>
-        <p className="proj-label">Three goals</p>
+        <p className="proj-label">Two goals</p>
         <ul className="uos-sec-list">
           <li>
-            <strong>Capture with intent</strong> — Cover official launches, research, and real-world
-            evidence, because each answers a different question.
+            <strong>Raise the signal-to-noise ratio</strong> — Qualify and rank so only
+            high-evidence, product-relevant items enter the attention window.
           </li>
           <li>
-            <strong>Qualify by role</strong> — Do not run a shipped product, a paper, and a
-            community thread through the same filter.
-          </li>
-          <li>
-            <strong>Rank for attention</strong> — Mix types in one window so the feed allocates
-            attention, instead of stacking similar items.
+            <strong>Personalize what surfaces</strong> — Match intelligence to role and the work
+            being shipped, instead of ranking one feed for everyone.
           </li>
         </ul>
       </ProjectSection>
 
       <ProjectSection title="System Overview" titleId="signal-system">
         <p className="uos-sec-prose">
-          Signal is a five-stage pipeline: Capture → Qualify → Rank → Understand → Synthesize. Each
-          stage has its own job — and its own interface.
+          Signal is a three-stage pipeline: Sources → Capture → Rank &amp; Show. Raw streams are
+          gated before they ever reach one ranked Feed.
         </p>
         <ol className="uos-flow">
           <li>
             <span className="uos-flow-num">01</span>
             <div>
-              <p className="uos-flow-title">Capture</p>
+              <p className="uos-flow-title">Sources</p>
               <p className="uos-flow-desc">
-                Multi-source intelligence from official labs, trusted research venues, and developer
-                communities.
+                Official labs, research venues, community evidence, and background media — each
+                family answers a different question.
               </p>
             </div>
           </li>
           <li>
             <span className="uos-flow-num">02</span>
             <div>
-              <p className="uos-flow-title">Qualify</p>
+              <p className="uos-flow-title">Capture</p>
               <p className="uos-flow-desc">
-                Role-based filters: each source type passes through its own evidence and relevance
-                rules.
+                Live connectors pull each family, then gate it. Official, Research, and Community
+                are qualified with a publish cap; Background enters with lighter gating. The result
+                is one shared list — not a raw recall set.
               </p>
             </div>
           </li>
           <li>
             <span className="uos-flow-num">03</span>
             <div>
-              <p className="uos-flow-title">Rank</p>
+              <p className="uos-flow-title">Rank &amp; Show</p>
               <p className="uos-flow-desc">
-                A unified ranking that balances business priority, role diversity, recency, and
-                spacing.
-              </p>
-            </div>
-          </li>
-          <li>
-            <span className="uos-flow-num">04</span>
-            <div>
-              <p className="uos-flow-title">Understand</p>
-              <p className="uos-flow-desc">
-                Each qualified item becomes an Impact Brief: what happened, why it matters, potential
-                impact, and a takeaway.
-              </p>
-            </div>
-          </li>
-          <li>
-            <span className="uos-flow-num">05</span>
-            <div>
-              <p className="uos-flow-title">Synthesize</p>
-              <p className="uos-flow-desc">
-                Independent signals connect into patterns, contradictions, opportunities, and
-                product implications.
+                One unified rank (priority, recency, role diversity, spacing) becomes a waterfall
+                Feed — not Top N. Opening a card gives an Impact Brief: what happened, why it
+                matters, impact, and a takeaway.
               </p>
             </div>
           </li>
         </ol>
-        <Fig src="/assets/Signal/Product Framework Overview.png" />
+        <Fig src="/assets/Signal/signal_system_overview.png" />
       </ProjectSection>
 
       <ProjectSection title="Source Strategy" titleId="signal-sources">
         <p className="uos-sec-prose">
           Different sources exist to answer different questions. Mixing them without a role produces
           noise — official availability sitting next to rumor, research sitting next to shipping
-          news.
+          news. Each family was chosen for the evidence it uniquely provides, then held to its own
+          discovery and trust criteria.
         </p>
         <ul className="uos-sec-list">
           <li>
-            <strong>Official product signals</strong> — 12 first-party labs. What shipped?
+            <strong>Official signals</strong> — First-party blogs, newsrooms, release notes, and
+            changelogs. Strongest evidence of what actually shipped. 12 labs. What shipped?
           </li>
           <li>
-            <strong>Research discovery</strong> — Trusted venues + arXiv. What may become possible?
+            <strong>Research signals</strong> — Canonical papers from HF Daily, arXiv, and trusted
+            venues. Capability before it is visible in products. What may become possible?
           </li>
           <li>
-            <strong>Developer evidence</strong> — 8 repos + Hacker News. What is happening in real
-            use?
+            <strong>Developer signals</strong> — Recurring implementation evidence from 8
+            product-relevant repos; Hacker News as support. Friction that launches cannot show. What
+            is happening in real use?
           </li>
           <li>
-            <strong>Background</strong> — Media, blogs, X, Product Hunt. What else is being
-            discussed — context only, never ranked as intelligence.
+            <strong>Background</strong> — Media, blogs, YouTube, X, Product Hunt. Context only —
+            not a fourth intelligence track.
           </li>
         </ul>
         <p className="uos-sec-callout">
-          We capture, qualify, and surface each source with the right standard of evidence.
+          Landscape and venue lists define where to look. Authority and relevance decide what is
+          trusted.
         </p>
-        <Fig src="/assets/Signal/Source Coverage.png" />
+        <Fig src="/assets/Signal/signal_source_strategy.png" />
       </ProjectSection>
 
       <ProjectSection title="Intelligence Pipeline" titleId="signal-pipeline">
@@ -213,14 +218,20 @@ export default function SignalContent() {
           Signal gives each source type its own qualification track. Official launches need
           first-party confirmation, a meaningful release, and availability. Research needs a
           canonical paper and product relevance. Community evidence needs recurrence, a concrete
-          artifact, and a product implication.
+          artifact, and a product implication. Background is not a fourth track — it enters only as
+          context, and only when qualified.
+        </p>
+        <p className="uos-sec-prose">
+          Qualified items merge into one shared list, with source family still on the card. Before
+          ranking, each item is assigned a Brief Readiness — full, factual-only, or none — so the
+          Feed only renders the depth the system is allowed to explain. Unified ranking then becomes
+          a waterfall Feed, not a Top-N screen.
         </p>
         <p className="proj-label">The gate</p>
         <p className="uos-sec-callout">
-          Only items that pass their own track become Qualified Intelligence. Everything else stays
-          out of the feed.
+          Qualification decides what can enter. Brief Readiness decides how deeply it is explained.
         </p>
-        <Fig src="/assets/Signal/multi - source capture.png" />
+        <Fig src="/assets/Signal/signal_multi_source_capture.png" />
         <Fig src="/assets/Signal/Qualification Logic.png" />
       </ProjectSection>
 
@@ -233,8 +244,14 @@ export default function SignalContent() {
         <p className="uos-sec-prose">
           Signal ranks by allocating attention, not by sorting a universal score. Business priority
           sets the base (T1 model availability, T2 products and platforms). Role diversity keeps
-          Launch, Research, and In the Wild in the same window. Recency and spacing apply time
-          decay and avoid same-org stacking. The top of the feed is limited by design.
+          Launch, Research, and In the Wild in the same window — official product signals, emerging
+          capability, and real-world developer evidence. Recency and spacing apply time decay and
+          avoid same-org stacking.
+        </p>
+        <p className="uos-sec-prose">
+          The Feed is a waterfall, not Top N: every ranked item continues down the list. The first
+          ten slots get extra constraints — T1 priority, role diversity, and org/topic spacing — so
+          the opening window is mixed by design.
         </p>
         <p className="uos-sec-callout">
           Ranking is not a global score. It allocates attention across different kinds of

@@ -205,14 +205,6 @@
   margin-bottom: 0;
 }
 
-.project-page-signal .uos-sec-body > .uos-sec-callout:first-child {
-  margin-top: 0;
-}
-
-.project-page-signal .uos-sec-callout + .uos-sec-prose {
-  margin-top: 28px;
-}
-
 .project-page-signal .uos-sec-body .proj-media--portrait {
   max-width: 420px;
   margin-left: auto;
