@@ -31,16 +31,10 @@ const IMAGES = [
       'Figure 4 — Multi-source capture: three core intelligence tracks plus qualified background inputs converge into one ranked waterfall Feed.',
   },
   {
-    src: '/assets/Signal/Qualification Logic.png',
-    alt: 'Qualification logic for launches, research papers, and developer community evidence',
-    caption:
-      'Figure 5 — Qualification logic: launches, papers, and community evidence each pass through a different standard of evidence before entering the ranked feed.',
-  },
-  {
     src: '/assets/Signal/UNIFIED RANKING.png',
     alt: 'Unified ranking logic — business priority, role diversity, recency and spacing',
     caption:
-      'Figure 6 — Unified ranking: business priority, role diversity, and recency/spacing allocate a mixed attention window — not a single global score.',
+      'Figure 5 — Unified ranking: business priority, role diversity, and recency/spacing allocate a mixed attention window — not a single global score.',
   },
 ];
 
@@ -65,34 +59,32 @@ export default function SignalContent() {
     <>
       <ProjectSection title="Overview" titleId="signal-overview" first>
         <p className="uos-sec-prose">
-          Labs ship weekly. Papers land daily. Developers report what actually works — and what
-          breaks. Signal captures those streams, qualifies each by its own standard of evidence, and
-          ranks a mixed window of attention so teams can see what shipped, what may become possible,
-          and what is happening in real use.
-        </p>
-        <p className="uos-sec-callout">
-          Signal turns the flood of AI information into ranked, role-aware intelligence for AI
-          product managers and designers.
+          During my time as a PM intern and a lab intern, I spent a vast amount of time bogged down
+          by stifling, routine tasks, leaving me no time to stay informed about the latest
+          developments in the AI industry. After discussing this with fellow researchers and AI
+          product managers, I realized this wasn&apos;t just a personal issue. Everyone needs to
+          keep pace with the rapidly changing AI landscape, yet few can find the time to
+          consistently read through the flood of information. What we need is a way to quickly
+          identify content that is truly worth reading.
         </p>
       </ProjectSection>
 
       <ProjectSection title="Problem" titleId="signal-problem">
         <p className="uos-sec-prose">
-          AI product managers and designers are hired to ship. Staying current is expected, but it
-          is not the job. The day goes to delivery. Information intake gets the leftover minutes
-          — if it gets any time at all.
+          AI product managers and designers are hired to ship, but we&apos;re also expected to stay
+          current. The problem is, information intake often gets whatever time is left.
         </p>
-        <p className="uos-sec-prose">
-          In those minutes, the stream is still undifferentiated: lab launches, research papers,
-          community threads, and commentary, all competing at the same volume. The result is not a
-          knowledge gap. It is a signal-to-noise problem. There is too much to scan, and too little
-          that is worth the time they do not have.
-        </p>
-        <p className="proj-label">The real gap</p>
-        <p className="uos-sec-callout">
-          AI PMs and designers do not lack sources. They lack a high-SNR feed that fits the time
-          they have between shipping.
-        </p>
+        <p className="proj-label">Core problem</p>
+        <ul className="uos-sec-list">
+          <li>
+            AI product managers and researchers are pressed for time, so they need to access and
+            read high-quality information more efficiently.
+          </li>
+          <li>
+            Since the definition of &quot;good information&quot; varies from person to person,
+            personalized recommendations are required.
+          </li>
+        </ul>
       </ProjectSection>
 
       <ProjectSection title="User Research" titleId="signal-research">
@@ -135,22 +127,12 @@ export default function SignalContent() {
 
       <ProjectSection title="System Overview" titleId="signal-system">
         <p className="uos-sec-prose">
-          Signal is a three-stage pipeline: Sources → Capture → Rank &amp; Show. Raw streams are
-          gated before they ever reach one ranked Feed.
+          Signal is a two-stage pipeline: Capture → Rank &amp; Show. Raw streams are gated before
+          they ever reach one ranked Feed.
         </p>
         <ol className="uos-flow">
           <li>
             <span className="uos-flow-num">01</span>
-            <div>
-              <p className="uos-flow-title">Sources</p>
-              <p className="uos-flow-desc">
-                Official labs, research venues, community evidence, and background media — each
-                family answers a different question.
-              </p>
-            </div>
-          </li>
-          <li>
-            <span className="uos-flow-num">02</span>
             <div>
               <p className="uos-flow-title">Capture</p>
               <p className="uos-flow-desc">
@@ -161,7 +143,7 @@ export default function SignalContent() {
             </div>
           </li>
           <li>
-            <span className="uos-flow-num">03</span>
+            <span className="uos-flow-num">02</span>
             <div>
               <p className="uos-flow-title">Rank &amp; Show</p>
               <p className="uos-flow-desc">
@@ -201,14 +183,10 @@ export default function SignalContent() {
             not a fourth intelligence track.
           </li>
         </ul>
-        <p className="uos-sec-callout">
-          Landscape and venue lists define where to look. Authority and relevance decide what is
-          trusted.
-        </p>
         <Fig src="/assets/Signal/signal_source_strategy.png" />
       </ProjectSection>
 
-      <ProjectSection title="Intelligence Pipeline" titleId="signal-pipeline">
+      <ProjectSection title="Scrape" titleId="signal-scrape">
         <p className="uos-sec-prose">
           A launch, a paper, and a community thread cannot share the same rules. If they did,
           official availability would be held to the same bar as a GitHub complaint, and a research
@@ -232,7 +210,6 @@ export default function SignalContent() {
           Qualification decides what can enter. Brief Readiness decides how deeply it is explained.
         </p>
         <Fig src="/assets/Signal/signal_multi_source_capture.png" />
-        <Fig src="/assets/Signal/Qualification Logic.png" />
       </ProjectSection>
 
       <ProjectSection title="Ranking" titleId="signal-ranking">
