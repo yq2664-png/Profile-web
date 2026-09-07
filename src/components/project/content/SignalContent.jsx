@@ -23,7 +23,7 @@ const IMAGES = [
     src: '/assets/Signal/signal_source_strategy.png',
     alt: 'Source strategy — why Official, Research, and Developer families, and what evidence each requires',
     caption:
-      'Figure 3 — Source strategy: Official, Research, and Developer families, each with a why, a selection rule, and the evidence it must show before entering the feed.',
+      'Figure 3 — Source lists define where to look; content-level evidence and relevance determine what enters the feed.',
   },
   {
     src: '/assets/Signal/signal_multi_source_capture.png',
