@@ -29,7 +29,7 @@ const IMAGES = [
     src: '/assets/Signal/signal_multi_source_capture.png',
     alt: 'Multi-source capture — Official, Research, and Community tracks plus background inputs',
     caption:
-      'Figure 4 — Multi-source capture: three core intelligence tracks plus qualified background inputs converge into one ranked waterfall Feed.',
+      'Figure 4 — Qualification decides what can enter. Brief Readiness decides how deeply the system is allowed to explain it.',
   },
   {
     src: '/assets/Signal/UNIFIED RANKING.png',
@@ -91,9 +91,9 @@ export default function SignalContent() {
       <ProjectSection title="User Research" titleId="signal-research">
         <p className="uos-sec-prose">
           Interviews asked a single question: what information do AI PMs and designers need to stay
-          ahead of AI change? Four needs came back — model capability, research signals, the product
-          landscape, and market reaction — and three requirements for the information itself:
-          diversity of channels, timeliness, and a takeaway they can act on.
+          ahead of AI change? Four needs came back: model capability, research signals, the product
+          landscape, and market reaction. In addition, three requirements for the information
+          itself: diversity of channels, timeliness, and a takeaway they can act on.
         </p>
         <p className="uos-sec-callout">
           The problem wasn&apos;t access to AI information — it was knowing what to watch, what to
@@ -103,105 +103,75 @@ export default function SignalContent() {
       </ProjectSection>
 
       <ProjectSection title="Design Goal" titleId="signal-goal">
-        <p className="uos-sec-prose">
-          The design shift is from more information to a higher signal-to-noise ratio — and from a
-          generic stream to recommendations shaped by role and product context.
-        </p>
         <p className="proj-label">How Might We</p>
         <p className="uos-sec-callout">
           How might we give AI product managers and designers a high-SNR, personalized window of
           intelligence in the little time they have?
         </p>
-        <p className="proj-label">Two goals</p>
-        <ul className="uos-sec-list">
-          <li>
-            <strong>Raise the signal-to-noise ratio</strong> — Qualify and rank so only
-            high-evidence, product-relevant items enter the attention window.
-          </li>
-          <li>
-            <strong>Personalize what surfaces</strong> — Match intelligence to role and the work
-            being shipped, instead of ranking one feed for everyone.
-          </li>
-        </ul>
-      </ProjectSection>
-
-      <ProjectSection title="System Overview" titleId="signal-system">
-        <p className="uos-sec-prose">
-          Signal is a two-stage pipeline: Capture → Rank &amp; Show. Raw streams are gated before
-          they ever reach one ranked Feed.
-        </p>
+        <p className="proj-label">Two Goals</p>
         <ol className="uos-flow">
           <li>
             <span className="uos-flow-num">01</span>
             <div>
-              <p className="uos-flow-title">Capture</p>
+              <p className="uos-flow-title">Reduce noise</p>
               <p className="uos-flow-desc">
-                Official, Research, Community, and Background each enter through live connectors,
-                then source-specific qualification. Official, Research, and Community get a publish
-                cap; Background enters with lighter gating. They merge into one unified candidate
-                pool — source family stays on the card.
+                Surface high-quality, product-relevant information so users spend less time
+                filtering and more time reading what matters.
               </p>
             </div>
           </li>
           <li>
             <span className="uos-flow-num">02</span>
             <div>
-              <p className="uos-flow-title">Rank &amp; Show</p>
+              <p className="uos-flow-title">Personalize relevance</p>
               <p className="uos-flow-desc">
-                Recall pulls from that pool; rank applies attention priority and recency; re-rank
-                adds T1/T2 preference, role diversity, and org/topic spacing. All ranked items
-                continue down a waterfall Feed. Opening a card gives an Impact Brief: what happened,
-                why it matters, impact, and a takeaway.
+                Prioritize information based on each user&apos;s role, interests, and product
+                context instead of giving everyone the same feed.
               </p>
             </div>
           </li>
         </ol>
+      </ProjectSection>
+
+      <ProjectSection title="System Overview" titleId="signal-system">
         <Fig src="/assets/Signal/signal_system_overview.png" />
       </ProjectSection>
 
       <ProjectSection title="Source Strategy" titleId="signal-sources">
         <p className="uos-sec-prose">
-          Different sources exist to answer different questions. Mixing them without a role produces
-          noise — official availability sitting next to rumor, research sitting next to shipping
-          news. Each family was chosen for the question it answers, then held to its own selection
-          rule and evidence bar.
+          Rather than aggregating as many sources as possible, I defined three types of signals
+          based on the questions users needed answered: official sources show what shipped, research
+          sources reveal what may become possible, and developer communities show what is happening
+          in real use.
         </p>
-        <ul className="uos-sec-list">
-          <li>
-            <strong>Official signals</strong> — Track what models and AI products have become
-            available. First-party release details from 12 labs + 2 release RSS.
-          </li>
-          <li>
-            <strong>Research signals</strong> — Surface emerging capabilities with product
-            implications. Canonical papers from HF Daily and selected AI / HCI venues.
-          </li>
-          <li>
-            <strong>Developer signals</strong> — Reveal adoption patterns and implementation
-            friction. Recurring evidence from product-relevant GitHub repos, with Hacker News as
-            support.
-          </li>
-        </ul>
+        <p className="uos-sec-prose">
+          Each source type therefore follows a different selection and evidence standard. The goal
+          wasn&apos;t maximum coverage, but making sure each source had a clear reason to be in the
+          feed.
+        </p>
         <Fig src="/assets/Signal/signal_source_strategy.png" />
       </ProjectSection>
 
       <ProjectSection title="Scrape" titleId="signal-scrape">
         <p className="uos-sec-prose">
-          A launch, a paper, and a community thread cannot share the same rules. If they did,
-          official availability would be held to the same bar as a GitHub complaint, and a research
-          preprint would be treated like a shipped product.
+          The challenge wasn&apos;t finding sources, but deciding what deserved attention. I built
+          source-specific qualification paths for official launches, research, and developer
+          evidence, then merged qualified signals into one ranked Feed, with background sources
+          such as X providing context at lower priority.
         </p>
         <p className="uos-sec-prose">
-          Signal gives each source type its own qualification track. Official launches need
-          first-party confirmation, a meaningful release, and availability. Research needs a
-          canonical paper and product relevance. Community evidence needs recurrence, a concrete
-          artifact, and a product implication. Background is not a fourth track — it enters only as
-          context, and only when qualified.
+          Signal gives each source type its own qualification track. Official Launch (SUPPLY) is
+          first-party only, with launch qualification and event clustering. Research Paper
+          (CAPABILITY) needs a canonical identity, product relevance, and deduplication. Developer
+          Community (ADOPTION) needs evidence clustering and recurring adoption or friction.
+          Background is not a fourth track — it enters only as context, and only when qualified.
+          Official org-X stays inside Official Launch.
         </p>
         <p className="uos-sec-prose">
-          Qualified items merge into one shared list, with source family still on the card. Before
-          ranking, each item is assigned a Brief Readiness — full, factual-only, or none — so the
-          Feed only renders the depth the system is allowed to explain. Unified ranking then becomes
-          a waterfall Feed, not a Top-N screen.
+          Qualified items merge into one shared list, with source family and role still on the card.
+          Before ranking, each item is assigned a Brief Readiness — full, factual-only, or none —
+          so the Feed only renders the depth the system is allowed to explain. Unified ranking then
+          becomes the waterfall Feed.
         </p>
         <p className="proj-label">The gate</p>
         <p className="uos-sec-callout">
@@ -212,23 +182,10 @@ export default function SignalContent() {
 
       <ProjectSection title="Ranking" titleId="signal-ranking">
         <p className="uos-sec-prose">
-          Once items are qualified, the remaining problem is mixing them. A single global score
-          clusters similar items — three launches from the same lab, or a feed that never surfaces
-          developer friction.
-        </p>
-        <p className="uos-sec-prose">
-          Each candidate is annotated with a role, an attention class, and an identity. T1/T2 tiers
-          apply only to SUPPLY. The feed is built one item at a time: attention priority first
-          (HIGH → MEDIUM → BACKGROUND), then diversity and business rules — org/topic spacing, role
-          coverage in the first ten, T1 before T2 — then recency.
-        </p>
-        <p className="uos-sec-prose">
-          The result is a full ordered Feed. Positions 1–10 get extra role-coverage and repetition
-          rules. Everything else continues down the list.
-        </p>
-        <p className="uos-sec-callout">
-          Roles have no fixed positions. BACKGROUND follows core attention classes, and may enter
-          the first ten when core candidates are insufficient.
+          A single relevance score wasn&apos;t enough. I designed ranking as an attention-allocation
+          system: candidates are prioritized by attention class, balanced by role and business
+          rules, then ordered by recency. The first 10 slots receive additional diversity
+          constraints, while the full Feed remains a continuous ranked waterfall.
         </p>
         <Fig src="/assets/Signal/UNIFIED RANKING.png" />
       </ProjectSection>
