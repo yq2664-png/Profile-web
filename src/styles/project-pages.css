@@ -211,6 +211,30 @@
   margin-right: auto;
 }
 
+.project-page-signal .proj-try-now {
+  display: block;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 40px 20px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.project-page-signal .proj-try-now:hover {
+  color: var(--accent-hover);
+}
+
+@media (max-width: 600px) {
+  .project-page-signal .proj-try-now {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 .ideation-lightbox {
   position: fixed;
   inset: 0;

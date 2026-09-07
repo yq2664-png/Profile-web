@@ -1,5 +1,5 @@
 const LIVE_SITE = 'https://user-perspective-simulator-production.up.railway.app/';
-const SIGNAL_LIVE = 'https://signal-production-d8d9.up.railway.app/feed';
+export const SIGNAL_LIVE = 'https://signal-production-d8d9.up.railway.app/feed';
 
 export const projects = {
   signal: {
