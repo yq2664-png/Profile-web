@@ -9,9 +9,9 @@ const TAGS = ['AI Product', 'Information Architecture', 'Product Design'];
 const IMAGES = [
   {
     src: '/assets/Signal/signal_user_research.png',
-    alt: 'User research — information needs and requirements for AI PMs and designers',
+    alt: 'User research — where they look, what makes information worth reading, and the research conclusion',
     caption:
-      'Figure 1 — User research: four information needs (model capability, research signals, product landscape, market reaction) and three requirements (channel diversity, timeliness, actionability).',
+      'Figure 1 — User research: where they look (model capability, research signals, product landscape, market reaction) and what makes information worth reading (channel diversity, timeliness, actionability, personal relevance).',
   },
   {
     src: '/assets/Signal/signal_system_overview.png',
@@ -90,14 +90,9 @@ export default function SignalContent() {
 
       <ProjectSection title="User Research" titleId="signal-research">
         <p className="uos-sec-prose">
-          Interviews asked a single question: what information do AI PMs and designers need to stay
-          ahead of AI change? Four needs came back: model capability, research signals, the product
-          landscape, and market reaction. In addition, three requirements for the information
-          itself: diversity of channels, timeliness, and a takeaway they can act on.
-        </p>
-        <p className="uos-sec-callout">
-          The problem wasn&apos;t access to AI information — it was knowing what to watch, what to
-          trust, and what it means for the product.
+          I focused my research on two questions: where do AI product managers, designers, and
+          researchers look for information, and what makes that information worth their limited
+          attention?
         </p>
         <Fig src="/assets/Signal/signal_user_research.png" />
       </ProjectSection>
