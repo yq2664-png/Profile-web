@@ -23,7 +23,7 @@ export const projects = {
         { label: 'Time', value: '2026 8' },
         { label: 'Role', value: 'Product Designer' },
         { label: 'Focus', value: 'AI PMs · Designers' },
-        { label: 'Status', value: 'Prototype' },
+        { label: 'Status', value: 'Public Release' },
       ],
       metaAction: { label: 'Try ↗', href: SIGNAL_LIVE },
       sections: [],
