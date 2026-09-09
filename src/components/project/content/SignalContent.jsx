@@ -2,6 +2,7 @@ import { SIGNAL_LIVE } from '../../../data/projects';
 import { ProjectImage, ProjectSection, ProjectTags } from '../ProjectWriting';
 import { useProjectMediaLightbox } from '../../../hooks/useProjectMediaLightbox';
 import ProjectMediaLightbox from '../ProjectMediaLightbox';
+import AutoplayVideo from '../../media/AutoplayVideo';
 import '../uos-sections.css';
 
 const TAGS = ['AI Product', 'Information Architecture', 'Product Design'];
@@ -58,6 +59,9 @@ export default function SignalContent() {
 
   return (
     <>
+      <div className="uos-video-wrap" data-aos="fade-up" data-aos-duration="800">
+        <AutoplayVideo src="/assets/Signal/showing.mp4" controls />
+      </div>
       <ProjectSection title="Overview" titleId="signal-overview" first>
         <p className="uos-sec-prose">
           During my time as a PM intern and a lab intern, I spent a vast amount of time bogged down
