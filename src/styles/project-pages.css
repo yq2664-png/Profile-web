@@ -197,6 +197,11 @@
   cursor: zoom-in;
 }
 
+.project-page-signal .uos-sec-body .signal-overview-cover {
+  margin-top: 0;
+  margin-bottom: 32px;
+}
+
 .project-page-signal .uos-flow {
   margin: 0 0 8px;
 }
