@@ -233,6 +233,11 @@
   color: var(--accent-hover);
 }
 
+.project-page-signal .signal-closing-video {
+  padding-top: 24px;
+  padding-bottom: 40px;
+}
+
 @media (max-width: 600px) {
   .project-page-signal .proj-try-now {
     padding-left: 20px;

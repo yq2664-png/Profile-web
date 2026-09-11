@@ -162,24 +162,15 @@ export default function SignalContent() {
 
       <ProjectSection title="Scrape" titleId="signal-scrape">
         <p className="uos-sec-prose">
-          The challenge wasn&apos;t finding sources, but deciding what deserved attention. I built
-          source-specific qualification paths for official launches, research, and developer
-          evidence, then merged qualified signals into one ranked Feed, with background sources
-          such as X providing context at lower priority.
+          The challenge wasn&apos;t finding sources, but deciding what deserved attention. SIGNAL
+          applies different evidence standards to three intelligence tracks: first-party launch
+          evidence for SUPPLY, canonical and product-relevant research for CAPABILITY, and recurring
+          implementation evidence for ADOPTION. Qualified background sources can add context, but do
+          not form a fourth track.
         </p>
         <p className="uos-sec-prose">
-          Signal gives each source type its own qualification track. Official Launch (SUPPLY) is
-          first-party only, with launch qualification and event clustering. Research Paper
-          (CAPABILITY) needs a canonical identity, product relevance, and deduplication. Developer
-          Community (ADOPTION) needs evidence clustering and recurring adoption or friction.
-          Background is not a fourth track — it enters only as context, and only when qualified.
-          Official org-X stays inside Official Launch.
-        </p>
-        <p className="uos-sec-prose">
-          Qualified items merge into one shared list, with source family and role still on the card.
-          Before ranking, each item is assigned a Brief Readiness — full, factual-only, or none —
-          so the Feed only renders the depth the system is allowed to explain. Unified ranking then
-          becomes the waterfall Feed.
+          All qualified items then merge into one shared list, retain their source and role, receive
+          a Brief Readiness, and enter unified ranking to form the waterfall Feed.
         </p>
         <p className="proj-label">The gate</p>
         <p className="uos-sec-callout">
@@ -206,6 +197,9 @@ export default function SignalContent() {
       >
         Try it now
       </a>
+      <div className="uos-video-wrap signal-closing-video" data-aos="fade-up" data-aos-duration="800">
+        <AutoplayVideo src="/assets/Signal/showing.mp4" controls />
+      </div>
       <ProjectTags tags={TAGS} />
 
       <ProjectMediaLightbox
