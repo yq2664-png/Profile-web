@@ -9,10 +9,6 @@ const TAGS = ['AI Product', 'Information Architecture', 'Product Design'];
 
 const IMAGES = [
   {
-    src: '/assets/Signal/cover.JPG',
-    alt: 'Signal',
-  },
-  {
     src: '/assets/Signal/signal_user_research.png',
     alt: 'User research — where they look, what makes information worth reading, and the research conclusion',
     caption:
@@ -67,11 +63,6 @@ export default function SignalContent() {
         <AutoplayVideo src="/assets/Signal/showing.mp4" controls />
       </div>
       <ProjectSection title="Overview" titleId="signal-overview" first>
-        <ProjectImage
-          src="/assets/Signal/cover.JPG"
-          alt="Signal"
-          className="signal-overview-cover"
-        />
         <p className="uos-sec-prose">
           During my time as a PM intern and a lab intern, I spent a vast amount of time bogged down
           by stifling, routine tasks, leaving me no time to stay informed about the latest

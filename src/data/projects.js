@@ -14,7 +14,11 @@ export const projects = {
     },
     page: {
       title: 'Signal',
-      hero: null,
+      hero: {
+        src: '/assets/Signal/cover.JPG',
+        alt: 'Signal — intelligence feed',
+        className: 'hero-img hero-img-wearable hero-img-signal',
+      },
       meta: [
         { label: 'Time', value: '2026 8' },
         { label: 'Role', value: 'Product Designer' },

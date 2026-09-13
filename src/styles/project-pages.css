@@ -19,6 +19,10 @@
   max-height: none;
 }
 
+.project-page-has-hero.project-page-signal .hero-img.hero-img-signal:not(.hero-img-ug):not(.hero-img-ideation):not(.hero-img-uos) {
+  object-position: center 80%;
+}
+
 .hero-img-ideation {
   width: 100%;
   height: calc(100vh - 11.5rem);
@@ -195,11 +199,6 @@
 .project-page-uos .uos-kf-overview img,
 .project-page-signal .proj-media img {
   cursor: zoom-in;
-}
-
-.project-page-signal .uos-sec-body .signal-overview-cover {
-  margin-top: 0;
-  margin-bottom: 32px;
 }
 
 .project-page-signal .uos-flow {
