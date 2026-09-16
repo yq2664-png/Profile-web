@@ -34,9 +34,9 @@ const IMAGES = [
   },
   {
     src: '/assets/Signal/UNIFIED RANKING.png',
-    alt: 'Unified ranking logic — annotate candidates, select the next item, ordered Feed',
+    alt: 'Unified ranking — qualified candidates, rank and re-rank, then an ordered Feed',
     caption:
-      'Figure 5 — Unified ranking: annotate each candidate, then pick the next item by attention priority, diversity and business rules, and recency. The full Feed continues past the first ten.',
+      'Figure 5 — Unified ranking: qualified candidates are ranked and re-ranked by attention priority, diversity and business rules, then recency, into an ordered Feed. Extra diversity rules apply to the first ten.',
   },
 ];
 
