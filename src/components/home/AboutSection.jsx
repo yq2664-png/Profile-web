@@ -61,7 +61,7 @@ export default function AboutSection() {
           >
             <DecayCard
               className="about-photo-decay"
-              image="/assets/Photo.jpg"
+              image="/assets/Photos.JPG"
               alt="Yue Qin"
               edgeOnly
               maxDisplacement={280}
