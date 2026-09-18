@@ -13,7 +13,6 @@ const IMAGES = [
     alt: 'A shared struggle: keeping up with AI with limited time and too much information',
     caption:
       'Figure 1 — A shared struggle: keeping up with AI with limited time and too much information.',
-    className: 'signal-overview-cover',
   },
   {
     src: '/assets/Signal/signal_user_research.png',
@@ -70,7 +69,6 @@ export default function SignalContent() {
         <AutoplayVideo src="/assets/Signal/showing.mp4" controls />
       </div>
       <ProjectSection title="Overview" titleId="signal-overview" first>
-        <Fig src="/assets/Signal/cover.JPG" />
         <p className="uos-sec-prose">
           During my time as a PM intern and a lab intern, I spent a vast amount of time bogged down
           by stifling, routine tasks, leaving me no time to stay informed about the latest
@@ -80,6 +78,7 @@ export default function SignalContent() {
           consistently read through the flood of information. What we need is a way to quickly
           identify content that is truly worth reading.
         </p>
+        <Fig src="/assets/Signal/cover.JPG" />
       </ProjectSection>
 
       <ProjectSection title="Problem" titleId="signal-problem">

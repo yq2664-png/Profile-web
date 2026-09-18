@@ -14,7 +14,11 @@ export const projects = {
     },
     page: {
       title: 'Signal',
-      hero: null,
+      hero: {
+        src: '/assets/Signal/Signal-hero.png',
+        alt: 'Signal — Find what deserves your attention',
+        className: 'hero-img hero-img-wearable',
+      },
       meta: [
         { label: 'Time', value: '2026 8' },
         { label: 'Role', value: 'Product Designer' },
