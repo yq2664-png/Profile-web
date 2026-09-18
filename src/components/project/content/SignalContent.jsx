@@ -9,34 +9,41 @@ const TAGS = ['AI Product', 'Information Architecture', 'Product Design'];
 
 const IMAGES = [
   {
-    src: '/assets/Signal/signal_user_research.png',
-    alt: 'User research — where they look, what makes information worth reading, and the research conclusion',
+    src: '/assets/Signal/cover.JPG',
+    alt: 'A shared struggle: keeping up with AI with limited time and too much information',
     caption:
-      'Figure 1 — User research: where they look (model capability, research signals, product landscape, market reaction) and what makes information worth reading (channel diversity, timeliness, actionability, personal relevance).',
+      'Figure 1 — A shared struggle: keeping up with AI with limited time and too much information.',
+    className: 'signal-overview-cover',
+  },
+  {
+    src: '/assets/Signal/signal_user_research.png',
+    alt: 'User research synthesis — where users find AI signals, what makes them valuable, and the opportunity for more relevant recommendations',
+    caption:
+      'Figure 2 — Research synthesis highlighting where users find AI signals, what makes them valuable, and the opportunity for more relevant recommendations.',
   },
   {
     src: '/assets/Signal/signal_system_overview.png',
-    alt: 'Signal system overview — Capture then Rank & Show',
+    alt: 'Signal system overview — from diverse sources to ranked signals and actionable insights',
     caption:
-      'Figure 2 — System overview: Capture (sources → connectors → qualification → unified candidate pool) then Rank & Show (recall, rank, re-rank → waterfall Feed → Impact Brief).',
+      'Figure 3 — System overview: from diverse sources to ranked signals and actionable insights.',
   },
   {
     src: '/assets/Signal/signal_source_strategy.png',
-    alt: 'Source strategy — why Official, Research, and Developer families, and what evidence each requires',
+    alt: 'Source strategy — selecting AI signals based on evidence and relevance',
     caption:
-      'Figure 3 — Source lists define where to look; content-level evidence and relevance determine what enters the feed.',
+      'Figure 4 — Source strategy: selecting AI signals based on evidence and relevance.',
   },
   {
     src: '/assets/Signal/signal_multi_source_capture.png',
-    alt: 'Multi-source capture — Official, Research, and Community tracks plus background inputs',
+    alt: 'Multi-source capture — unifying launches, research, and community evidence into one ranked feed',
     caption:
-      'Figure 4 — Qualification decides what can enter. Brief Readiness decides how deeply the system is allowed to explain it.',
+      'Figure 5 — Multi-source capture: unifying launches, research, and community evidence into one ranked feed.',
   },
   {
     src: '/assets/Signal/UNIFIED RANKING.png',
-    alt: 'Unified ranking — qualified candidates, rank and re-rank, then an ordered Feed',
+    alt: 'Unified ranking — balancing attention priority, diversity, and recency',
     caption:
-      'Figure 5 — Unified ranking: qualified candidates are ranked and re-ranked by attention priority, diversity and business rules, then recency, into an ordered Feed. Extra diversity rules apply to the first ten.',
+      'Figure 6 — Unified ranking: balancing attention priority, diversity, and recency.',
   },
 ];
 
@@ -63,6 +70,7 @@ export default function SignalContent() {
         <AutoplayVideo src="/assets/Signal/showing.mp4" controls />
       </div>
       <ProjectSection title="Overview" titleId="signal-overview" first>
+        <Fig src="/assets/Signal/cover.JPG" />
         <p className="uos-sec-prose">
           During my time as a PM intern and a lab intern, I spent a vast amount of time bogged down
           by stifling, routine tasks, leaving me no time to stay informed about the latest
