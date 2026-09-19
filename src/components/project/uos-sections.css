@@ -59,6 +59,11 @@ section.uos-de {
   margin: 0 0 32px;
 }
 
+.uos-sec-prose strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
 .uos-sec-prose:last-child {
   margin-bottom: 0;
 }

@@ -75,8 +75,11 @@ export default function SignalContent() {
           developments in the AI industry. After discussing this with fellow researchers and AI
           product managers, I realized this wasn&apos;t just a personal issue. Everyone needs to
           keep pace with the rapidly changing AI landscape, yet few can find the time to
-          consistently read through the flood of information. What we need is a way to quickly
-          identify content that is truly worth reading.
+          consistently read through the flood of information.
+          <br />
+          <strong>
+            What we need is a way to quickly identify content that is truly worth reading.
+          </strong>
         </p>
         <Fig src="/assets/Signal/cover.JPG" />
       </ProjectSection>

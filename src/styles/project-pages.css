@@ -7,6 +7,15 @@
   object-fit: contain;
 }
 
+.project-page-signal .hero-img-signal {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: center top;
+  display: block;
+}
+
 .hero-img-wearable {
   width: 100%;
   height: 56vh;

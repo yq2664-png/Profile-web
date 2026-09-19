@@ -99,7 +99,7 @@ body.scroll-locked {
   padding-top: 56px;
 }
 
-.project-page-has-hero .hero-img:not(.hero-img-ug):not(.hero-img-ideation):not(.hero-img-uos) {
+.project-page-has-hero .hero-img:not(.hero-img-ug):not(.hero-img-ideation):not(.hero-img-uos):not(.hero-img-signal) {
   width: 100%;
   height: calc(100vh - 9rem);
   max-height: none;
@@ -108,7 +108,7 @@ body.scroll-locked {
   display: block;
 }
 
-.hero-img:not(.hero-img-ug):not(.hero-img-uos):not(.hero-img-ideation) {
+.hero-img:not(.hero-img-ug):not(.hero-img-uos):not(.hero-img-ideation):not(.hero-img-signal) {
   width: 100%;
   max-height: 520px;
   object-fit: cover;

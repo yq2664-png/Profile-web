@@ -17,7 +17,7 @@ export const projects = {
       hero: {
         src: '/assets/Signal/Signal-hero.png',
         alt: 'Signal — Find what deserves your attention',
-        className: 'hero-img hero-img-wearable',
+        className: 'hero-img hero-img-signal',
       },
       meta: [
         { label: 'Time', value: '2026 8' },
