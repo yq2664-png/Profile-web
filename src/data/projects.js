@@ -9,8 +9,8 @@ export const projects = {
       description:
         'An intelligence feed that turns AI launches, research, and real-world developer evidence into ranked attention for AI PMs and designers.',
       tags: ['AI Product', 'Information Architecture', 'Product Design'],
-      cover: '/assets/Signal/cover.JPG',
-      coverAlt: 'Signal',
+      cover: '/assets/Signal/waterfall.jpg',
+      coverAlt: 'Signal — Know more, Read less',
     },
     page: {
       title: 'Signal',

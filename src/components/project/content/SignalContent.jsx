@@ -44,6 +44,11 @@ const IMAGES = [
     caption:
       'Figure 6 — Unified ranking: balancing attention priority, diversity, and recency.',
   },
+  {
+    src: '/assets/Signal/waterfall.jpg',
+    alt: 'Waterfall — Know more, Read less. A high-signal AI feed shaped around what matters to your work',
+    caption: 'Figure 7 — Waterfall.',
+  },
 ];
 
 const IMAGE_BY_SRC = Object.fromEntries(IMAGES.map((item) => [item.src, item]));
@@ -188,6 +193,10 @@ export default function SignalContent() {
           constraints, while the full Feed remains a continuous ranked waterfall.
         </p>
         <Fig src="/assets/Signal/UNIFIED RANKING.png" />
+      </ProjectSection>
+
+      <ProjectSection title="Waterfall" titleId="signal-waterfall">
+        <Fig src="/assets/Signal/waterfall.jpg" />
       </ProjectSection>
 
       <a
