@@ -430,10 +430,12 @@ nav {
 }
 
 .work-row[data-slug="signal"] .work-cover {
-  background: #fff;
+  aspect-ratio: 4961 / 3508;
 }
 
 .work-row[data-slug="signal"] .work-cover img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
