@@ -15,8 +15,8 @@ export const projects = {
     page: {
       title: 'Signal',
       hero: {
-        src: '/assets/Signal/Signal-hero.png',
-        alt: 'Signal — Find what deserves your attention',
+        src: '/assets/Signal/Signal%20hero.jpg',
+        alt: 'Signal — Know more, Read less',
         className: 'hero-img hero-img-signal',
       },
       meta: [

@@ -27,7 +27,7 @@ const IMAGES = [
       'Figure 3 — System overview: from diverse sources to ranked signals and actionable insights.',
   },
   {
-    src: '/assets/Signal/signal_source_strategy.png',
+    src: '/assets/Signal/signal_source_strategy.jpg',
     alt: 'Source strategy — selecting AI signals based on evidence and relevance',
     caption:
       'Figure 4 — Source strategy: selecting AI signals based on evidence and relevance.',
@@ -163,7 +163,7 @@ export default function SignalContent() {
           wasn&apos;t maximum coverage, but making sure each source had a clear reason to be in the
           feed.
         </p>
-        <Fig src="/assets/Signal/signal_source_strategy.png" />
+        <Fig src="/assets/Signal/signal_source_strategy.jpg" />
       </ProjectSection>
 
       <ProjectSection title="Scrape" titleId="signal-scrape">
